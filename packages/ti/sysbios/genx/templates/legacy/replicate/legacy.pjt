@@ -1,0 +1,69 @@
+%%{
+    var dirName = this.filePath.substring(this.filePath.lastIndexOf('/') + 1);
+    var target = this.dirMap[dirName].target;
+    var platform = this.dirMap[dirName].platform;
+    var rootDir = target.rootDir.replace(/\//g, '\\');
+    var cfgPkgName = "configPkg";
+	
+    var cpuName = this.CpuNameMap[target.isa];
+
+    var filePath = this.filePath.replace(/\//g, '\\');
+    var topPath = this.outputPath.replace(/\//g, '\\');
+    
+    var rtsLib = "";
+    if ("linkLib" in target) {
+        rtsLib = rootDir + "\\lib\\" + target.linkLib;
+    }
+    else {
+        var index = target.lnkOpts.suffix.search("rts");
+        if (index != -1) {
+	    rtsLib = rootDir + "\\lib\\" + target.lnkOpts.suffix.substring(index);
+        }
+    }
+	
+    var topPath = this.outputPath.replace(/\//g, '\\');
+%%}
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="`filePath`"
+ProjectType=Executable
+CPUFamily=`cpuName`
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Tool="XDC"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="`filePath`\legacy.cfg"
+Source="..\legacy.c"
+Source="`rtsLib`"
+Source="`filePath`\`cfgPkgName`\linker.cmd"
+
+["XDC" Settings: "Debug"]
+Options=--cb -o `filePath`\`cfgPkgName`  -t `target` -p `platform` -r whole_program --bios5
+
+["XDC" Settings: "Release"]
+Options=--cb -o `filePath`\`cfgPkgName`  -t `target` -p `platform` -r whole_program --bios5
+
+["Compiler" Settings: "Debug"]
+Options=-g -@"`filePath`\`cfgPkgName`\compiler.opt" -fr"$(Proj_dir)" -d"_DEBUG"
+
+["Compiler" Settings: "Release"]
+Options=-o2 -@"`filePath`\`cfgPkgName`\compiler.opt" -fr"$(Proj_dir)" -d"_RELEASE"
+
+["Linker" Settings: "Debug"]
+Options=-c -m".\Debug\legacy.map" -o".\Debug\legacy.out" -w -x
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\legacy.map" -o".\Release\legacy.out" -w -x
+
+["`filePath`\`cfgPkgName`\linker.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["`filePath`\`cfgPkgName`\linker.cmd" Settings: "Release"]
+LinkOrder=1
+

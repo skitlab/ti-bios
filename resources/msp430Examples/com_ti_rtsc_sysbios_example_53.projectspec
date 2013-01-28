@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectSpec>
+           <applicability>
+               <when>
+                    <context
+                       deviceId="CC430.*"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+           <applicability>
+               <when>
+                    <context
+                       deviceId="MSP430BT.*"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+           <applicability>
+               <when>
+                    <context
+                       deviceId="MSP430F6.*"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+           <applicability>
+               <when>
+                    <context
+                       deviceId="MSP430F5.*"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+
+     <project
+         title="Swi Example"
+                 description="An MSP430 specific example which uses an Swi function and an Idle function to print to a log buffer">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.SYSBIOS"/>
+                 <property name="platform" value="ti.platforms.msp430:$DeviceId$"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sysbios.examples.root.msp430"/>
+                 <file path="ti/sysbios/examples/msp430/swi/swi.c" openOnCreation="true" excludeFromBuild="false">
+                 </file>
+                 <file path="ti/sysbios/examples/msp430/swi/swi.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="ti/sysbios/examples/makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+     </project>
+
+
+
+</projectSpec>
+

@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sysbios.hal.vayu.TimerSupport</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* 
+</span>     2    <span class="comment"> * Copyright (c) 2012, Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> * */</span>
+    32    <span class="comment">/*
+</span>    33    <span class="comment"> *  ======== TimerSupport.xdc ========
+</span>    34    <span class="comment"> *
+</span>    35    <span class="comment"> *
+</span>    36    <span class="comment"> */</span>
+    37    
+    38    <span class=key>package</span> ti.sysbios.hal.vayu;
+    39    
+    40    import xdc.rov.ViewInfo;
+    41    
+    42    <span class="xdoc">/*!
+</span>    43    <span class="xdoc"> *  ======== TimerSupport ========
+</span>    44    <span class="xdoc"> *  Vayu Timer Support.
+</span>    45    <span class="xdoc"> *
+</span>    46    <span class="xdoc"> *  The Vayu Timer Support module provides a timer available mask 
+</span>    47    <span class="xdoc"> *  for each core that uses dmtimers - A15, DSP core 0 &amp; DSP core 1.
+</span>    48    <span class="xdoc"> *  
+</span>    49    <span class="xdoc"> *  The application can modify this available mask in the .cfg script
+</span>    50    <span class="xdoc"> *  to choose a different set of timers.
+</span>    51    <span class="xdoc"> *
+</span>    52    <span class="xdoc"> *  If the available mask is changed from its default value, the 
+</span>    53    <span class="xdoc"> *  interrupt sources corresponding to the new Timer Ids need to be 
+</span>    54    <span class="xdoc"> *  connected to the DSP events. On the Vayu SoC, there are 9 DSP 
+</span>    55    <span class="xdoc"> *  events that have been reserved for timer use. These are event ids
+</span>    56    <span class="xdoc"> *  71 to 79.
+</span>    57    <span class="xdoc"> *
+</span>    58    <span class="xdoc"> *  Note: If the available mask is changed and the System Clock Manager
+</span>    59    <span class="xdoc"> *  is enabled, then System clock will use the default DSP event Id 
+</span>    60    <span class="xdoc"> *  specified in the deviceTable for the timer. The application should
+</span>    61    <span class="xdoc"> *  make sure this event is mapped to the System Clock timer source.
+</span>    62    <span class="xdoc"> *  
+</span>    63    <span class="xdoc"> *  Below is an example of how to statically override the default
+</span>    64    <span class="xdoc"> *  timer available mask in a configuration script:
+</span>    65    <span class="xdoc"> *  
+</span>    66    <span class="xdoc"> *  <b>@p(code)</b>
+</span>    67    <span class="xdoc"> *  var IntXbar = xdc.useModule('ti.sysbios.hal.vayu.IntXbar');
+</span>    68    <span class="xdoc"> *  var TimerSupport = xdc.useModule('ti.sysbios.hal.vayu.TimerSupport');
+</span>    69    <span class="xdoc"> *  
+</span>    70    <span class="xdoc"> *  TimerSupport.dsp0TimerAvailMask = 0x0003;
+</span>    71    <span class="xdoc"> *  TimerSupport.a15TimerAvailMask  = 0x00FC;
+</span>    72    <span class="xdoc"> *  
+</span>    73    <span class="xdoc"> *  // Connect DMTIMER0 to EventId 71 (XBAR Instance 40)
+</span>    74    <span class="xdoc"> *  IntXbar_connect(40, 33);
+</span>    75    <span class="xdoc"> *  
+</span>    76    <span class="xdoc"> *  // Connect DMTIMER1 to EventId 72 (XBAR Instance 41)
+</span>    77    <span class="xdoc"> *  IntXbar_connect(41, 34);
+</span>    78    <span class="xdoc"> *  <b>@p</b>
+</span>    79    <span class="xdoc"> * 
+</span>    80    <span class="xdoc"> */</span>
+    81    
+    82    @ModuleStartup
+    83    
+    84    <span class=key>module</span> TimerSupport <span class=key>inherits</span> ti.sysbios.interfaces.ITimerSupport
+    85    {
+    86        <span class="xdoc">/*!
+</span>    87    <span class="xdoc">     *  ======== ModuleView ========
+</span>    88    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>    89    <span class="xdoc">     */</span>
+    90        <span class=key>metaonly</span> <span class=key>struct</span> ModuleView {
+    91            String a15TimerAvailMask;
+    92            String dsp0TimerAvailMask;
+    93            String dsp1TimerAvailMask;
+    94        }
+    95    
+    96        <span class="xdoc">/*!
+</span>    97    <span class="xdoc">     *  ======== rovViewInfo ========
+</span>    98    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>    99    <span class="xdoc">     */</span>
+   100        @Facet
+   101        <span class=key>metaonly</span> <span class=key>config</span> ViewInfo.Instance rovViewInfo = 
+   102            ViewInfo.create({
+   103                viewMap: [
+   104                [
+   105                    <span class="string">'Module'</span>,
+   106                    {
+   107                        type: ViewInfo.MODULE,
+   108                        viewInitFxn: <span class="string">'viewInitModule'</span>,
+   109                        structName: <span class="string">'ModuleView'</span>
+   110                    }
+   111                ],
+   112                ]
+   113            });
+   114    
+   115        <span class="xdoc">/*!
+</span>   116    <span class="xdoc">     *  ======== a15TimerAvailMask ========
+</span>   117    <span class="xdoc">     *  Default Available mask for A15 dmtimers
+</span>   118    <span class="xdoc">     *
+</span>   119    <span class="xdoc">     *  Used to set Timer module's availMask.
+</span>   120    <span class="xdoc">     */</span>
+   121         <span class=key>config</span> Bits32 a15TimerAvailMask = 0x00FF;
+   122    
+   123        <span class="xdoc">/*!
+</span>   124    <span class="xdoc">     *  ======== dsp0TimerAvailMask ========
+</span>   125    <span class="xdoc">     *  Default Available mask for DSP core 0's dmtimers
+</span>   126    <span class="xdoc">     *
+</span>   127    <span class="xdoc">     *  Used to set Timer module's availMask.
+</span>   128    <span class="xdoc">     */</span>
+   129         <span class=key>config</span> Bits32 dsp0TimerAvailMask = 0x0F00;
+   130    
+   131        <span class="xdoc">/*!
+</span>   132    <span class="xdoc">     *  ======== dsp1TimerAvailMask ========
+</span>   133    <span class="xdoc">     *  Default Available mask for DSP core 1's dmtimers
+</span>   134    <span class="xdoc">     *
+</span>   135    <span class="xdoc">     *  Used to set Timer module's availMask.
+</span>   136    <span class="xdoc">     */</span>
+   137         <span class=key>config</span> Bits32 dsp1TimerAvailMask = 0xF000;
+   138    
+   139        <span class="xdoc">/*!
+</span>   140    <span class="xdoc">     *  ======== needDsp0XbarInit ========
+</span>   141    <span class="xdoc">     *  Flag to check if the XBAR instances on DSP0 need
+</span>   142    <span class="xdoc">     *  to be programmed.
+</span>   143    <span class="xdoc">     */</span>
+   144        <span class=key>config</span> Bool needDsp0XbarInit = <span class=key>true</span>;
+   145    
+   146        <span class="xdoc">/*!
+</span>   147    <span class="xdoc">     *  ======== needDsp1XbarInit ========
+</span>   148    <span class="xdoc">     *  Flag to check if the XBAR instances on DSP1 need
+</span>   149    <span class="xdoc">     *  to be programmed.
+</span>   150    <span class="xdoc">     */</span>
+   151        <span class=key>config</span> Bool needDsp1XbarInit = <span class=key>true</span>;
+   152    }
+   153    <span class="comment">/*
+</span>   154    <span class="comment"> *  @(#) ti.sysbios.hal.vayu; 2, 0, 0, 0,27; 11-7-2012 12:42:11; /db/vtree/library/trees/avala/avala-r22x/src/ xlibrary
+</span>   155    <span class="comment">
+</span>   156    <span class="comment"> */</span>
+   157    
+</pre>
+</body></html>

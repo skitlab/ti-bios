@@ -1,0 +1,124 @@
+;
+; ======== Hwi_asm.s470 ========
+;
+;! Revision History
+;! ================
+;! 10-Aug-2011 agd	SDOCM00082466 add A8Fnv target support
+;! 17-Dec-2010 agd	SDOCM00077480 Force 8 byte stack alignment
+;! 10-Jun-2010 agd    	created, copied from omap1030
+;
+
+        .cdecls C,NOLIST,"package/internal/Hwi.xdc.h" 
+
+        .state32
+
+        .global ti_sysbios_family_arm_a8_intcps_Hwi_dispatchIRQ__I
+        .global ti_sysbios_family_arm_a8_intcps_Hwi_dispatchIRQC__I
+        .global ti_sysbios_family_arm_a8_intcps_Hwi_excHandlerAsm__I
+        .global ti_sysbios_family_arm_a8_intcps_Hwi_excHandlerDataAsm__I
+	.global ti_sysbios_family_arm_a8_intcps_Hwi_excHandler__I
+        .global ti_sysbios_family_arm_a8_intcps_Hwi_init__I
+        .global ti_sysbios_family_arm_a8_intcps_Hwi_vectors
+        .global ti_sysbios_family_arm_a8_intcps_Hwi_intc
+
+ti_sysbios_family_arm_a8_intcps_Hwi_Module__state__V .tag ti_sysbios_family_arm_a8_intcps_Hwi_Module_State
+
+;
+; Set the addresses of the interrupt controller struct
+;
+
+ti_sysbios_family_arm_a8_intcps_Hwi_intc .set    0x48200000
+
+;
+;  ======== Hwi_dispatchIRQ ========
+;
+;  Here on IRQ interrupt
+;
+;  stack while in C code:
+;
+;       sp + 0x20 =  cpsr_sys
+;       sp + 0x1c =  RA
+;       sp + 0x18 =  lr_sys
+;       sp + 0x14 =  saved r12
+;       sp + 0x10 =  saved r4
+;       sp + 0x0c =  saved r3
+;       sp + 0x08 =  saved r2
+;       sp + 0x04 =  saved r1
+;       sp + 0x00 =  saved r0
+;
+
+        .sect ".text:ti_sysbios_family_arm_a8_intcps_Hwi_dispatchIRQ__I"
+        .clink
+        .armfunc ti_sysbios_family_arm_a8_intcps_Hwi_dispatchIRQ__I
+        .align  4
+        
+ti_sysbios_family_arm_a8_intcps_Hwi_dispatchIRQ__I:
+        .asmfunc
+	sub	lr, lr, #4
+	srsdb	#0x1f		; push sys CPSR and LR onto SYS stack
+	cps	#0x1f		; switch back to System mode
+	sub	sp, sp, #8	; back up below CPSR and LR
+        push	{r0-r4, r12, lr}; save required C registers
+	ldr	r0, [sp, #28]	; retrieve IRP
+    .if __TI_VFP_SUPPORT__ | __TI_NEON_SUPPORT__
+	vstmdb	{D0-D7}, r13!	; save vfp scratch regs
+	vstmdb	{D16-D31}, r13!	; save vfp scratch regs
+    .endif
+	mov	r4, sp		; save sp
+	bic	sp, sp, #0x7	; align stack to 8 bytes
+        bl      ti_sysbios_family_arm_a8_intcps_Hwi_dispatchIRQC__I
+	mov	sp, r4		; restore sp
+    .if __TI_VFP_SUPPORT__ | __TI_NEON_SUPPORT__
+	vldmia	{D16-D31}, r13!	; restore vfp scratch regs
+	vldmia	{D0-D7}, r13!	; restore vfp scratch regs
+    .endif
+        pop	{r0-r4, r12, lr}
+	rfeia	sp!
+        .endasmfunc
+								
+;
+;  ======== Hwi_init ========
+;  Low level ARM mode-specific register initialization
+;
+
+        .sect ".text:ti_sysbios_family_arm_a8_intcps_Hwi_init__I"
+        .clink
+        .armfunc ti_sysbios_family_arm_a8_intcps_Hwi_init__I
+
+ti_sysbios_family_arm_a8_intcps_Hwi_init__I:
+        .asmfunc
+
+; Initialize FIQ sp
+        mrs     r12, cpsr
+        bic     r12, r12, #0x1f ; switch to FIQ mode
+        orr     r12, r12, #0x11 ; to initialize FIQ sp
+        msr     cpsr_cf, r12    ;
+
+        ldr     sp, fiqStackAddr
+        ldr     sp, [sp]	; base of fiq stack
+        ldr	r12, fiqStackSize
+        ldr	r12, [r12]	; size of fiq stack
+        add	sp, r12, sp	; sp = initial fiq stack
+
+; Done
+        mrs     r12, cpsr
+        orr     r12, r12, #0x1f ; switch back to SYS mode
+        msr     cpsr_cf, r12    ;
+
+; Set vector table base address
+	ldr	r0, vbar
+	mcr	p15, #0, r0, c12, c0, #0
+
+        bx      lr
+        .endasmfunc
+
+vbar:
+        .word   ti_sysbios_family_arm_a8_intcps_Hwi_vectors
+
+fiqStackAddr:
+        .word   ti_sysbios_family_arm_a8_intcps_Hwi_Module__state__V.fiqStack
+
+fiqStackSize:
+        .word   ti_sysbios_family_arm_a8_intcps_Hwi_Module__state__V.fiqStackSize
+
+        .end

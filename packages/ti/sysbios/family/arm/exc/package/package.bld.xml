@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sysbios.family.arm.exc" version="2, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="Exception"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sysbios.family.arm.exc.c"/>
+        <srcFile name="Exception.c"/>
+        <srcFile name="Exception_asm.asm"/>
+        <srcFile name="Exception_asm_gnu.asm"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.exc.ae9.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/package/package_ti.sysbios.family.arm.exc.oe9.dep" src="package/package_ti.sysbios.family.arm.exc.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/Exception.oe9.dep" src="Exception.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/Exception_asm.oe9.dep" src="Exception_asm.asm"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.exc.aea8f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/package/package_ti.sysbios.family.arm.exc.oea8f.dep" src="package/package_ti.sysbios.family.arm.exc.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/Exception.oea8f.dep" src="Exception.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/Exception_asm.oea8f.dep" src="Exception_asm.asm"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.exc.aea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/package/package_ti.sysbios.family.arm.exc.oea8fnv.dep" src="package/package_ti.sysbios.family.arm.exc.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/Exception.oea8fnv.dep" src="Exception.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/Exception_asm.oea8fnv.dep" src="Exception_asm.asm"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.exc.aer4te.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/package/package_ti.sysbios.family.arm.exc.oer4te.dep" src="package/package_ti.sysbios.family.arm.exc.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/Exception.oer4te.dep" src="Exception.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/Exception_asm.oer4te.dep" src="Exception_asm.asm"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.exc.aer4fte.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/package/package_ti.sysbios.family.arm.exc.oer4fte.dep" src="package/package_ti.sysbios.family.arm.exc.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/Exception.oer4fte.dep" src="Exception.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/Exception_asm.oer4fte.dep" src="Exception_asm.asm"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.exc.aa15g.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/package/package_ti.sysbios.family.arm.exc.oa15g.dep" src="package/package_ti.sysbios.family.arm.exc.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/Exception.oa15g.dep" src="Exception.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.exc/Exception_asm_gnu.oa15g.dep" src="Exception_asm_gnu.asm"/>
+        <srcFile name="package/rel/ti_sysbios_family_arm_exc.tar.gz.dep" src="package/rel/ti_sysbios_family_arm_exc.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.arm.elf.Arm9"
+            version="ti.targets.arm.elf.Arm9{1,0,5.0,1"
+            platform="ti.platforms.expOMAPL138"
+            isa="v5T"
+            suffix="e9"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8F"
+            version="ti.targets.arm.elf.A8F{1,0,5.0,1"
+            platform="ti.platforms.evmTI814X"
+            isa="v7A"
+            suffix="ea8f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8Fnv"
+            version="ti.targets.arm.elf.A8Fnv{1,0,5.0,1"
+            platform="ti.platforms.evmAM3359"
+            isa="v7A"
+            suffix="ea8fnv"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.R4t_big_endian"
+            version="ti.targets.arm.elf.R4t_big_endian{1,0,5.0,1"
+            platform="ti.platforms.evmTMS570LS20216:testInst"
+            isa="v7R"
+            suffix="er4te"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="big"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.R4Ft_big_endian"
+            version="ti.targets.arm.elf.R4Ft_big_endian{1,0,5.0,1"
+            platform="ti.platforms.evmTMS570LS20216:testInst"
+            isa="v7R"
+            suffix="er4fte"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="big"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.A15"
+            version="gnu.targets.arm.A15{1,0,4.6,3"
+            platform="ti.platforms.simVayu"
+            isa="v7A15"
+            suffix="a15g"
+            rootDir="/db/toolsrc/library/tools/vendors/cs/armBM/arm-2012_03"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7A">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm.exc"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.exc.ae9"
+        profile="debug"
+        target="ti.targets.arm.elf.Arm9"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm.exc"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.exc.aea8f"
+        profile="debug"
+        target="ti.targets.arm.elf.A8F"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm.exc"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.exc.aea8fnv"
+        profile="debug"
+        target="ti.targets.arm.elf.A8Fnv"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm.exc"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.exc.aer4te"
+        profile="debug"
+        target="ti.targets.arm.elf.R4t_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm.exc"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.exc.aer4fte"
+        profile="debug"
+        target="ti.targets.arm.elf.R4Ft_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm.exc"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.exc.aa15g"
+        profile="debug"
+        target="gnu.targets.arm.A15"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sysbios_family_arm_exc"
+        pname="../../../../..//../exports/ti_sysbios_family_arm_exc.tar.gz"
+        label="default"
+        relScript="scripts/copyright_xml.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="doc-files"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.exc.ae9"/>
+        <file name="package/package_ti.sysbios.family.arm.exc.c"/>
+        <file name="Exception.c"/>
+        <file name="Exception_asm.asm"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.exc.aea8f"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.exc.aea8fnv"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.exc.aer4te"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.exc.aer4fte"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.exc.aa15g"/>
+        <file name="Exception_asm_gnu.asm"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

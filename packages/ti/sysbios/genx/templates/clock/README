@@ -1,0 +1,19 @@
+Purpose: 
+
+    The clock example shows how to use the ti.sysbios.knl.Clock module to
+    create one-shot and periodic Clock Instances. Clock Instances are 
+    essentially functions that run after a certain number of Clock ticks.
+    
+    The DSP/BIOS configuration script for this example is located in the 
+    ../common directory. It is therefore necessary to build the 
+    ../common/<platform_dir> subdirectory before building the clock example. 
+    
+    The ../common/<platform_dir> subdirectory can be built using the makefile 
+    or the depend.pjt present at ../common/<platform_dir>. 
+    The clock example can be built using the makefile or clock.pjt file located 
+    in the ./<platform_dir> subdirectory.
+
+Expected output:
+	
+    See clock.k file.
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ti.rtsc.SYSBIOS.product.ui"
+      version="6.34.3.19"
+      label="SYS/BIOS (IDE Client)"
+      provider-name="Texas Instruments">
+
+   <description url="http://www.ti.com/sysbios">
+SYS/BIOS
+   </description>
+
+   <copyright>
+Copyright Texas Instruments 2011
+   </copyright>
+
+   <license>
+      Released under Texas Instruments Incorporated - Technology Software Publicly Available license.
+   </license>
+
+
+   <plugin
+        id="com.ti.rtsc.SYSBIOS.product.ui"
+        version="6.34.3.19"
+        unpack="false" 
+   />  
+    
+
+</feature>

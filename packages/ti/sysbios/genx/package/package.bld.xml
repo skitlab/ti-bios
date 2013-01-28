@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sysbios.genx" version="2, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="Main"/>
+    </units>
+    <sources>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="package/rel/ti_sysbios_genx.tar.gz.dep" src="package/rel/ti_sysbios_genx.xdc.inc"/>
+    </makefiles>
+    <targets>
+    </targets>
+    <libraries>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sysbios_genx"
+        pname="../../..//../exports/ti_sysbios_genx.tar.gz"
+        label="default"
+        relScript="scripts/copyright_xml.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="templates/clock/README"/>
+        <file name="templates/clock/clock.c"/>
+        <file name="templates/clock/clock.k"/>
+        <file name="templates/clock/mkpkg.xdt"/>
+        <file name="templates/clock/replicate/clock.pjt"/>
+        <file name="templates/clock/replicate/makefile"/>
+        <file name="templates/clock/replicate/mkPkg.xdt"/>
+        <file name="templates/common/common.cfg"/>
+        <file name="templates/common/common.mak"/>
+        <file name="templates/common/mkpkg.xdt"/>
+        <file name="templates/common/replicate/depend.pjt"/>
+        <file name="templates/common/replicate/makefile"/>
+        <file name="templates/common/replicate/mkPkg.xdt"/>
+        <file name="templates/error/README"/>
+        <file name="templates/error/error.c"/>
+        <file name="templates/error/error.cfg"/>
+        <file name="templates/error/error.k"/>
+        <file name="templates/error/mkpkg.xdt"/>
+        <file name="templates/error/replicate/error.pjt"/>
+        <file name="templates/error/replicate/mkPkg.xdt"/>
+        <file name="templates/error/replicate/makefile"/>
+        <file name="templates/event/README"/>
+        <file name="templates/event/event.c"/>
+        <file name="templates/event/event.k"/>
+        <file name="templates/event/mkpkg.xdt"/>
+        <file name="templates/event/replicate/event.pjt"/>
+        <file name="templates/event/replicate/makefile"/>
+        <file name="templates/event/replicate/mkPkg.xdt"/>
+        <file name="templates/hello/README"/>
+        <file name="templates/hello/hello.c"/>
+        <file name="templates/hello/hello.k"/>
+        <file name="templates/hello/mkpkg.xdt"/>
+        <file name="templates/hello/replicate/hello.pjt"/>
+        <file name="templates/hello/replicate/makefile"/>
+        <file name="templates/hello/replicate/mkPkg.xdt"/>
+        <file name="templates/legacy/README"/>
+        <file name="templates/legacy/legacy.c"/>
+        <file name="templates/legacy/mkpkg.xdt"/>
+        <file name="templates/legacy/legacy.k"/>
+        <file name="templates/legacy/replicate/legacy.pjt"/>
+        <file name="templates/legacy/replicate/mkPkg.xdt"/>
+        <file name="templates/legacy/replicate/makefile"/>
+        <file name="templates/legacy/replicate/legacy.cfg"/>
+        <file name="templates/makefile"/>
+        <file name="templates/mkpkg.xdt"/>
+        <file name="templates/mutex/README"/>
+        <file name="templates/mutex/mkpkg.xdt"/>
+        <file name="templates/mutex/mutex.c"/>
+        <file name="templates/mutex/mutex.k"/>
+        <file name="templates/mutex/replicate/makefile"/>
+        <file name="templates/mutex/replicate/mkPkg.xdt"/>
+        <file name="templates/mutex/replicate/mutex.pjt"/>
+        <file name="templates/static/README"/>
+        <file name="templates/static/mkpkg.xdt"/>
+        <file name="templates/static/replicate/mkPkg.xdt"/>
+        <file name="templates/static/replicate/makefile"/>
+        <file name="templates/static/replicate/static.pjt"/>
+        <file name="templates/static/static.c"/>
+        <file name="templates/static/static.cfg"/>
+        <file name="templates/static/static.k"/>
+        <file name="templates/swi/README"/>
+        <file name="templates/swi/mkpkg.xdt"/>
+        <file name="templates/swi/replicate/makefile"/>
+        <file name="templates/swi/replicate/mkPkg.xdt"/>
+        <file name="templates/swi/replicate/swi.pjt"/>
+        <file name="templates/swi/swi.c"/>
+        <file name="templates/swi/swi.k"/>
+        <file name="templates/memory/README"/>
+        <file name="templates/memory/memory.cfg"/>
+        <file name="templates/memory/memory.c"/>
+        <file name="templates/memory/memory.k"/>
+        <file name="templates/memory/mkpkg.xdt"/>
+        <file name="templates/memory/replicate/memory.pjt"/>
+        <file name="templates/memory/replicate/makefile"/>
+        <file name="templates/memory/replicate/mkPkg.xdt"/>
+        <file name="templates/log/README"/>
+        <file name="templates/log/log.c"/>
+        <file name="templates/log/log.cfg"/>
+        <file name="templates/log/log.k"/>
+        <file name="templates/log/mkpkg.xdt"/>
+        <file name="templates/log/replicate/log.pjt"/>
+        <file name="templates/log/replicate/mkPkg.xdt"/>
+        <file name="templates/log/replicate/makefile"/>
+        <file name="templates/rta/README"/>
+        <file name="templates/rta/mkpkg.xdt"/>
+        <file name="templates/rta/replicate/makefile"/>
+        <file name="templates/rta/replicate/mkPkg.xdt"/>
+        <file name="templates/rta/replicate/stairstep.cfg"/>
+        <file name="templates/rta/replicate/stairstep.pjt"/>
+        <file name="templates/rta/stairstep.c"/>
+        <file name="java"/>
+        <file name="package/package.cfg.xdc.inc"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

@@ -1,0 +1,9 @@
+Purpose:
+
+    This example shows the use of two tasks and one semaphore to perform
+    mutual exclusive data access.
+
+Expected output:
+	
+    See mutex.k file.
+

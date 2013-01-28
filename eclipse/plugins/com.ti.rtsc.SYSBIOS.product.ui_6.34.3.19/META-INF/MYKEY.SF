@@ -1,0 +1,230 @@
+Signature-Version: 1.0
+Created-By: 1.5.0_22 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest-Main-Attributes: HwJAAJcG4av7BynUBt2Gwfcr8tw=
+SHA1-Digest-Manifest: Sm8oSQwFmXmq+lUDyA/Qu0qxYxg=
+
+Name: eclipse_toc.xml
+SHA1-Digest: eCZVujch61lC19txNSeoTqg0qKY=
+
+Name: resources/generic/hello/c28/hello.cfg
+SHA1-Digest: AJcnWoZSUDBdWRSAWp1o/6AoV2I=
+
+Name: resources/generic/minimal/main.c
+SHA1-Digest: yEk08+ACQinH2Pp7j0wf4Mnu95A=
+
+Name: resources/msp430/task/task.cfg
+SHA1-Digest: C4cRFJstpiZHNRv0QGOuG8a5eMk=
+
+Name: resources/c28/task/task.c
+SHA1-Digest: oUdijQw4T+xOdNJsZ391HQejPTM=
+
+Name: resources/c28/idle/idle.c
+SHA1-Digest: fFNqeYbLZZA+udFCiKk6fkGiYww=
+
+Name: resources/generic/event/event.c
+SHA1-Digest: Cto7z8+JM/Z26bxB1ODh8xwNgHw=
+
+Name: resources/generic/event/c28/event.cfg
+SHA1-Digest: ER8r0Rr1Vv+Fmt54pPo94GVzj8o=
+
+Name: resources/generic/bigtime/bigtime.cpp
+SHA1-Digest: HYw0K0Yl/Z2GWXKUAXOQ67cgXQM=
+
+Name: resources/generic/small/c28/small.cfg
+SHA1-Digest: PKBWZOIJ1IBKWYaYDN90tfhKK4U=
+
+Name: resources/generic/hello/msp430/hello.cfg
+SHA1-Digest: 0jZF8eR8QtXfEaRrsgnEscpW7iY=
+
+Name: resources/generic/mutex/c28/mutex.cfg
+SHA1-Digest: iqKB+eQodKSTR4u9PYxp7rKHv2w=
+
+Name: resources/generic/minimal/c28/app.cfg
+SHA1-Digest: 9frzqwCey+ldKtwzIAzj211X3+8=
+
+Name: resources/generic/stairstep/stairstep.c
+SHA1-Digest: 0MLK0qAZzYvp7DVTIujQTkqSLic=
+
+Name: resources/msp430/task/task.c
+SHA1-Digest: iHVIJUtMGFN8ZKUZ+1Xcmpn7WOk=
+
+Name: resources/generic/clock/clock.c
+SHA1-Digest: Otgo60eoto1SnTWgzF0/Q+fRRMY=
+
+Name: resources/generic/error/error.c
+SHA1-Digest: ALWGJIxCrcTqJbX4283nenWvbTo=
+
+Name: resources/c28/idle/idle.cfg
+SHA1-Digest: mBASAmMPyuBabQuQqcQvn/1QU+c=
+
+Name: resources/msp430/idle/idle.c
+SHA1-Digest: Kb9043w5rZcR3BNpj+0kF8PXvac=
+
+Name: resources/msp430/idle/idle.cfg
+SHA1-Digest: qT8CqC5llAudeCDISb4FbwwRFNM=
+
+Name: resources/generic/stairstep/msp430/stairstep.cfg
+SHA1-Digest: biecmqUCXexGiWDpnCv7/560WD0=
+
+Name: resources/generic/stairstep/stairstep.cfg
+SHA1-Digest: Tuf8P/qI2NOvktSfSgkc+yGfzsI=
+
+Name: resources/generic/clock/msp430/clock.cfg
+SHA1-Digest: Yyi4DzvziRh/0uAMkCMeQCRUjcA=
+
+Name: resources/generic/swi/msp430/swi.cfg
+SHA1-Digest: NDxH7En1GSYTBgmOjNo9NLfx75M=
+
+Name: resources/generic/swi/c28/swi.cfg
+SHA1-Digest: 0V0QuVVkrjcuX2RSgtOTRY0uu5o=
+
+Name: resources/generic/event/event.cfg
+SHA1-Digest: aPF2iTQGYvQ65JaLLBTsK2hEzrc=
+
+Name: resources/msp430/swi/swi.c
+SHA1-Digest: aTgG/cU0tYD7eu+9KZ6Ku39rTHg=
+
+Name: resources/makefile.defs
+SHA1-Digest: gOcanvLkZ8VxhALgi2bhN9GFm00=
+
+Name: resources/generic/event/msp430/event.cfg
+SHA1-Digest: GZ7lmUyyVSnrtgIL6FYXXbYekPA=
+
+Name: resources/generic/memory/memory.cfg
+SHA1-Digest: EqNESdQjiP7kR+kXkMw+5wKlbM8=
+
+Name: resources/generic/memory/msp430/memory.cfg
+SHA1-Digest: UXDabBYBhpEb6tgoYmEzGamFB1s=
+
+Name: resources/generic/typical/app.cfg
+SHA1-Digest: yZK3WeRROpgAJhHVxeWLKbnRCvY=
+
+Name: resources/generic/bigtime/bigtime.cfg
+SHA1-Digest: VRYUy+bH8NmJX8yv1g63WMTmL0c=
+
+Name: resources/generic/mutex/mutex.cfg
+SHA1-Digest: xF0Kw6beJhW9YcHkat+uncw/JS8=
+
+Name: plugin.xml
+SHA1-Digest: BL19dJ6Zi2aW/LTRgIV8qQvPVvA=
+
+Name: resources/generic/static/static.c
+SHA1-Digest: z8RJ9h3NNUO5hnZaWYfxL9mVMC4=
+
+Name: resources/generic/bigtime/msp430/bigtime.cfg
+SHA1-Digest: HqwkL4n2YWpOfpxCBDKTdk8twTc=
+
+Name: resources/generic/log/log.cfg
+SHA1-Digest: PD4HOZHfulo1RD5Meh5yBJqefVU=
+
+Name: resources/generic/small/msp430/small.cfg
+SHA1-Digest: HK44gtguwOPpFekeUZLlOdo29J4=
+
+Name: resources/generic/clock/c28/clock.cfg
+SHA1-Digest: 1BBU2uH1D87xrct9plJguMsGBlY=
+
+Name: resources/generic/mutex/mutex.c
+SHA1-Digest: PlWm7nLsaItKDtG/3vdOiqGtuVo=
+
+Name: resources/generic/static/static.cfg
+SHA1-Digest: +V6Dh724gXb0x7dqK9gY4m3vjZc=
+
+Name: resources/c28/pie/pie.c
+SHA1-Digest: Cv+6rOPXVy8CUkN2RhG/b4tHb+0=
+
+Name: resources/c28/swi/swi.cfg
+SHA1-Digest: bi560FdtxLNUIEXS+/51Mno2vos=
+
+Name: resources/generic/memory/memory.c
+SHA1-Digest: MC0hHRaCORgyO297aFCIuzINz6o=
+
+Name: resources/generic/static/c28/static.cfg
+SHA1-Digest: CbdYCo0DKr1LBNsrVBDquAGE/qA=
+
+Name: resources/generic/error/c28/error.cfg
+SHA1-Digest: sLKecgIVB/scEt5uggexdL5Y5aM=
+
+Name: resources/generic/hello/hello.c
+SHA1-Digest: beHg2FJQp6PUgUZBp7L9smVrf7E=
+
+Name: resources/c28/task/task.cfg
+SHA1-Digest: 6JlqAFYeTrgK+gaMv7+6AMqH7F0=
+
+Name: resources/generic/minimal/msp430/app.cfg
+SHA1-Digest: IR+wEPUBy/oR773SMpq3QQPaFO8=
+
+Name: resources/generic/small/small.c
+SHA1-Digest: 49CDyOK+Gf0ZOaWis1DzAqJNV6w=
+
+Name: resources/generic/typical/main.c
+SHA1-Digest: nLu/vmQDA2JaPhFBDmfyr6Ji5CA=
+
+Name: resources/generic/small/small.cfg
+SHA1-Digest: y034ewlXY557O0PWcuPQiBn+G9M=
+
+Name: plugin.properties
+SHA1-Digest: ZHJBpiFuUZLL8Wy3cTzXauZjVtQ=
+
+Name: resources/msp430/swi/swi.cfg
+SHA1-Digest: NRjNOj3s5oeVo3S68bxd4glmxmU=
+
+Name: resources/generic/clock/clock.cfg
+SHA1-Digest: e9UcOdYLAJ6HPspWFYdwSowt0VI=
+
+Name: resources/generic/error/error.cfg
+SHA1-Digest: dwKMGDvzPJOgrxcdh5nUHV1J170=
+
+Name: resources/generic/swi/swi.cfg
+SHA1-Digest: JoyI+Al29Xh9UjzE5uB/kbY80us=
+
+Name: resources/generic/stairstep/c28/stairstep.cfg
+SHA1-Digest: emflVbrSICA1NrretisN+yxQRu4=
+
+Name: resources/generic/swi/swi.c
+SHA1-Digest: YUItYxcATic02ek9V/DzJ4RF4PY=
+
+Name: resources/generic/log/c28/log.cfg
+SHA1-Digest: A57oAMfbl6hb39hupPIuxBGVkGc=
+
+Name: resources/generic/typical/c28/app.cfg
+SHA1-Digest: IQveqnTDprHY00V2CQYkwvVPSEQ=
+
+Name: resources/generic/static/msp430/static.cfg
+SHA1-Digest: 660aVCgXrUV4sltH2kCdjEQkrYw=
+
+Name: resources/generic/hello/hello.cfg
+SHA1-Digest: TEvmywjay2l/PKbTmrQEuBW3fZI=
+
+Name: resources/generic/bigtime/c28/bigtime.cfg
+SHA1-Digest: xC1yH7x1kyF2017JuvhQHvHRnX8=
+
+Name: resources/generic/typical/msp430/app.cfg
+SHA1-Digest: 226f+rFowmByGRy6vibug/78M0k=
+
+Name: resources/c28/swi/swi.c
+SHA1-Digest: TEMag47EKCE2NOWBh1lZtGIKcgg=
+
+Name: resources/generic/log/msp430/log.cfg
+SHA1-Digest: 34zeh3Nhg6/or3kPKeWiappfAvE=
+
+Name: resources/generic/memory/c28/memory.cfg
+SHA1-Digest: m/LZWKS1qZUQzv4cra83lAhYAGI=
+
+Name: resources/generic/mutex/msp430/mutex.cfg
+SHA1-Digest: HQJ0nSqWsH6DO2PFBpPgxaiCDP4=
+
+Name: resources/generic/minimal/app.cfg
+SHA1-Digest: 2z7MUeuRsB6MsmWZ2kFQUTrDxMI=
+
+Name: resources/generic/log/log.c
+SHA1-Digest: v5fFvsQR+laJpN2ByKdrTpZ+ueE=
+
+Name: resources/generic/error/msp430/error.cfg
+SHA1-Digest: ZJFZ38+hMQESsyOLYZXspGuesoQ=
+
+Name: resources/c28/pie/pie.cfg
+SHA1-Digest: lbOxze/rvistGO/nVrNPspiYmTs=
+
+Name: toc_top.xml
+SHA1-Digest: tdu18dSCUQxfhhNVVytkTXX7crA=
+

@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sysbios.rta" version="2, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="Agent"/>
+        <module name="SupportLogger"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="SupportLogger.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.a28L.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.o28L.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.o28L.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.a28FP.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.o28FP.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.o28FP.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.a64.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.o64.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.o64.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.o64P.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.o64P.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.a64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.o64Pe.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.o64Pe.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.o674.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.o674.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.a430.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.o430.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.o430.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.a430X.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.o430X.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.o430X.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.a430XS.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.o430XS.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.o430XS.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.ae430X.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oe430X.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oe430X.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.ae430XS.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oe430XS.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oe430XS.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.ar430XS.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.or430XS.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.or430XS.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oe64P.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oe64P.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.ae64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oe64Pe.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oe64Pe.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oe674.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oe674.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oe64T.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oe64T.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oe66.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oe66.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oe66e.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oe66e.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.aearp32.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oearp32.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oearp32.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.aearp32F.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oearp32F.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oearp32F.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.ae9.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oe9.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oe9.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.aea8f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oea8f.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oea8f.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.aea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oea8fnv.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oea8fnv.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oem3.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oem3.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oem4.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oem4.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oem4f.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oem4f.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.aer4te.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oer4te.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oer4te.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.aer4fte.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oer4fte.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oer4fte.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.am3g.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.om3g.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.om3g.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.am4g.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.om4g.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.om4g.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.om4fg.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.om4fg.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.rta.aa15g.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oa15g.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.rta/SupportLogger.oa15g.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/smpbios/debug/ti.sysbios.rta.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oem3.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/smpbios/debug/ti.sysbios.rta/SupportLogger.oem3.dep" src="SupportLogger.c"/>
+        <srcFile name="lib/smpbios/debug/ti.sysbios.rta.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpbios/debug/ti.sysbios.rta/package/package_ti.sysbios.rta.oem4.dep" src="package/package_ti.sysbios.rta.c"/>
+        <srcFile name="package/lib/lib/smpbios/debug/ti.sysbios.rta/SupportLogger.oem4.dep" src="SupportLogger.c"/>
+        <srcFile name="package/rel/ti_sysbios_rta.tar.gz.dep" src="package/rel/ti_sysbios_rta.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C28_large"
+            version="ti.targets.C28_large{1,0,5.2,3"
+            platform="ti.platforms.ezdsp28235"
+            isa="28"
+            suffix="28L"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C28_float"
+            version="ti.targets.C28_float{1,0,5.2,3"
+            platform="ti.platforms.ezdsp28335"
+            isa="28FP"
+            suffix="28FP"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C64"
+            version="ti.targets.C64{1,0,7.2,0"
+            platform="ti.platforms.dsk6416"
+            isa="64"
+            suffix="64"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,0"
+            platform="ti.platforms.evmDM6446"
+            isa="64P"
+            suffix="64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P_big_endian"
+            version="ti.targets.C64P_big_endian{1,0,7.2,0"
+            platform="ti.platforms.evmDM6437"
+            isa="64P"
+            suffix="64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C674"
+            version="ti.targets.C674{1,0,7.2,0"
+            platform="ti.platforms.evm6748"
+            isa="674"
+            suffix="674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.msp430.MSP430"
+            version="ti.targets.msp430.MSP430{1,0,4.1,0"
+            platform="ti.platforms.msp430:MSP430F5438A:1"
+            isa="430"
+            suffix="430"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/MSP430/4.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.msp430.rts430">
+            <model endian="little"
+                codeModel="small"
+                dataModel="small"/>
+        </target>
+        <target name="ti.targets.msp430.MSP430X"
+            version="ti.targets.msp430.MSP430X{1,0,4.1,0"
+            platform="ti.platforms.msp430:MSP430F5438A:1"
+            isa="430X"
+            suffix="430X"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/MSP430/4.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.msp430.rts430">
+            <model endian="little"
+                codeModel="large"
+                dataModel="restricted"/>
+        </target>
+        <target name="ti.targets.msp430.MSP430X_small"
+            version="ti.targets.msp430.MSP430X_small{1,0,4.1,0"
+            platform="ti.platforms.msp430:MSP430F5438A:1"
+            isa="430X"
+            suffix="430XS"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/MSP430/4.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.msp430.rts430">
+            <model endian="little"
+                codeModel="small"
+                dataModel="small"/>
+        </target>
+        <target name="ti.targets.msp430.elf.MSP430X"
+            version="ti.targets.msp430.elf.MSP430X{1,0,4.1,0"
+            platform="ti.platforms.msp430:MSP430F5438A:1"
+            isa="430X"
+            suffix="e430X"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/MSP430/4.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.msp430.rts430">
+            <model endian="little"
+                codeModel="large"
+                dataModel="restricted"/>
+        </target>
+        <target name="ti.targets.msp430.elf.MSP430X_small"
+            version="ti.targets.msp430.elf.MSP430X_small{1,0,4.1,0"
+            platform="ti.platforms.msp430:MSP430F5438A:1"
+            isa="430X"
+            suffix="e430XS"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/MSP430/4.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.msp430.rts430">
+            <model endian="little"
+                codeModel="small"
+                dataModel="small"/>
+        </target>
+        <target name="iar.targets.msp430.MSP430X_small"
+            version="iar.targets.msp430.MSP430X_small{1,0,5.40,2"
+            platform="ti.platforms.msp430:MSP430F5438A:1"
+            isa="430X"
+            suffix="r430XS"
+            rootDir="/db/toolsrc/library/tools/vendors/iar/msp430/Linux"
+            os="undefined"
+            rts="iar.targets.msp430.rts">
+            <model endian="little"
+                codeModel="large"
+                dataModel="small"/>
+        </target>
+        <target name="ti.targets.elf.C64P"
+            version="ti.targets.elf.C64P{1,0,7.2,0"
+            platform="ti.platforms.evm6472"
+            isa="64P"
+            suffix="e64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P_big_endian"
+            version="ti.targets.elf.C64P_big_endian{1,0,7.2,0"
+            platform="ti.platforms.evmDM6437"
+            isa="64P"
+            suffix="e64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C674"
+            version="ti.targets.elf.C674{1,0,7.2,0"
+            platform="ti.platforms.evm6748"
+            isa="674"
+            suffix="e674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64T"
+            version="ti.targets.elf.C64T{1,0,7.2,0"
+            platform="ti.platforms.sdp4430"
+            isa="64T"
+            suffix="e64T"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66"
+            version="ti.targets.elf.C66{1,0,7.2,0"
+            platform="ti.platforms.evm6678"
+            isa="66"
+            suffix="e66"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66_big_endian"
+            version="ti.targets.elf.C66_big_endian{1,0,7.2,0"
+            platform="ti.platforms.evm6670"
+            isa="66"
+            suffix="e66e"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32"
+            version="ti.targets.arp32.elf.ARP32{1,0,1.0,0,5"
+            platform="ti.platforms.evmC6A8149"
+            isa="arp32"
+            suffix="earp32"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32_far"
+            version="ti.targets.arp32.elf.ARP32_far{1,0,1.0,0,5"
+            platform="ti.platforms.evmC6A8149"
+            isa="arp32"
+            suffix="earp32F"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.Arm9"
+            version="ti.targets.arm.elf.Arm9{1,0,5.0,1"
+            platform="ti.platforms.expOMAPL138"
+            isa="v5T"
+            suffix="e9"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8F"
+            version="ti.targets.arm.elf.A8F{1,0,5.0,1"
+            platform="ti.platforms.evmTI814X"
+            isa="v7A"
+            suffix="ea8f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8Fnv"
+            version="ti.targets.arm.elf.A8Fnv{1,0,5.0,1"
+            platform="ti.platforms.evmAM3359"
+            isa="v7A"
+            suffix="ea8fnv"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M3"
+            version="ti.targets.arm.elf.M3{1,0,5.0,1"
+            platform="ti.platforms.evmLM3S8962:testInst"
+            isa="v7M"
+            suffix="em3"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4"
+            version="ti.targets.arm.elf.M4{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4F"
+            version="ti.targets.arm.elf.M4F{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.R4t_big_endian"
+            version="ti.targets.arm.elf.R4t_big_endian{1,0,5.0,1"
+            platform="ti.platforms.evmTMS570LS20216:testInst"
+            isa="v7R"
+            suffix="er4te"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="big"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.R4Ft_big_endian"
+            version="ti.targets.arm.elf.R4Ft_big_endian{1,0,5.0,1"
+            platform="ti.platforms.evmTMS570LS20216:testInst"
+            isa="v7R"
+            suffix="er4fte"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="big"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.M3"
+            version="gnu.targets.arm.M3{1,0,4.5,2"
+            platform="ti.platforms.stellaris:LM4F232H5QD:1"
+            isa="v7M"
+            suffix="m3g"
+            rootDir="/db/toolsrc/library/tools/vendors/cs/armBM/arm-2011q3"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7M">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.M4"
+            version="gnu.targets.arm.M4{1,0,4.5,2"
+            platform="ti.platforms.stellaris:LM4F232H5QD"
+            isa="v7M4"
+            suffix="m4g"
+            rootDir="/db/toolsrc/library/tools/vendors/cs/armBM/arm-2011q3"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7M">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.M4F"
+            version="gnu.targets.arm.M4F{1,0,4.5,2"
+            platform="ti.platforms.stellaris:LM4F232H5QD"
+            isa="v7M4"
+            suffix="m4fg"
+            rootDir="/db/toolsrc/library/tools/vendors/cs/armBM/arm-2011q3"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7M">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.A15"
+            version="gnu.targets.arm.A15{1,0,4.6,3"
+            platform="ti.platforms.simVayu"
+            isa="v7A15"
+            suffix="a15g"
+            rootDir="/db/toolsrc/library/tools/vendors/cs/armBM/arm-2012_03"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7A">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.a28L"
+        profile="debug"
+        target="ti.targets.C28_large"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.a28FP"
+        profile="debug"
+        target="ti.targets.C28_float"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.a64"
+        profile="debug"
+        target="ti.targets.C64"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.a64P"
+        profile="debug"
+        target="ti.targets.C64P"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.a64Pe"
+        profile="debug"
+        target="ti.targets.C64P_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.a674"
+        profile="debug"
+        target="ti.targets.C674"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.a430"
+        profile="debug"
+        target="ti.targets.msp430.MSP430"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.a430X"
+        profile="debug"
+        target="ti.targets.msp430.MSP430X"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.a430XS"
+        profile="debug"
+        target="ti.targets.msp430.MSP430X_small"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.ae430X"
+        profile="debug"
+        target="ti.targets.msp430.elf.MSP430X"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.ae430XS"
+        profile="debug"
+        target="ti.targets.msp430.elf.MSP430X_small"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.ar430XS"
+        profile="debug"
+        target="iar.targets.msp430.MSP430X_small"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.ae64P"
+        profile="debug"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.ae64Pe"
+        profile="debug"
+        target="ti.targets.elf.C64P_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.ae674"
+        profile="debug"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.ae64T"
+        profile="debug"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.ae66"
+        profile="debug"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.ae66e"
+        profile="debug"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.aearp32"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.aearp32F"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32_far"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.ae9"
+        profile="debug"
+        target="ti.targets.arm.elf.Arm9"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.aea8f"
+        profile="debug"
+        target="ti.targets.arm.elf.A8F"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.aea8fnv"
+        profile="debug"
+        target="ti.targets.arm.elf.A8Fnv"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.aem3"
+        profile="debug"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.aem4"
+        profile="debug"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.aem4f"
+        profile="debug"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.aer4te"
+        profile="debug"
+        target="ti.targets.arm.elf.R4t_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.aer4fte"
+        profile="debug"
+        target="ti.targets.arm.elf.R4Ft_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.am3g"
+        profile="debug"
+        target="gnu.targets.arm.M3"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.am4g"
+        profile="debug"
+        target="gnu.targets.arm.M4"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.am4fg"
+        profile="debug"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/sysbios/debug/ti.sysbios.rta"
+        pname="lib/sysbios/debug/ti.sysbios.rta.aa15g"
+        profile="debug"
+        target="gnu.targets.arm.A15"/>
+    <library name="lib/smpbios/debug/ti.sysbios.rta"
+        pname="lib/smpbios/debug/ti.sysbios.rta.aem3"
+        profile="smp"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/smpbios/debug/ti.sysbios.rta"
+        pname="lib/smpbios/debug/ti.sysbios.rta.aem4"
+        profile="smp"
+        target="ti.targets.arm.elf.M4"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sysbios_rta"
+        pname="../../..//../exports/ti_sysbios_rta.tar.gz"
+        label="default"
+        relScript="scripts/copyright_xml.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="Agent.xml"/>
+        <file name="SupportLogger.xml"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.a28L"/>
+        <file name="package/package_ti.sysbios.rta.c"/>
+        <file name="SupportLogger.c"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.a28FP"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.a64"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.a64P"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.a64Pe"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.a674"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.a430"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.a430X"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.a430XS"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.ae430X"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.ae430XS"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.ar430XS"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.ae64P"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.ae64Pe"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.ae674"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.ae64T"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.ae66"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.ae66e"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.aearp32"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.aearp32F"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.ae9"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.aea8f"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.aea8fnv"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.aem3"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.aem4"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.aem4f"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.aer4te"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.aer4fte"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.am3g"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.am4g"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.am4fg"/>
+        <file name="lib/sysbios/debug/ti.sysbios.rta.aa15g"/>
+        <file name="lib/smpbios/debug/ti.sysbios.rta.aem3"/>
+        <file name="lib/smpbios/debug/ti.sysbios.rta.aem4"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectSpec>
+           <applicability>
+               <when>
+                    <context
+                       deviceId="CC430.*"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+           <applicability>
+               <when>
+                    <context
+                       deviceId="MSP430BT.*"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+           <applicability>
+               <when>
+                    <context
+                       deviceId="MSP430F6.*"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+           <applicability>
+               <when>
+                    <context
+                       deviceId="MSP430F5.*"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+
+     <project
+         title="Stairstep Example"
+                 description="The RTA stairstep example runs continuously and periodically generates log events. Different threads (Hwi, Swi, Task) run to add CPU load to the system.">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.SYSBIOS"/>
+                 <property name="platform" value="ti.platforms.msp430:$DeviceId$"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sysbios.examples.root.generic"/>
+                 <file path="ti/sysbios/examples/generic/stairstep/stairstep.c" openOnCreation="true" excludeFromBuild="false">
+                 </file>
+                 <file path="ti/sysbios/examples/generic/stairstep/msp430/stairstep.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="ti/sysbios/examples/makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+     </project>
+
+
+
+</projectSpec>
+

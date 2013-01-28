@@ -1,0 +1,129 @@
+/*
+ *  ======== config.bld ========
+ *  Sample Build configuration script
+ */
+
+// define location of TI Code Generation Tools
+var rootDirPre = "C:/Program Files/Texas Instruments/CCSv4/tools/compiler/";
+var rootDirPost = "";
+
+// load all targets supported by SYS/BIOS
+var tiTargets = xdc.loadPackage('ti.targets'); 
+var msp430Targets = xdc.loadPackage('ti.targets.msp430'); 
+var elfTargets = xdc.loadPackage('ti.targets.elf');
+var armElfTargets = xdc.loadPackage('ti.targets.arm.elf');
+
+// Setup for c28_large target
+tiTargets.C28_large.rootDir = rootDirPre + "c2000" + rootDirPost;
+tiTargets.C28_large.ccOpts.suffix += " -mi -mo ";
+tiTargets.C28_large.platform = "ti.platforms.ezdsp28235";
+
+// Setup for c28_float target
+tiTargets.C28_float.rootDir = rootDirPre + "c2000" + rootDirPost;
+tiTargets.C28_float.ccOpts.suffix += " -mi -mo ";
+tiTargets.C28_float.platform = "ti.platforms.ezdsp28335";
+
+// Setup for MSP430 targets
+msp430Targets.MSP430.rootDir = rootDirPre + "msp430" + rootDirPost;
+msp430Targets.MSP430.ccOpts.suffix += "--embed_inline_assembly ";
+msp430Targets.MSP430.platform = "ti.platforms.exp430F5438";
+
+msp430Targets.MSP430X.rootDir = rootDirPre + "msp430" + rootDirPost;
+msp430Targets.MSP430X.ccOpts.suffix += "--embed_inline_assembly ";
+msp430Targets.MSP430X.platform = "ti.platforms.exp430F5438";
+
+msp430Targets.MSP430X_small.rootDir = rootDirPre + "msp430" + rootDirPost;
+msp430Targets.MSP430X_small.ccOpts.suffix += "--embed_inline_assembly ";
+msp430Targets.MSP430X_small.platform = "ti.platforms.exp430F5438";
+
+/* Common ccopts suffix used for all C6x targets */
+var c6xSuffix = "-mi10 -mo -pdr -pden -pds=238 -pds=880 -pds1110 "; 
+
+// Setup for C64P target
+tiTargets.C64P.rootDir = rootDirPre + "c6000" + rootDirPost;
+tiTargets.C64P.ccOpts.suffix += " -mi10 -mo " + c6xSuffix;
+//set default platform and list of all interested platforms for C64P
+tiTargets.C64P.platform = "ti.platforms.evmDM6446";
+
+// Setup for C64P big endian
+tiTargets.C64P_big_endian.rootDir = rootDirPre + "c6000" + rootDirPost;
+tiTargets.C64P_big_endian.ccOpts.suffix += c6xSuffix; 
+tiTargets.C64P_big_endian.platform = "ti.platforms.dsk6455";
+
+// Setup for C674 target
+tiTargets.C674.rootDir = rootDirPre + "c6000" + rootDirPost;
+tiTargets.C674.ccOpts.suffix += " -mi10 -mo ";
+tiTargets.C674.platform = "ti.platforms.evm6748";
+
+/* ELF targets */
+
+// Setup for C64P ELF target
+elfTargets.C64P.rootDir = rootDirPre + "c6000" + rootDirPost;
+elfTargets.C64P.ccOpts.suffix += c6xSuffix + "--embed_inline_assembly "; 
+elfTargets.C64P.platform = "ti.platforms.evmDM6446";
+
+// Setup for C64P big endian ELF target
+elfTargets.C64P_big_endian.rootDir = rootDirPre + "c6000" + rootDirPost;
+elfTargets.C64P_big_endian.ccOpts.suffix += c6xSuffix +
+        "--embed_inline_assembly "; 
+elfTargets.C64P_big_endian.platform = "ti.platforms.dsk6455";
+
+// Setup for C64T ELF target
+elfTargets.C64T.rootDir = rootDirPre + "c6000" + rootDirPost;
+elfTargets.C64T.ccOpts.suffix += c6xSuffix + "--embed_inline_assembly "; 
+elfTargets.C64T.platform = "ti.platforms.sdp4430";
+
+// Setup for C674 ELF target
+elfTargets.C674.rootDir = rootDirPre + "c6000" + rootDirPost;
+elfTargets.C674.ccOpts.suffix += c6xSuffix + "--embed_inline_assembly "; 
+elfTargets.C674.platform = "ti.platforms.evm6748";
+
+// Setup for C66 ELF target
+elfTargets.C66.rootDir = rootDirPre + "c6000" + rootDirPost;
+elfTargets.C66.ccOpts.suffix += "--embed_inline_assembly " + c6xSuffix;
+elfTargets.C66.platform = "ti.platforms.evm6670";
+
+// Setup for C66 big endian ELF target
+elfTargets.C66_big_endian.rootDir = rootDirPre + "c6000" + rootDirPost;
+elfTargets.C66_big_endian.ccOpts.suffix += "--embed_inline_assembly " +
+        c6xSuffix; 
+elfTargets.C66_big_endian.platform = "ti.platforms.evm6670";
+
+/* ARM ELF targets */
+
+// Setup for ARM9 ELF target
+armElfTargets.Arm9.rootDir = rootDirPre + "tms470" + rootDirPost;
+armElfTargets.Arm9.ccOpts.suffix += " -ms ";
+armElfTargets.Arm9.platform = "ti.platforms.evmOMAPL138";
+
+// Setup for A8F ELF target
+armElfTargets.A8F.rootDir = rootDirPre + "tms470" + rootDirPost;
+armElfTargets.A8F.ccOpts.suffix += " -ms --embed_inline_assembly ";
+armElfTargets.A8F.platform = "ti.platforms.evmTI816X";
+
+// Setup for M3 ELF target
+armElfTargets.M3.rootDir =  rootDirPre + "tms470" + rootDirPost;
+armElfTargets.M3.ccOpts.suffix += " -ms ";
+armElfTargets.M3.platform = "ti.platforms.evmLM3S9B92";
+
+// list interested targets in Build.targets array
+Build.targets = [
+        // tiTargets.C28_large,
+        // tiTargets.C28_float,
+        // tiTargets.C64P,
+        // tiTargets.C64P_big_endian,
+        // tiTargets.C674,
+        // msp430Targets.MSP430,
+        // msp430Targets.MSP430X,
+        // msp430Targets.MSP430X_small,
+        // elfTargets.C64P,
+        // elfTargets.C64P_big_endian,
+        // elfTargets.C674,
+        // elfTargets.C64T,
+        // elfTargets.C66,
+        // elfTargets.C66_big_endian,
+        // armElfTargets.Arm9,
+        // armElfTargets.A8F,
+        // armElfTargets.M3,
+];
+

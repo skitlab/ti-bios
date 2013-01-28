@@ -1,0 +1,49 @@
+%%{
+    var dirName = this.filePath.substring(this.filePath.lastIndexOf('/') + 1);
+    var target = this.dirMap[dirName].target;
+    var platform = this.dirMap[dirName].platform;
+    var cfgPkgName = this.dirMap[dirName].cfgPkgName;
+    var cpuName = this.CpuNameMap[target.isa];
+    var filePath = this.filePath.replace(/\//g, '\\');
+    var topPath = this.outputPath.replace(/\//g, '\\');
+
+%%}
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir=`filePath`
+ProjectType=Library
+CPUFamily=`cpuName`
+Tool="Archiver"
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="XDC"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="`topPath`\common\common.cfg"
+
+[Generated Files]
+Source="`cfgPkgName`\cfg.c"
+Source="`cfgPkgName`\linker.cmd"
+
+["Archiver" Settings: "Debug"]
+Options=-r ".\Debug\depend.lib"
+
+["Archiver" Settings: "Release"]
+Options=-r ".\Release\depend.lib"
+
+["XDC" Settings: "Debug"]
+Options=--cb -o `topPath`\common\`dirName`\`cfgPkgName`  -t `target` -p `platform` -r whole_program
+
+["XDC" Settings: "Release"]
+Options=--cb -o `topPath`\common\`dirName`\`cfgPkgName`  -t `target` -p `platform` -r whole_program
+
+["sim6xxxCfg\linker.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["sim6xxxCfg\linker.cmd" Settings: "Release"]
+LinkOrder=1
+

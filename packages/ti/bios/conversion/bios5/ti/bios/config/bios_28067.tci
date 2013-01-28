@@ -1,0 +1,22 @@
+/*
+ *  Copyright 2012 by Texas Instruments Incorporated.
+ *
+ */
+
+/*
+ *  ======== bios_28067.tci ========
+ *
+ */
+
+utils.importFile("ti/bios/config/bios_28069.tci");
+
+/*
+ *  ======== bios.init28067 ========
+ *  BIOS initialization for the 28067 is same as for 28069
+ */
+bios.init28067 = bios.init28069;
+/*
+ *  @(#) ti.bios.conversion; 2, 0, 0, 0,564; 11-7-2012 12:40:03; /db/vtree/library/trees/avala/avala-r22x/src/ xlibrary
+
+ */
+

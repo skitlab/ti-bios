@@ -1,0 +1,84 @@
+; ======== Timer_asm.s64 ========
+;
+; DESCRIPTION:	 
+;
+; NOTE:	  These functions were designed to be used from C.  If you want
+;	  to use them from Assembly, you must follow C conventions. 
+;
+;
+;! Revision History
+;! ================
+;!
+;! 12-Sep-2006 cmcc     Added .sect and .clink to all functions
+;! 18-Jan-2006	nitya   Ported from cudatest-f06
+
+	.global	_ti_sysbios_family_c64_Timer_trigger__E
+	.ref	_ti_sysbios_family_c64_Timer_setPeriod__E
+	.ref	_ti_sysbios_family_c64_Timer_start__E
+
+
+	.text			; start code section
+
+; ========  ti_sysbios_family_c64_Timer_trigger__E(tHandle, ins_period) ========
+; This function calculates the values for the period registar and nop_count,
+; starts the timer, and inserts a required number of NOPs.
+; Argument ins_period is given in instruction cycles. To transform it into
+; timer periods, it must be divided by 8 for C64. The remainder represents
+; nop_count.
+; If nop_count is n, the interrupt should happen n cycles further into the
+; code following this function than if nop_count is 0. To do that, the number
+; of additional NOPs is (additional_NOPs for 0)-n. Therefore, if nop_count=0,
+; 7 NOPs are needed to have interrupt as early as possible. If nop_count=7,
+; 0 NOPs will push the interrupt as far in the following code as possible.
+; To achieve this, 3 last bits of nop_count are checked. If nop_count[2] == 1,
+; 4 NOPs are skipped, if nop_count[1] == 1, two additional NOPs are skipped, 
+; and if nop_count[0] == 1, one more NOP is skipped.
+; Since the timer and divider circuit are not synchronized, this function
+; should be called twice for each inc, so each CPU cycle is hit. 
+
+; tHandle is in A4, ins_period (period in ins. cycles) is in B4
+;
+    .sect ".text:_ti_sysbios_family_c64_Timer_trigger__E"
+	.clink
+_ti_sysbios_family_c64_Timer_trigger__E:
+	STW	B12, *B15--[4]		; for A4, B3, and B12
+||	B	_ti_sysbios_family_c64_Timer_setPeriod__E
+	STW	B3, *B15[3]
+	AND	111b, B4, B12		; nop_count=rem(ins_period/8) -> B12
+	
+; Handle must be saved on stack so it can be used for _TSTTMR_start
+	STW	A4, *B15[2]
+||	MVKL	_ret1, B3
+	MVKH	_ret1, B3
+	SHR	B4, 3, B4		; period=div(ins_period/8) - > B4
+
+_ret1:
+	B	_ti_sysbios_family_c64_Timer_start__E
+	LDW	*B15[2], A4
+	MVKL	_ret2, B3
+	MVKH	_ret2, B3
+	NOP	2
+
+
+_ret2:	
+	AND	B12, 100b, B2		; check if nop_count[2] == 1
+  [ B2]	B	_cnt4
+	AND	B12, 10b, B2		; check if nop_count[1] == 1
+	NOP	8			; if B2 NOP 4 else NOP 8
+
+_cnt4:
+  [ B2]	B	_cnt2			;
+	LDW	*B15[3], B3
+	AND	B12, 01b, B2		; check if _nop_count[0] == 1
+	NOP	5			; if B2 NOP 3 else NOP 5
+
+_cnt2:
+  [ B2]	B	_cnt1
+	LDW	*++B15[4], B12
+	NOP	5			; if B2 NOP 4 else NOP 5
+	
+_cnt1:
+	B	B3			; return
+	NOP	5
+
+	.end

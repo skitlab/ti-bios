@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin
+    name="SYS/BIOS Target Content"
+    id="com.ti.rtsc.SYSBIOS.product_6.34.3.19"
+    version="6.34.3.19"
+    provider-name="Texas Instruments">
+
+    <extension point="org.eclipse.rtsc.xdctools.ui.productInfo">
+        <repository location="../../../packages"/>
+        <docs location="../../../."/>
+        <docs location="../../../docs"/>
+        <docs location="../../../docs/cdoc"/>
+        <info
+            installLocation="../../.."
+            productName="SYS/BIOS"
+            versionNumber="6.34.3.19"
+        />
+    </extension>
+
+    <extension point="org.eclipse.rtsc.xdctools.model.productView">
+        <productview
+            moduleName="ti.sysbios.productview.BiosProductView"
+         />
+    </extension>
+
+
+</plugin>

@@ -1,0 +1,146 @@
+<!--
+/*
+ *  Copyright 2012 by Texas Instruments Incorporated .
+ *  
+ */
+-->
+
+<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>A8Fnv</title>
+    <style type="text/css" media="screen">table { border-collapse: collapse; font-family: "Ariel", sans-serif } 
+                  td    { background: white; border: ridge black } 
+                  tr.hdr { font-weight: bolder }</style>
+  </head>
+  <body>
+    <h2>A8Fnv Timing Benchmarks</h2>
+    <h3>ti.platforms.evmAM3359</h3>
+  </body>
+  <body xmlns="">
+    <table>
+      <tr class="hdr">
+        <td>Benchmark</td>
+        <td>Cycles</td>
+        <td style="border-top-style:none;border-right-style:none;border-bottom-style:none">
+          <cite>(1)</cite>
+        </td>
+      </tr>
+      <tr>
+        <td>Interrupt latency</td>
+        <td>728</td>
+      </tr>
+      <tr>
+        <td>Hwi_enable</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>Hwi_disable</td>
+        <td>25</td>
+      </tr>
+      <tr>
+        <td>Hwi dispatcher prolog</td>
+        <td>676</td>
+      </tr>
+      <tr>
+        <td>Hwi dispatcher epilog</td>
+        <td>440</td>
+      </tr>
+      <tr>
+        <td>Hwi dispatcher</td>
+        <td>801</td>
+      </tr>
+      <tr>
+        <td>Hardware Interrupt to Blocked Task</td>
+        <td>1133</td>
+      </tr>
+      <tr>
+        <td>Hardware Interrupt to Software Interrupt</td>
+        <td>879</td>
+      </tr>
+      <tr>
+        <td>Swi_enable</td>
+        <td>210</td>
+      </tr>
+      <tr>
+        <td>Swi_disable</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>Post Software [CortxA8] Interrupt Again</td>
+        <td>93</td>
+      </tr>
+      <tr>
+        <td>Post Software Interrupt without Context Switch</td>
+        <td>206</td>
+      </tr>
+      <tr>
+        <td>Post Software Interrupt with Context Switch</td>
+        <td>246</td>
+      </tr>
+      <tr>
+        <td>Create a New Task without Context Switch</td>
+        <td>2058</td>
+      </tr>
+      <tr>
+        <td>Set a Task Priority without a Context Switch</td>
+        <td>286</td>
+      </tr>
+      <tr>
+        <td>Task_yield</td>
+        <td>385</td>
+      </tr>
+      <tr>
+        <td>Post Semaphore, No Wai[CortxA8] ting Task</td>
+        <td>102</td>
+      </tr>
+      <tr>
+        <td>Post Semaphore No Task Switch</td>
+        <td>331</td>
+      </tr>
+      <tr>
+        <td>Post Semaphore with Task Switch</td>
+        <td>415</td>
+      </tr>
+      <tr>
+        <td>Pend on Semaphore, No Context Switchi</td>
+        <td>121</td>
+      </tr>
+      <tr>
+        <td>Pend on Semaphore with Task Switch</td>
+        <td>366</td>
+      </tr>
+      <tr>
+        <td>Clock_getTicks</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td/>
+        <td/>
+      </tr>
+    </table>
+    <div>
+      <p style="margin: 0px;width: 400px">
+        <cite>(1) The benchmark application was built using BIOS.LibType_Custom with the following compiler options: "--endian=little -mv7A8 --abi=eabi --neon --float_support=vfpv3 -q -ms --opt_for_speed=2 --program_level_compile -o3".</cite>
+      </p>
+      <p style="margin: 0px;width: 400px">
+        <cite>Timings were obtained using the evmAM3359 development board.</cite>
+      </p>
+      <p style="margin: 0px;width: 400px">
+        <cite>The A8 core was running at 550MHz, with L1 &amp; L2 caches enabled, and all code &amp; data placed in OCMC0.</cite>
+      </p>
+      <p style="margin: 0px;width: 400px">
+        <cite>Furthermore, the first 64K bytes of OCMC0 memory are pulled in and locked into the L2 cache at startup to maximize cache performance.</cite>
+      </p>
+      <p style="margin: 0px;width: 400px">
+        <cite>Unlike other target benchmarks that are collected using flat memory simulators or hardware with zero wait-state memory and no cache, these A8Fnv numbers are collected on a real board with cache enabled. These numbers are effected by varying amounts of cache filling depending on the dynamics of the cache and the previous function calls.</cite>
+      </p>
+    </div>
+  </body>
+</html>
+<!--
+/*
+ * @(#) ti.sysbios.benchmarks; 1, 1, 0, 0,11; 9-18-2012 20:56:17; /db/vtree/library/trees/avalabench/avalabench-b16x/src/ xlibrary
+
+ */
+-->
+

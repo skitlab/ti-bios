@@ -1,0 +1,66 @@
+%%{
+    var dirName = this.filePath.substring(this.filePath.lastIndexOf('/') + 1);
+    var target = this.dirMap[dirName].target;
+    var rootDir = target.rootDir.replace(/\//g, '\\');
+    var cfgPkgName = this.dirMap[dirName].cfgPkgName;
+
+    var cpuName = this.CpuNameMap[target.isa];
+
+    var filePath = this.filePath.replace(/\//g, '\\');
+    var topPath = this.outputPath.replace(/\//g, '\\');
+    
+    var rtsLib = "";
+    if ("linkLib" in target) {
+        rtsLib = rootDir + "\\lib\\" + target.linkLib;
+    }
+    else {
+        var index = target.lnkOpts.suffix.search("rts");
+        if (index != -1) {
+	    rtsLib = rootDir + "\\lib\\" + target.lnkOpts.suffix.substring(index);
+        }
+    }
+	
+%%}
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="`filePath`"
+ProjectType=Executable
+CPUFamily=`cpuName`
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Project Dependencies]
+Source="..\..\common\`dirName`\depend.pjt"
+ 
+["..\..\common\`dirName`\depend.pjt" Settings]
+MatchConfigName=true
+AutoLink=false
+
+[Source Files]
+Source="..\hello.c"
+Source="`rtsLib`"
+Source="`topPath`\common\`dirName`\`cfgPkgName`\linker.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -@"`topPath`\common\`dirName`\`cfgPkgName`\compiler.opt" -fr"$(Proj_dir)" -d"_DEBUG"
+
+["Compiler" Settings: "Release"]
+Options=-o2 -@"`topPath`\common\`dirName`\`cfgPkgName`\compiler.opt" -fr"$(Proj_dir)" -d"_RELEASE"
+
+["Linker" Settings: "Debug"]
+Options=-c -m".\Debug\hello.map" -o".\Debug\hello.out" -w -x
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\hello.map" -o".\Release\hello.out" -w -x
+
+["`topPath`\common\`dirName`\`cfgPkgName`\linker.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["`topPath`\common\`dirName`\`cfgPkgName`\linker.cmd" Settings: "Release"]
+LinkOrder=1
+

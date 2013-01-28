@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<gep name="Agent" title="SYS/BIOS Agent" version="1">
+
+<page name="Module" title="Module Settings">
+<html><body>
+<table>
+  <tr>
+    <td>
+      <form>
+        <p>The Agent module enables Real-Time Analysis (RTA) support for your application. This module configures and enables logging for SYS/BIOS modules and your application.  This module only supports stop-mode upload of data over JTAG. The System Analyzer and UIA support runtime upload of data.</p>
+        <p> </p>
+      </form>
+    </td>
+  </tr>
+  <tr><td colspan="2">
+    <control type="checkbox" label="Add the Agent module to my configuration" value="value:this.$used" bold="true"/></td>
+  </tr>
+  <tr></tr>
+  <tr>
+    <td>
+      <h1>SYS/BIOS Logging</h1>
+      <table>
+        <tr>
+          <td>
+            <control type="checkbox" 
+                     label="Enable Hwi logging" 
+                     enabled="value:this.$used"
+                     value="value:this.sysbiosHwiLogging" 
+                     tooltip="value:this.sysbiosHwiLogging.$summary"/>
+          </td>
+          <td>
+            <control type="checkbox" 
+                     label="Runtime control" 
+                     enabled="value:this.$used"
+                     value="value:this.sysbiosHwiLoggingRuntimeControl" 
+                     tooltip="value:this.sysbiosHwiLoggingRuntimeControl.$summary"/>
+          </td>    
+        </tr>
+        <tr>
+          <td>
+            <control type="checkbox" 
+                     label="Enable Swi logging" 
+                     enabled="value:this.$used"
+                     value="value:this.sysbiosSwiLogging" 
+                     tooltip="value:this.sysbiosSwiLogging.$summary"/>
+          </td>
+          <td>
+            <control type="checkbox" 
+                     label="Runtime control" 
+                     enabled="value:this.$used"
+                     value="value:this.sysbiosSwiLoggingRuntimeControl" 
+                     tooltip="value:this.sysbiosSwiLoggingRuntimeControl.$summary"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <control type="checkbox" 
+                     label="Enable Task logging" 
+                     enabled="value:this.$used"
+                     value="value:this.sysbiosTaskLogging" 
+                     tooltip="value:this.sysbiosTaskLogging.$summary"/>
+          </td>
+          <td>
+            <control type="checkbox" 
+                     label="Runtime control" 
+                     enabled="value:this.$used"
+                     value="value:this.sysbiosTaskLoggingRuntimeControl" 
+                     tooltip="value:this.sysbiosTaskLoggingRuntimeControl.$summary"/>
+          </td>
+        </tr>
+        <tr>
+          <td><form><p> </p></form></td>
+        </tr>
+        <tr>
+          <td><control type="label" label="Buffer size (bytes)" align="left"/></td>
+          <td><control type="editbox" 
+               enabled="value:this.$used"
+               value="value:this.sysbiosLoggerSize" 
+               tooltip="value:this.sysbiosLoggerSize.$summary"/></td>
+        </tr>
+        <tr>
+          <td><control type="label" label="Buffer section" align="left"/></td>
+          <td><control type="editbox" 
+               enabled="value:this.$used"
+               value="value:this.sysbiosLoggerBufferSection" 
+               tooltip="value:this.sysbiosLoggerBufferSection.$summary"/></td>
+        </tr>        
+      </table>
+    </td>
+    <td>
+      <h1>SYS/BIOS Load Logging</h1>
+      <form><p>The Load records are placed in a separate logger so that they aren't overwritten by SYS/BIOS execution events. Collection of Load data can be configured with the Load module.</p></form>
+      <control type="hyperlink" link="ref:ti.sysbios.utils.Load" label="Configure Load module"/>
+      <table>
+        <tr>
+          <td><form><p> </p></form></td>
+        </tr>      
+        <tr>
+          <td>
+            <control type="checkbox" 
+                     label="Enable Load logging" 
+                     enabled="value:this.$used"
+                     value="value:this.loadLogging" 
+                     tooltip="value:this.loadLogging.$summary"/>
+          </td>
+          <td>
+            <control type="checkbox" 
+                     label="Runtime control" 
+                     enabled="value:this.$used"
+                     value="value:this.loadLoggingRuntimeControl" 
+                     tooltip="value:this.loadLoggingRuntimeControl.$summary"/>
+          </td>
+        </tr>
+        <tr>
+          <td><form><p> </p></form></td>
+        </tr>        
+        <tr>
+          <td><control type="label" label="Buffer size (bytes)" align="left"/></td>
+          <td><control type="editbox" 
+               enabled="value:this.$used"
+               value="value:this.loadLoggerSize" 
+               tooltip="value:this.loadLoggerSize.$summary"/></td>
+        </tr>
+        <tr>
+          <td><control type="label" label="Buffer section" align="left"/></td>
+          <td><control type="editbox" 
+               enabled="value:this.$used"
+               value="value:this.loadLoggerBufferSection" 
+               tooltip="value:this.loadLoggerBufferSection.$summary"/></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h1>Application Logging</h1>
+      <form><p>The events from Log calls from application C code are sent to the xdc.runtime.Main logger, configured here.</p></form>
+      <table>
+        <tr>
+          <td><form><p> </p></form></td>
+        </tr>     
+        <tr>
+          <td>
+            <control type="checkbox" 
+                     label="Enable Application logging" 
+                     enabled="value:this.$used"
+                     value="value:this.mainLogging" 
+                     tooltip="value:this.mainLogging.$summary"/>
+          </td>
+          <td>
+            <control type="checkbox" 
+                     label="Runtime control" 
+                     enabled="value:this.$used"
+                     value="value:this.mainLoggingRuntimeControl" 
+                     tooltip="value:this.mainLoggingRuntimeControl.$summary"/>
+          </td>
+        </tr>
+        <tr>
+          <td><form><p> </p></form></td>
+        </tr>        
+        <tr>
+          <td><control type="label" label="Buffer size (bytes)" align="left"/></td>
+          <td><control type="editbox" 
+               enabled="value:this.$used"
+               value="value:this.mainLoggerSize" 
+               tooltip="value:this.mainLoggerSize.$summary"/></td>
+        </tr>
+        <tr>
+          <td><control type="label" label="Buffer section" align="left"/></td>
+          <td><control type="editbox" 
+               enabled="value:this.$used"
+               value="value:this.mainLoggerBufferSection" 
+               tooltip="value:this.mainLoggerBufferSection.$summary"/></td>
+        </tr>        
+      </table>
+    </td>
+  </tr>
+</table></body></html>
+</page>
+<properties name="Advanced" title="All Options" enabled="true" visible="true" link="this"/>
+</gep>

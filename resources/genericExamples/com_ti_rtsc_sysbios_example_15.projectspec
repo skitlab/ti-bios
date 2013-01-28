@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectSpec>
+           <applicability>
+               <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+               <except>
+                    <context
+                       deviceId=".*(LM3|F28M3|LM4|RM4|TMS570LS|ARM7|ARM11|Generic|EVMDMRX45X|CC2538|TMS470M|DM350|DM357|DM368).*"
+                    />
+               </except>
+            </applicability>
+           <applicability>
+               <when>
+                    <context
+                       deviceFamily="EVE"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+           <applicability>
+               <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+               <except>
+                    <context
+                       deviceId=".*(TMS320C670|TMS320C671|TMS320C672|DSK6713|GenericC62xxDevice|GenericC64xxDevice|GenericC67xxDevice|GenericC67xPlusDevice|C641).*"
+                    />
+               </except>
+            </applicability>
+
+     <project
+         title="Swi Example"
+                 linkerCommandFile=""
+                 description="The swi example shows how to use the ti.sysbios.knl.Swi module. It demonstrates how the various Swi APIs work.">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.SYSBIOS"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sysbios.examples.root.generic"/>
+                 <file path="ti/sysbios/examples/generic/swi/swi.c" openOnCreation="true" excludeFromBuild="false">
+                 </file>
+                 <file path="ti/sysbios/examples/generic/swi/swi.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="ti/sysbios/examples/makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+     </project>
+
+
+
+</projectSpec>
+

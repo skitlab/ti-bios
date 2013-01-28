@@ -1,0 +1,224 @@
+%%{ 
+/*
+ * Copyright (c) 2012, Texas Instruments Incorporated
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
+*/
+%%}
+%%{
+    // Collect arguments from MkPkg
+    this.target    = this.arguments[0];
+    this.profile   = this.arguments[1];
+    this.platform  = this.arguments[2];
+
+    // Used in CCS pjt files
+    this.CpuNameMap = {};
+    this.CpuNameMap["64P"] = "TMS320C64XX";
+    this.CpuNameMap["674"] = "TMS320C64XX";
+    this.CpuNameMap["62"] = "TMS320C62XX";
+    this.CpuNameMap["67"] = "TMS320C62XX";
+    this.CpuNameMap["67P"] = "TMS320C62XX";
+    this.CpuNameMap["28"] = "TMS320C28XX";
+    this.CpuNameMap["54"] = "TMS320C54XX";
+    this.CpuNameMap["55"] = "TMS320C55XX";
+    this.CpuNameMap["55P"] = "TMS320C55XX";
+    this.CpuNameMap["v5T"] = "TMS470R2X";
+    this.CpuNameMap["v7M"] = "TMS470R2X";
+    this.CpuNameMap["t16"] = "TMS320C62XX";
+
+    var File = xdc.module('xdc.services.io.File');
+
+    /* create the absolute pathname to the output directory */
+    this.outputPath = File.getCanonicalPath(this.outputPath);
+       
+    //Load config.bld found along the XDCPATH
+    Build = xdc.module('xdc.bld.BuildEnvironment');
+    this.build = Build;
+    /* run the config.bld script */
+    var configBld = xdc.findFile("config.bld");
+    if (!configBld) {
+         throw new Error("Can't find config.bld along the path ");
+    }
+    this.build.$private.sourceCfg(configBld);
+    
+    if (Build.targets.length == 0) {
+         throw new Error("No targets specified in config.bld. Please edit " + configBld);
+    }
+    
+    // Create platform List from info in config.bld or command line
+    // Each platform in platList can have more than more target.
+    // Mapping of one to many
+    this.platList = {};
+    if (this.target) {
+        /* get handle to real target */
+        this.target = xdc.module(this.target);
+        if (this.platform) {
+            var platform = this.platform;
+        }
+        else {
+            var platform = this.target.platform;
+        }
+        this.platList[platform] = [this.target];
+    }
+    else {
+        for (var i=0; i< this.build.targets.length; i++) {
+            var target = this.build.targets[i].$orig;
+            for (var j=0; j < this.build.targets[i].platforms.length; j++) {
+                var platform = target.platforms[j];
+                if (platform in this.platList) {
+                    this.platList[platform].push(target);
+                }
+                else {
+                    this.platList[platform] = [target];
+                }
+            }
+        }
+    }
+%%}
+
+makefile
+common
+hello
+mutex
+static
+swi
+clock
+event
+legacy
+error
+memory
+log
+rta
+%
+%    // dirMap used to give info to replicate folders
+%    this.dirMap = {};
+%    for (var platform in this.platList) {
+%	 //get all targets for this platform
+%        var targList = this.platList[platform];
+%	 // all all targets pick name of replicate folder and cfg pkg name
+%        for (var i=0; i < targList.length; i++) {
+%	     //get last bit of platform name 
+%            var base = platform.substring(platform.lastIndexOf('\.')+1);
+%	     //special handling in case a ":" is found in platform name
+%	     if (base.match(":")) {
+%	         var temp = base.substring(0, base.lastIndexOf(':'));
+%		 var found = false;
+%		 // if platform is found only once, then use short name,
+%                // else use long name with underscore
+%		 for (var p in this.platList) {
+%		     if ((p != platform) && (p.match(temp))) {
+%			 base = base.replace(":", "_");
+%			 found = true;
+%		     }
+%		 }
+%		 if (!found) {
+%		     base = temp;
+%		 }
+%	     }
+%	     if (targList.length == 1) {
+%                var dirName = base;
+%	   	 this.dirMap[dirName] = new Object();
+%		 this.dirMap[dirName].cfgPkgName = 
+%		 base + 'Cfg';
+%            }
+%            else {
+%	         var dirName = base + '_' + targList[i].suffix;
+%		 this.dirMap[dirName] = new Object();
+%	         this.dirMap[dirName].cfgPkgName = 
+%                    base + 'Cfg' + '_' + targList[i].suffix;
+%            }
+%            this.dirMap[dirName].platform = platform;
+%            this.dirMap[dirName].profile = this.profile;
+%            this.dirMap[dirName].target = targList[i];
+%            if (this.buildDirs == undefined) {
+%                this.buildDirs = '"' + this.outputPath + '"' + '/common' + '/' + dirName;
+%            }
+%            else {
+%                this.buildDirs += '  ' + '"' + this.outputPath + '"'  + '/common' + '/' + dirName;
+%            }
+common/replicate -> common/`dirName`
+%            this.buildDirs += '  ' + '"' + this.outputPath + '"' + '/hello' + '/' + dirName;
+%
+hello/replicate -> hello/`dirName`
+%
+%            this.buildDirs += '  ' + '"' + this.outputPath + '"' + '/mutex' + '/' + dirName;
+%
+mutex/replicate -> mutex/`dirName`
+%
+%            this.buildDirs += '  ' + '"' + this.outputPath + '"'  + '/static' + '/' + dirName;
+%
+static/replicate -> static/`dirName`
+%
+%            this.buildDirs += '  ' + '"' + this.outputPath + '"' + '/swi' + '/' + dirName;
+%
+swi/replicate -> swi/`dirName`
+%            this.buildDirs += '  ' + '"' + this.outputPath + '"'  + '/clock' + '/' + dirName;
+%
+clock/replicate -> clock/`dirName`
+%            this.buildDirs += '  ' + '"' + this.outputPath + '"'  + '/event' + '/' + dirName;
+%
+event/replicate -> event/`dirName`
+%
+%            if ((!targList[i].$name.match("elf")) && 
+%                (!targList[i].$name.match("arm")) && 
+%                (!targList[i].$name.match("MSP430")) && 
+%                (!targList[i].$name.match("microsoft"))
+%	        ) {
+%                this.buildDirs += '  ' + '"' + this.outputPath + '"'  + '/legacy' + '/' + dirName;
+%
+legacy/replicate -> legacy/`dirName`
+%            }
+%
+%            this.buildDirs += '  ' + '"' + this.outputPath + '"'  + '/error' + '/' + dirName;
+%
+error/replicate -> error/`dirName`
+%
+%           this.buildDirs += '  ' + '"' + this.outputPath + '"'  + '/memory' + '/' + dirName;
+%
+memory/replicate -> memory/`dirName`
+%
+%            this.buildDirs += '  ' + '"' + this.outputPath + '"'  + '/log' + '/' + dirName;
+%
+log/replicate -> log/`dirName`
+%
+%            if (!targList[i].$name.match("microsoft")) {
+%                this.buildDirs += '  ' + '"' + this.outputPath + '"'  + '/rta' + '/' + dirName;
+rta/replicate -> rta/`dirName`
+% 	     }	
+%
+%        }
+%    }
+%%{
+/*
+ * @(#) ti.sysbios.genx; 2, 0, 0, 0,555; 11-7-2012 12:41:58; /db/vtree/library/trees/avala/avala-r22x/src/ xlibrary
+
+ */
+
+%%}

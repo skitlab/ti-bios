@@ -1,0 +1,18 @@
+Purpose: 
+
+    The swi example shows how to use the ti.sysbios.knl.Swi module. It 
+    demonstrates how the various Swi APIs work.
+
+    The DSP/BIOS configuration script for this example is located in the 
+    ../common directory.  It is therefore necessary to build the 
+    ../common/<platform_dir> subdirectory before building the swi example. 
+    
+    The ../common/<platform_dir> subdirectory can be built using the makefile 
+    or the depend.pjt present at ../common/<platform_dir>. 
+    The swi example can be built using the makefile or swi.pjt file located 
+    in the ./<platform_dir> subdirectory.
+
+Expected output:
+	
+    See swi.k file.
+

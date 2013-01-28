@@ -1,0 +1,76 @@
+;
+; ======== que_get.s62 ========
+;
+;! Revision History
+;! ================
+;! 07-Jan-2009 kw   	added ELF support
+;! 11-Oct-2004 rt	added fxn ptrs to support J macros
+;! 01-Aug-2004 czhao	removed include c62.h62
+;! 20-Jul-2000 cc   put all this file's code in ".bios" to fix SDSsq11284
+;! 11-Jul-2000 cc   To make interrupt latency labels consistent, renamed
+;!		    _KNL_lat2s to __QUE_lat1beg, _KNL_lat2e to __QUE_lat1end,
+;!		    _KNL_lat3s to __QUE_lat2beg, and _KNL_lat3e to __QUE_lat2end
+;! 31-Mar-1998 rt   Optimized all functions
+;! 08-Jul-1997 ab   Added interupt latency labels
+;! 27-May-1997 icw  renamed C62_restoreGIE to C62_enableGIE.
+;! 15-May-1997 jh   Added C62_disable/restoreGIE macros.
+;! 13-Mar-1997 db   Tested.
+;! 28-Feb-1997 db   Created.
+;
+
+    .if $isdefed("__TI_ELFABI__")
+    .if __TI_ELFABI__
+        .asg QUE_get,          _QUE_get
+        .asg QUE_put,          _QUE_put
+    .endif
+    .endif
+
+        .global _QUE_get, _QUE_put
+
+PREV    .set    4               ; prev
+
+;
+; ======== QUE_get ========
+;
+; Void *QUE_get(QUE_Handle queue):
+;       a4 <- queue
+;       a4 <- elem   (at return)
+;
+
+_QUE_get:
+	.asmfunc
+	b	l1			; prevent interrupts
+||	ldw	*a4, a1			; elem = a1 = queue->next
+	mv	a4, b1			; b1 = queue
+	nop	3
+
+	b	b3			; return
+||	ldw	*a1, a2			; a2 = queue->next->next
+||	mv	a1, a4			; return elem
+l1:	nop	4
+	stw	a2, *b1			; queue->next = elem->next
+||	stw	b1, *+a2(PREV)		; queue->next->prev = queue
+	.endasmfunc
+
+
+;
+; ======== QUE_put ========
+;
+; Void QUE_put(QUE_Handle queue, Void *elem):
+;       a4 <- queue
+;       b4  <- elem
+;
+
+_QUE_put:
+	.asmfunc
+	b	b3			; return and prevent interrupts
+||	ldw	*+a4(PREV), a3		; a3 = queue->prev
+	nop	3
+	stw	a4, *b4			; elem->next = queue
+||	stw	b4, *+a4(PREV)		; queue->prev = elem
+	stw	a3, *+b4(PREV)		; elem->prev = queue->prev
+||	stw	b4, *a3			; queue->prev->next = elem
+	.endasmfunc
+
+        .end
+

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sysbios.family.c64" version="2, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="Hwi"/>
+        <module name="Timer"/>
+        <module name="TimestampProvider"/>
+        <module name="Clobber"/>
+        <module name="Settings"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sysbios.family.c64.c"/>
+        <srcFile name="Hwi_disp_always.s64"/>
+        <srcFile name="Hwi.c"/>
+        <srcFile name="Hwi_asm.s62"/>
+        <srcFile name="Hwi_asm_switch.s62"/>
+        <srcFile name="Timer.c"/>
+        <srcFile name="Timer_asm.s64"/>
+        <srcFile name="Clobber_asm.s62"/>
+        <srcFile name="TimestampProvider.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.c64.a64.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64/package/package_ti.sysbios.family.c64.o64.dep" src="package/package_ti.sysbios.family.c64.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64/Hwi_disp_always.o64.dep" src="Hwi_disp_always.s64"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64/Hwi.o64.dep" src="Hwi.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64/Hwi_asm.o64.dep" src="Hwi_asm.s62"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64/Hwi_asm_switch.o64.dep" src="Hwi_asm_switch.s62"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64/Timer.o64.dep" src="Timer.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64/Timer_asm.o64.dep" src="Timer_asm.s64"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64/Clobber_asm.o64.dep" src="Clobber_asm.s62"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64/TimestampProvider.o64.dep" src="TimestampProvider.c"/>
+        <srcFile name="package/rel/ti_sysbios_family_c64.tar.gz.dep" src="package/rel/ti_sysbios_family_c64.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C64"
+            version="ti.targets.C64{1,0,7.2,0"
+            platform="ti.platforms.dsk6416"
+            isa="64"
+            suffix="64"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/sysbios/debug/ti.sysbios.family.c64"
+        pname="lib/sysbios/debug/ti.sysbios.family.c64.a64"
+        profile="debug"
+        target="ti.targets.C64"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sysbios_family_c64"
+        pname="../../../..//../exports/ti_sysbios_family_c64.tar.gz"
+        label="default"
+        relScript="scripts/copyright_xml.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="Hwi__prologue.h"/>
+        <file name="Hwi__epilogue.h"/>
+        <file name="Hwi.xml"/>
+        <file name="Settings.xml"/>
+        <file name="Timer.xml"/>
+        <file name="TimestampProvider.xml"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.c64.a64"/>
+        <file name="package/package_ti.sysbios.family.c64.c"/>
+        <file name="Hwi_disp_always.s64"/>
+        <file name="Hwi.c"/>
+        <file name="Hwi_asm.s62"/>
+        <file name="Hwi_asm_switch.s62"/>
+        <file name="Timer.c"/>
+        <file name="Timer_asm.s64"/>
+        <file name="Clobber_asm.s62"/>
+        <file name="TimestampProvider.c"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

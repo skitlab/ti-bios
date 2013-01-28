@@ -1,0 +1,1325 @@
+<html>
+<head>
+<title>module ti.sysbios.hal.vayu.IntXbar</title>
+<meta name="description" content="IntXbar Module">
+<link rel="stylesheet" type="text/css" href="../../../../xdoc.css" />
+</head>
+<body><div id="xdocWrapper"><div id="xdocContent">
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">module</span> <span class="xdoc-id">ti.sysbios.hal.vayu.</span><span class="xdoc-id">IntXbar</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/package.html" title="package ti.sysbios.hal.vayu"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/TimerSupport.html" title="module TimerSupport"><img class="xdocHdrArrow" src="../../../../Arrow_right.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html">index URL</a></div>
+<p class="xdocHdrSummary">IntXbar Module</p>
+<ul class="xdocToc">
+<li class="xdocToc"><a class="xdocToc" href="#targ-synop">C synopsis</a></li>
+<li class="xdocToc2"><a class="xdocToc" href="#xdocElems">Individual elements</a></li>
+<li class="xdocToc"><a class="xdocToc" href="#meta-synop">XDCscript usage</a></li>
+<li class="xdocToc2"><a class="xdocToc" href="#xdocMetaElems">Individual elements</a></li>
+</ul>
+<div class="xdocBrief">
+Below is an example of how to override the default mapping of 
+  interrupt 23 on a M3 so that it is sourced by I2C module 1 rather 
+  than Display Controller interrupt request(mapped by default):
+[&nbsp;<a class="xdocBrief" href="#xdoc-desc">more</a>&nbsp;...&nbsp;]
+</div>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2">C</span></tt> synopsis</td>
+<td class="xdocLabelCenter">target-domain</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../../ti/sysbios/hal/vayu/IntXbar-src.html"><span class="xdocLabelFile">ti/sysbios/hal/vayu/IntXbar.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynT">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw3">#include</span> <span class="xdoc-id">&lt;ti/sysbios/hal/vayu/IntXbar.h&gt;</span>
+</div>
+<table cellspacing="0" cellpadding="0" border="0">
+<tr><td colspan='2'><div class='xdocSynTblHdr'>Functions</div></td></tr>
+
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw2">Void</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#connect"><span class="xdoc-id">IntXbar_connect</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Connect the XBAR instance associated with an interrupt</span></span></a>(<span class="xdoc-kw2">UInt</span>&nbsp;<go><span class="xdoc-id">xbarInstance</span></go>, <span class="xdoc-kw2">UInt</span>&nbsp;<go><span class="xdoc-id">intSource</span></go>);</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw2">Void</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#disconnect"><span class="xdoc-id">IntXbar_disconnect</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Disconnect the XBAR instance associated with an interrupt</span></span></a>(<span class="xdoc-kw2">UInt</span>&nbsp;<go><span class="xdoc-id">xbarInstance</span></go>);</div></td></tr>
+<tr><td class="xdocSynFxnCat" colspan="2"><div class="xdocSynFxnCat">Functions common to all target modules</div></td></tr>
+
+<tr>
+<td></td>
+<td>
+<div class="xdocSynTblPack">
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">IntXbar_Module_getMask</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Returns the diagnostics mask for this module</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">IntXbar_Module_hasMask</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Test whether this module has a diagnostics mask</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">IntXbar_Module_heap</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The heap from which this module allocates memory</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">IntXbar_Module_id</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Get this module's unique id</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">IntXbar_Module_setMask</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Set the diagnostics mask for this module</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">IntXbar_Module_startupDone</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Test if this module has completed startup</span></span></a>
+</div>
+</td>
+</tr>
+<tr><td colspan='2'><div class='xdocSynTblHdr'>Defines</div></td></tr>
+
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.M.M.R_.B.A.S.E_.A.D.D.R"><span class="xdoc-id">IntXbar_MMR_BASE_ADDR</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Base address of interrupt crossbar MMR registers</span></span></a>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x4A002000</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.M.M.R_.O.F.F.S.E.T_.A15"><span class="xdoc-id">IntXbar_MMR_OFFSET_A15</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__MPU_IRQ_4_5" register</span></span></a>  (<i><span class="xdoc-kw2">UInt32</span></i>)0xA48</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E0"><span class="xdoc-id">IntXbar_MMR_OFFSET_BENELLI_CORE0</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__IPU1_IRQ_23_24" register</span></span></a>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x7E0</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E1"><span class="xdoc-id">IntXbar_MMR_OFFSET_BENELLI_CORE1</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__IPU2_IRQ_23_24" register</span></span></a>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x854</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.M.M.R_.O.F.F.S.E.T_.D.S.P0"><span class="xdoc-id">IntXbar_MMR_OFFSET_DSP0</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__DSP1_IRQ_32_33" register</span></span></a>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x948</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.M.M.R_.O.F.F.S.E.T_.D.S.P1"><span class="xdoc-id">IntXbar_MMR_OFFSET_DSP1</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__DSP2_IRQ_32_33" register</span></span></a>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x9c8</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.M.M.R_.O.F.F.S.E.T_.E.V.E0"><span class="xdoc-id">IntXbar_MMR_OFFSET_EVE0</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__EVE1_IRQ_0_1" register</span></span></a>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x7A0</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.M.M.R_.O.F.F.S.E.T_.E.V.E1"><span class="xdoc-id">IntXbar_MMR_OFFSET_EVE1</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__EVE2_IRQ_0_1" register</span></span></a>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x7B0</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.M.M.R_.O.F.F.S.E.T_.E.V.E2"><span class="xdoc-id">IntXbar_MMR_OFFSET_EVE2</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__EVE3_IRQ_0_1" register</span></span></a>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x7C0</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.M.M.R_.O.F.F.S.E.T_.E.V.E3"><span class="xdoc-id">IntXbar_MMR_OFFSET_EVE3</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__EVE4_IRQ_0_1" register</span></span></a>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x7D0</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.N.U.M_.A15_.X.B.A.R_.I.N.S.T"><span class="xdoc-id">IntXbar_NUM_A15_XBAR_INST</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Number of XBAR instances per A15 Core</span></span></a>  (<i><span class="xdoc-kw2">UInt16</span></i>)152</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.N.U.M_.B.E.N.E.L.L.I_.X.B.A.R_.I.N.S.T"><span class="xdoc-id">IntXbar_NUM_BENELLI_XBAR_INST</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Number of XBAR instances per Benelli Core</span></span></a>  (<i><span class="xdoc-kw2">UInt16</span></i>)57</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.N.U.M_.D.S.P_.X.B.A.R_.I.N.S.T"><span class="xdoc-id">IntXbar_NUM_DSP_XBAR_INST</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Number of XBAR instances per DSP core</span></span></a>  (<i><span class="xdoc-kw2">UInt16</span></i>)64</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.N.U.M_.E.V.E_.X.B.A.R_.I.N.S.T"><span class="xdoc-id">IntXbar_NUM_EVE_XBAR_INST</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Number of XBAR instances per EVE core</span></span></a>  (<i><span class="xdoc-kw2">UInt16</span></i>)8</div></td></tr>
+<tr><td colspan='2'><div class='xdocSynTblHdr'>Constants</div></td></tr>
+
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.A_bad.A15.Xbar.Instance.Num"><span class="xdoc-id">IntXbar_A_badA15XbarInstanceNum</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert if A15 XBAR instance number &lt; 1 or &gt; 152</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.A_bad.Benelli.Xbar.Instance.Num"><span class="xdoc-id">IntXbar_A_badBenelliXbarInstanceNum</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert if Benelli XBAR instance number &lt; 1 or &gt; 57</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.A_bad.Dsp.Xbar.Instance.Num"><span class="xdoc-id">IntXbar_A_badDspXbarInstanceNum</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert if DSP XBAR instance number &lt; 1 or &gt; 64</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.A_bad.Eve.Xbar.Instance.Num"><span class="xdoc-id">IntXbar_A_badEveXbarInstanceNum</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert if EVE XBAR instance number &lt; 1 or &gt; 8</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.A_bad.Int.Source.Idx"><span class="xdoc-id">IntXbar_A_badIntSourceIdx</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert if Interrupt source index &gt; 391</span></span></a>;</div></td></tr>
+</table>
+<div class="xdocSynSpacer">&nbsp;</div>
+</div>
+<span id="xdoc-desc"></span>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Below is an example of how to override the default mapping of 
+  interrupt 23 on a M3 so that it is sourced by I2C module 1 rather 
+  than Display Controller interrupt request(mapped by default):</div>
+<div class="xdocText"><PRE class="Example">  #include &lt;ti/sysbios/family/arm/m3/Hwi.h&gt;
+  #include &lt;ti/sysbios/hal/vayu/IntXbar.h&gt;
+  
+  Void myI2CHandler(UArg arg)
+  {
+      // Handler Code
+  }
+  
+  Int main(Int argc, Char* argv[])
+  {
+      Hwi_Params params;
+  
+      Hwi_Params_init(&amp;params);
+
+      // connect Xbar Instance 1 to Interrupt source index 51 (I2C1_IRQ)
+      IntXbar_connect(1, 51);
+  
+      // create a corresponding interrupt handler
+      params.arg = 23; // pass the Interrupt number to the handler
+
+      Hwi_create(23, myI2CHandler, &amp;params, NULL);
+  
+      BIOS_start();
+  
+      return (0);
+  }
+</PRE></div>
+<div class="xdocText">Here is how you would define the same interrupt handler statically 
+  in a configuration script:</div>
+<div class="xdocText"><PRE class="Example">  var Hwi = xdc.useModule('ti.sysbios.family..rm.m3.Hwi');
+  var IntXbar = xdc.useModule('ti.sysbios.hal.vayu.IntXbar');
+  
+  IntXbar.connectMeta(1, 51);
+  
+  var hwiParams = new Hwi.Params();
+  hwiParams.arg = 23;
+
+  Program.global.staticHwi = Hwi.create(23, '&amp;myTimerHandler', hwiParams);
+</PRE></div>
+<div class="xdocText"><h3> Calling Context </h3>
+  <table border="1" cellpadding="3">
+    <colgroup span="1"></colgroup> <colgroup span="5" align="center"></colgroup>
+
+    <tr><th> Function                 </th><th>  Hwi   </th><th>  Swi   </th><th>  Task  </th><th>  Main  </th><th>  Startup  </th></tr>
+    <!--                                                                                                                 -->
+    <tr><td> <a class="xdoc-link" href="IntXbar.html#set.Event" title="setEvent">setEvent</a>    </td><td>   Y    </td><td>   Y    </td><td>   Y    </td><td>   Y    </td><td>   Y    </td></tr>
+    <tr><td colspan="6"> Definitions: <br />
+       <ul>
+         <li> <b>Hwi</b>: API is callable from a Hwi thread. </li>
+         <li> <b>Swi</b>: API is callable from a Swi thread. </li>
+         <li> <b>Task</b>: API is callable from a Task thread. </li>
+         <li> <b>Main</b>: API is callable during any of these phases: </li>
+           <ul>
+             <li> In your module startup after this module is started (e.g. Mod_Module_startupDone() returns TRUE). </li>
+             <li> During xdc.runtime.Startup.lastFxns. </li>
+             <li> During main().</li>
+             <li> During BIOS.startupFxns.</li>
+           </ul>
+         <li> <b>Startup</b>: API is callable during any of these phases:</li>
+           <ul>
+             <li> During xdc.runtime.Startup.firstFxns.</li>
+             <li> In your module startup before this module is started (e.g. Mod_Module_startupDone() returns FALSE).</li>
+           </ul>
+       </ul>
+    </td></tr>
+
+  </table></div>
+<div id="xdocSep">
+</div>
+<div id="xdocElems">
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".M.M.R_.B.A.S.E_.A.D.D.R"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">MMR_BASE_ADDR</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.B.A.S.E_.A.D.D.R">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Base address of interrupt crossbar MMR registers</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_MMR_BASE_ADDR</span>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x4A002000
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".M.M.R_.O.F.F.S.E.T_.A15"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">MMR_OFFSET_A15</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.A15">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__MPU_IRQ_4_5" register</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_MMR_OFFSET_A15</span>  (<i><span class="xdoc-kw2">UInt32</span></i>)0xA48
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E0"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">MMR_OFFSET_BENELLI_CORE0</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E0">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__IPU1_IRQ_23_24" register</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_MMR_OFFSET_BENELLI_CORE0</span>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x7E0
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E1"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">MMR_OFFSET_BENELLI_CORE1</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E1">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__IPU2_IRQ_23_24" register</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_MMR_OFFSET_BENELLI_CORE1</span>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x854
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".M.M.R_.O.F.F.S.E.T_.D.S.P0"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">MMR_OFFSET_DSP0</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.D.S.P0">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__DSP1_IRQ_32_33" register</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_MMR_OFFSET_DSP0</span>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x948
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".M.M.R_.O.F.F.S.E.T_.D.S.P1"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">MMR_OFFSET_DSP1</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.D.S.P1">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__DSP2_IRQ_32_33" register</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_MMR_OFFSET_DSP1</span>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x9c8
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".M.M.R_.O.F.F.S.E.T_.E.V.E0"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">MMR_OFFSET_EVE0</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.E.V.E0">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__EVE1_IRQ_0_1" register</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_MMR_OFFSET_EVE0</span>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x7A0
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".M.M.R_.O.F.F.S.E.T_.E.V.E1"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">MMR_OFFSET_EVE1</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.E.V.E1">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__EVE2_IRQ_0_1" register</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_MMR_OFFSET_EVE1</span>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x7B0
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".M.M.R_.O.F.F.S.E.T_.E.V.E2"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">MMR_OFFSET_EVE2</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.E.V.E2">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__EVE3_IRQ_0_1" register</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_MMR_OFFSET_EVE2</span>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x7C0
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".M.M.R_.O.F.F.S.E.T_.E.V.E3"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">MMR_OFFSET_EVE3</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.E.V.E3">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__EVE4_IRQ_0_1" register</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_MMR_OFFSET_EVE3</span>  (<i><span class="xdoc-kw2">UInt32</span></i>)0x7D0
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".N.U.M_.A15_.X.B.A.R_.I.N.S.T"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">NUM_A15_XBAR_INST</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.N.U.M_.A15_.X.B.A.R_.I.N.S.T">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Number of XBAR instances per A15 Core</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_NUM_A15_XBAR_INST</span>  (<i><span class="xdoc-kw2">UInt16</span></i>)152
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".N.U.M_.B.E.N.E.L.L.I_.X.B.A.R_.I.N.S.T"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">NUM_BENELLI_XBAR_INST</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.N.U.M_.B.E.N.E.L.L.I_.X.B.A.R_.I.N.S.T">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Number of XBAR instances per Benelli Core</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_NUM_BENELLI_XBAR_INST</span>  (<i><span class="xdoc-kw2">UInt16</span></i>)57
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".N.U.M_.D.S.P_.X.B.A.R_.I.N.S.T"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">NUM_DSP_XBAR_INST</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.N.U.M_.D.S.P_.X.B.A.R_.I.N.S.T">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Number of XBAR instances per DSP core</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_NUM_DSP_XBAR_INST</span>  (<i><span class="xdoc-kw2">UInt16</span></i>)64
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".N.U.M_.E.V.E_.X.B.A.R_.I.N.S.T"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">NUM_EVE_XBAR_INST</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.N.U.M_.E.V.E_.X.B.A.R_.I.N.S.T">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Number of XBAR instances per EVE core</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IntXbar_NUM_EVE_XBAR_INST</span>  (<i><span class="xdoc-kw2">UInt16</span></i>)8
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".A_bad.A15.Xbar.Instance.Num"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">A_badA15XbarInstanceNum</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.A_bad.A15.Xbar.Instance.Num">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert if A15 XBAR instance number &lt; 1 or &gt; 152</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;<span class="xdoc-id">IntXbar_A_badA15XbarInstanceNum</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".A_bad.Benelli.Xbar.Instance.Num"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">A_badBenelliXbarInstanceNum</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.A_bad.Benelli.Xbar.Instance.Num">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert if Benelli XBAR instance number &lt; 1 or &gt; 57</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;<span class="xdoc-id">IntXbar_A_badBenelliXbarInstanceNum</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".A_bad.Dsp.Xbar.Instance.Num"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">A_badDspXbarInstanceNum</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.A_bad.Dsp.Xbar.Instance.Num">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert if DSP XBAR instance number &lt; 1 or &gt; 64</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;<span class="xdoc-id">IntXbar_A_badDspXbarInstanceNum</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".A_bad.Eve.Xbar.Instance.Num"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">A_badEveXbarInstanceNum</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.A_bad.Eve.Xbar.Instance.Num">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert if EVE XBAR instance number &lt; 1 or &gt; 8</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;<span class="xdoc-id">IntXbar_A_badEveXbarInstanceNum</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".A_bad.Int.Source.Idx"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IntXbar_</span><span class="xdoc-id">A_badIntSourceIdx</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.A_bad.Int.Source.Idx">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert if Interrupt source index &gt; 391</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;<span class="xdoc-id">IntXbar_A_badIntSourceIdx</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="connect"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IntXbar_</span><span class="xdoc-id">connect</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#connect">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Connect the XBAR instance associated with an interrupt</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Void</span>&nbsp;<span class="xdoc-id">IntXbar_connect</span>(<span class="xdoc-kw2">UInt</span>&nbsp;<span class="xdoc-id">xbarInstance</span>, <span class="xdoc-kw2">UInt</span>&nbsp;<span class="xdoc-id">intSource</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">xbarInstance</span>
+<span class="xdocChildSum">&#151;&nbsp;XBAR instance number
+                          (1-8)   For EVE Cores
+                          (1-64)  For DSP Cores
+                          (1-57)  For M4 Cores
+                          (1-152) For A15 Cores</span>
+</div>
+<div class="xdocChild"><span class="xdocChildId">intSource</span>
+<span class="xdocChildSum">&#151;&nbsp;Interrupt Source index (0-391)</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Dynamically connects the XBAR instance associated with 
+  an interrupt on the current core to the selected
+  interrupt source.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="disconnect"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IntXbar_</span><span class="xdoc-id">disconnect</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#disconnect">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Disconnect the XBAR instance associated with an interrupt</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Void</span>&nbsp;<span class="xdoc-id">IntXbar_disconnect</span>(<span class="xdoc-kw2">UInt</span>&nbsp;<span class="xdoc-id">xbarInstance</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">xbarInstance</span>
+<span class="xdocChildSum">&#151;&nbsp;XBAR instance number
+                          (1-8)   For EVE Cores
+                          (1-64)  For DSP Cores
+                          (1-57)  For M4 Cores
+                          (1-152) For A15 Cores</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Dynamically disconnects the XBAR instance associated with 
+  an interrupt on the current core by clearing the
+  interrupt source index.</div>
+<a class="xdocAnchor" id="module-wide_built-ins"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdocSynSum">Module-Wide Built-Ins</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#module-wide_built-ins">index URL</a></div>
+<p class="xdocHdrSummary"></p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><a class="xdoc-link" href="../../../../xdc/runtime/Types.html#.Module.Id" title="xdc.runtime.Types.ModuleId">Types_ModuleId</a> <span class="xdoc-id">IntXbar_Module_id</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Get this module's unique id</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span> <span class="xdoc-id">IntXbar_Module_startupDone</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Test if this module has completed startup</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><a class="xdoc-link" href="../../../../xdc/runtime/IHeap.html#per-instance_object_types" title="xdc.runtime.IHeap.Handle">IHeap_Handle</a> <span class="xdoc-id">IntXbar_Module_heap</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;The heap from which this module allocates memory</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span> <span class="xdoc-id">IntXbar_Module_hasMask</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Test whether this module has a diagnostics mask</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bits16</span> <span class="xdoc-id">IntXbar_Module_getMask</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Returns the diagnostics mask for this module</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Void</span> <span class="xdoc-id">IntXbar_Module_setMask</span>(<span class="xdoc-kw2">Bits16</span> <span class="xdoc-id">mask</span>);
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Set the diagnostics mask for this module</div>
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2">XDCscript</span></tt> usage</td>
+<td class="xdocLabelCenter">meta-domain</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../../ti/sysbios/hal/vayu/IntXbar-src.html"><span class="xdocLabelFile">ti/sysbios/hal/vayu/IntXbar.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynM">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">var</span> IntXbar = <span class="xdoc-kw3">xdc.useModule</span>(<span class="xdoc-id">'ti.sysbios.hal.vayu.IntXbar'</span>);
+</div>
+<div class='xdocSynHdr'>module-wide constants & types</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.M.M.R_.B.A.S.E_.A.D.D.R">IntXbar.<span class="xdoc-id">MMR_BASE_ADDR</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Base address of interrupt crossbar MMR registers</span></span></a> = 0x4A002000;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.M.M.R_.O.F.F.S.E.T_.A15">IntXbar.<span class="xdoc-id">MMR_OFFSET_A15</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__MPU_IRQ_4_5" register</span></span></a> = 0xA48;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E0">IntXbar.<span class="xdoc-id">MMR_OFFSET_BENELLI_CORE0</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__IPU1_IRQ_23_24" register</span></span></a> = 0x7E0;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E1">IntXbar.<span class="xdoc-id">MMR_OFFSET_BENELLI_CORE1</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__IPU2_IRQ_23_24" register</span></span></a> = 0x854;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.M.M.R_.O.F.F.S.E.T_.D.S.P0">IntXbar.<span class="xdoc-id">MMR_OFFSET_DSP0</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__DSP1_IRQ_32_33" register</span></span></a> = 0x948;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.M.M.R_.O.F.F.S.E.T_.D.S.P1">IntXbar.<span class="xdoc-id">MMR_OFFSET_DSP1</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__DSP2_IRQ_32_33" register</span></span></a> = 0x9c8;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.M.M.R_.O.F.F.S.E.T_.E.V.E0">IntXbar.<span class="xdoc-id">MMR_OFFSET_EVE0</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__EVE1_IRQ_0_1" register</span></span></a> = 0x7A0;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.M.M.R_.O.F.F.S.E.T_.E.V.E1">IntXbar.<span class="xdoc-id">MMR_OFFSET_EVE1</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__EVE2_IRQ_0_1" register</span></span></a> = 0x7B0;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.M.M.R_.O.F.F.S.E.T_.E.V.E2">IntXbar.<span class="xdoc-id">MMR_OFFSET_EVE2</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__EVE3_IRQ_0_1" register</span></span></a> = 0x7C0;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.M.M.R_.O.F.F.S.E.T_.E.V.E3">IntXbar.<span class="xdoc-id">MMR_OFFSET_EVE3</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Offset of "AVATAR_INTR_DMA_OCPINTF__EVE4_IRQ_0_1" register</span></span></a> = 0x7D0;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.N.U.M_.A15_.X.B.A.R_.I.N.S.T">IntXbar.<span class="xdoc-id">NUM_A15_XBAR_INST</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Number of XBAR instances per A15 Core</span></span></a> = 152;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.N.U.M_.B.E.N.E.L.L.I_.X.B.A.R_.I.N.S.T">IntXbar.<span class="xdoc-id">NUM_BENELLI_XBAR_INST</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Number of XBAR instances per Benelli Core</span></span></a> = 57;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.N.U.M_.D.S.P_.X.B.A.R_.I.N.S.T">IntXbar.<span class="xdoc-id">NUM_DSP_XBAR_INST</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Number of XBAR instances per DSP core</span></span></a> = 64;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.N.U.M_.E.V.E_.X.B.A.R_.I.N.S.T">IntXbar.<span class="xdoc-id">NUM_EVE_XBAR_INST</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Number of XBAR instances per EVE core</span></span></a> = 8;
+</div>
+<div class='xdocSynHdr'>module-wide config parameters</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#meta.A_bad.A15.Xbar.Instance.Num">IntXbar.<span class="xdoc-id">A_badA15XbarInstanceNum</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert if A15 XBAR instance number &lt; 1 or &gt; 152</span></span></a> = <i><a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_badA15XbarInstanceNum: xbarInstance must be &gt;= 1 and &lt;= 152"
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt>};
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#meta.A_bad.Benelli.Xbar.Instance.Num">IntXbar.<span class="xdoc-id">A_badBenelliXbarInstanceNum</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert if Benelli XBAR instance number &lt; 1 or &gt; 57</span></span></a> = <i><a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_badBenelliXbarInstanceNum: xbarInstance must be &gt;= 1 and &lt;= 57"
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt>};
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#meta.A_bad.Dsp.Xbar.Instance.Num">IntXbar.<span class="xdoc-id">A_badDspXbarInstanceNum</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert if DSP XBAR instance number &lt; 1 or &gt; 64</span></span></a> = <i><a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_badDspXbarInstanceNum: xbarInstance must be &gt;= 1 and &lt;= 64"
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt>};
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#meta.A_bad.Eve.Xbar.Instance.Num">IntXbar.<span class="xdoc-id">A_badEveXbarInstanceNum</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert if EVE XBAR instance number &lt; 1 or &gt; 8</span></span></a> = <i><a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_badEveXbarInstanceNum: xbarInstance must be &gt;= 1 and &lt;= 8"
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt>};
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#meta.A_bad.Int.Source.Idx">IntXbar.<span class="xdoc-id">A_badIntSourceIdx</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert if Interrupt source index &gt; 391</span></span></a> = <i><a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_badIntSourceIdx: intSource must be &lt;= 391"
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt>};
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#common$">IntXbar.<span class="xdoc-id">common$</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Common module configuration parameters</span></span></a> = <i><a class="xdoc-link" href="../../../../xdc/runtime/Types.html#.Common$" title="xdc.runtime.Types.Common$">Types.Common$</a></i> <span class="xdoc-kw2">undefined</span>;
+</div>
+<div class='xdocSynHdr'>module-wide functions</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#connect.Meta">IntXbar.<span class="xdoc-id">connectMeta</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Connect the XBAR instance associated with an interrupt</span></span></a>(<i><span class="xdoc-kw2">UInt</span></i> <go><span class="xdoc-id">xbarInstance</span></go>, <i><span class="xdoc-kw2">UInt</span></i> <go><span class="xdoc-id">intSource</span></go>) <i>returns</i> <i><span class="xdoc-kw2">Void</span></i>
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#disconnect.Meta">IntXbar.<span class="xdoc-id">disconnectMeta</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Disconnect the XBAR instance associated with an interrupt</span></span></a>(<i><span class="xdoc-kw2">UInt</span></i> <go><span class="xdoc-id">xbarInstance</span></go>) <i>returns</i> <i><span class="xdoc-kw2">Void</span></i>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+</div>
+<div id="xdocSep">
+</div>
+<div id="xdocMetaElems">
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.M.M.R_.B.A.S.E_.A.D.D.R"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">MMR_BASE_ADDR</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.B.A.S.E_.A.D.D.R">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Base address of interrupt crossbar MMR registers</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">MMR_BASE_ADDR</span> = 0x4A002000;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.M.M.R_.B.A.S.E_.A.D.D.R" title="IntXbar_MMR_BASE_ADDR">IntXbar_MMR_BASE_ADDR</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.M.M.R_.O.F.F.S.E.T_.A15"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">MMR_OFFSET_A15</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.A15">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__MPU_IRQ_4_5" register</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">MMR_OFFSET_A15</span> = 0xA48;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.M.M.R_.O.F.F.S.E.T_.A15" title="IntXbar_MMR_OFFSET_A15">IntXbar_MMR_OFFSET_A15</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E0"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">MMR_OFFSET_BENELLI_CORE0</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E0">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__IPU1_IRQ_23_24" register</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">MMR_OFFSET_BENELLI_CORE0</span> = 0x7E0;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E0" title="IntXbar_MMR_OFFSET_BENELLI_CORE0">IntXbar_MMR_OFFSET_BENELLI_CORE0</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E1"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">MMR_OFFSET_BENELLI_CORE1</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E1">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__IPU2_IRQ_23_24" register</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">MMR_OFFSET_BENELLI_CORE1</span> = 0x854;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.M.M.R_.O.F.F.S.E.T_.B.E.N.E.L.L.I_.C.O.R.E1" title="IntXbar_MMR_OFFSET_BENELLI_CORE1">IntXbar_MMR_OFFSET_BENELLI_CORE1</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.M.M.R_.O.F.F.S.E.T_.D.S.P0"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">MMR_OFFSET_DSP0</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.D.S.P0">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__DSP1_IRQ_32_33" register</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">MMR_OFFSET_DSP0</span> = 0x948;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.M.M.R_.O.F.F.S.E.T_.D.S.P0" title="IntXbar_MMR_OFFSET_DSP0">IntXbar_MMR_OFFSET_DSP0</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.M.M.R_.O.F.F.S.E.T_.D.S.P1"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">MMR_OFFSET_DSP1</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.D.S.P1">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__DSP2_IRQ_32_33" register</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">MMR_OFFSET_DSP1</span> = 0x9c8;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.M.M.R_.O.F.F.S.E.T_.D.S.P1" title="IntXbar_MMR_OFFSET_DSP1">IntXbar_MMR_OFFSET_DSP1</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.M.M.R_.O.F.F.S.E.T_.E.V.E0"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">MMR_OFFSET_EVE0</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.E.V.E0">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__EVE1_IRQ_0_1" register</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">MMR_OFFSET_EVE0</span> = 0x7A0;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.M.M.R_.O.F.F.S.E.T_.E.V.E0" title="IntXbar_MMR_OFFSET_EVE0">IntXbar_MMR_OFFSET_EVE0</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.M.M.R_.O.F.F.S.E.T_.E.V.E1"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">MMR_OFFSET_EVE1</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.E.V.E1">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__EVE2_IRQ_0_1" register</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">MMR_OFFSET_EVE1</span> = 0x7B0;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.M.M.R_.O.F.F.S.E.T_.E.V.E1" title="IntXbar_MMR_OFFSET_EVE1">IntXbar_MMR_OFFSET_EVE1</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.M.M.R_.O.F.F.S.E.T_.E.V.E2"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">MMR_OFFSET_EVE2</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.E.V.E2">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__EVE3_IRQ_0_1" register</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">MMR_OFFSET_EVE2</span> = 0x7C0;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.M.M.R_.O.F.F.S.E.T_.E.V.E2" title="IntXbar_MMR_OFFSET_EVE2">IntXbar_MMR_OFFSET_EVE2</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.M.M.R_.O.F.F.S.E.T_.E.V.E3"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">MMR_OFFSET_EVE3</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.M.M.R_.O.F.F.S.E.T_.E.V.E3">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Offset of "AVATAR_INTR_DMA_OCPINTF__EVE4_IRQ_0_1" register</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">MMR_OFFSET_EVE3</span> = 0x7D0;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.M.M.R_.O.F.F.S.E.T_.E.V.E3" title="IntXbar_MMR_OFFSET_EVE3">IntXbar_MMR_OFFSET_EVE3</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.N.U.M_.A15_.X.B.A.R_.I.N.S.T"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">NUM_A15_XBAR_INST</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.N.U.M_.A15_.X.B.A.R_.I.N.S.T">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Number of XBAR instances per A15 Core</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">NUM_A15_XBAR_INST</span> = 152;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.N.U.M_.A15_.X.B.A.R_.I.N.S.T" title="IntXbar_NUM_A15_XBAR_INST">IntXbar_NUM_A15_XBAR_INST</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.N.U.M_.B.E.N.E.L.L.I_.X.B.A.R_.I.N.S.T"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">NUM_BENELLI_XBAR_INST</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.N.U.M_.B.E.N.E.L.L.I_.X.B.A.R_.I.N.S.T">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Number of XBAR instances per Benelli Core</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">NUM_BENELLI_XBAR_INST</span> = 57;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.N.U.M_.B.E.N.E.L.L.I_.X.B.A.R_.I.N.S.T" title="IntXbar_NUM_BENELLI_XBAR_INST">IntXbar_NUM_BENELLI_XBAR_INST</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.N.U.M_.D.S.P_.X.B.A.R_.I.N.S.T"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">NUM_DSP_XBAR_INST</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.N.U.M_.D.S.P_.X.B.A.R_.I.N.S.T">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Number of XBAR instances per DSP core</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">NUM_DSP_XBAR_INST</span> = 64;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.N.U.M_.D.S.P_.X.B.A.R_.I.N.S.T" title="IntXbar_NUM_DSP_XBAR_INST">IntXbar_NUM_DSP_XBAR_INST</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.N.U.M_.E.V.E_.X.B.A.R_.I.N.S.T"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">NUM_EVE_XBAR_INST</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.N.U.M_.E.V.E_.X.B.A.R_.I.N.S.T">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Number of XBAR instances per EVE core</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IntXbar.<span class="xdoc-id">NUM_EVE_XBAR_INST</span> = 8;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.N.U.M_.E.V.E_.X.B.A.R_.I.N.S.T" title="IntXbar_NUM_EVE_XBAR_INST">IntXbar_NUM_EVE_XBAR_INST</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.A_bad.A15.Xbar.Instance.Num"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">A_badA15XbarInstanceNum</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.A_bad.A15.Xbar.Instance.Num">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert if A15 XBAR instance number &lt; 1 or &gt; 152</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IntXbar.<span class="xdoc-id">A_badA15XbarInstanceNum</span> = <i><a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_badA15XbarInstanceNum: xbarInstance must be &gt;= 1 and &lt;= 152"
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>};
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.A_bad.A15.Xbar.Instance.Num" title="IntXbar_A_badA15XbarInstanceNum">IntXbar_A_badA15XbarInstanceNum</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.A_bad.Benelli.Xbar.Instance.Num"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">A_badBenelliXbarInstanceNum</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.A_bad.Benelli.Xbar.Instance.Num">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert if Benelli XBAR instance number &lt; 1 or &gt; 57</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IntXbar.<span class="xdoc-id">A_badBenelliXbarInstanceNum</span> = <i><a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_badBenelliXbarInstanceNum: xbarInstance must be &gt;= 1 and &lt;= 57"
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>};
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.A_bad.Benelli.Xbar.Instance.Num" title="IntXbar_A_badBenelliXbarInstanceNum">IntXbar_A_badBenelliXbarInstanceNum</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.A_bad.Dsp.Xbar.Instance.Num"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">A_badDspXbarInstanceNum</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.A_bad.Dsp.Xbar.Instance.Num">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert if DSP XBAR instance number &lt; 1 or &gt; 64</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IntXbar.<span class="xdoc-id">A_badDspXbarInstanceNum</span> = <i><a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_badDspXbarInstanceNum: xbarInstance must be &gt;= 1 and &lt;= 64"
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>};
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.A_bad.Dsp.Xbar.Instance.Num" title="IntXbar_A_badDspXbarInstanceNum">IntXbar_A_badDspXbarInstanceNum</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.A_bad.Eve.Xbar.Instance.Num"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">A_badEveXbarInstanceNum</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.A_bad.Eve.Xbar.Instance.Num">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert if EVE XBAR instance number &lt; 1 or &gt; 8</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IntXbar.<span class="xdoc-id">A_badEveXbarInstanceNum</span> = <i><a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_badEveXbarInstanceNum: xbarInstance must be &gt;= 1 and &lt;= 8"
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>};
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.A_bad.Eve.Xbar.Instance.Num" title="IntXbar_A_badEveXbarInstanceNum">IntXbar_A_badEveXbarInstanceNum</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.A_bad.Int.Source.Idx"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">A_badIntSourceIdx</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#.A_bad.Int.Source.Idx">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert if Interrupt source index &gt; 391</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IntXbar.<span class="xdoc-id">A_badIntSourceIdx</span> = <i><a class="xdoc-link" href="../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_badIntSourceIdx: intSource must be &lt;= 391"
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>};
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.A_bad.Int.Source.Idx" title="IntXbar_A_badIntSourceIdx">IntXbar_A_badIntSourceIdx</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="common$"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw1">config</span> <span class="xdoc-id">IntXbar.</span><span class="xdoc-id">common$</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#common$">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Common module configuration parameters</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IntXbar.<span class="xdoc-id">common$</span> = <i><a class="xdoc-link" href="../../../../xdc/runtime/Types.html#.Common$" title="xdc.runtime.Types.Common$">Types.Common$</a></i> <span class="xdoc-kw2">undefined</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">All modules have this configuration parameter.  Its name
+  contains the '$' character to ensure it does not conflict with
+  configuration parameters declared by the module.  This allows
+  new configuration parameters to be added in the future without
+  any chance of breaking existing modules.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="connect.Meta"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">metaonly </span><span class="xdoc-id">IntXbar.</span><span class="xdoc-id">connectMeta</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#connect.Meta">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Connect the XBAR instance associated with an interrupt</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IntXbar.<span class="xdoc-id">connectMeta</span>(<i><span class="xdoc-kw2">UInt</span></i> <span class="xdoc-id">xbarInstance</span>, <i><span class="xdoc-kw2">UInt</span></i> <span class="xdoc-id">intSource</span>) <i>returns</i> <i><span class="xdoc-kw2">Void</span></i>
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">xbarInstance</span>
+<span class="xdocChildSum">&#151;&nbsp;XBAR instance number
+                          (1-8)   For EVE Cores
+                          (1-64)  For DSP Cores
+                          (1-57)  For M4 Cores
+                          (1-152) For A15 Cores</span>
+</div>
+<div class="xdocChild"><span class="xdocChildId">intSource</span>
+<span class="xdocChildSum">&#151;&nbsp;Interrupt Source index (0-391)</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Dynamically connects the XBAR instance associated with 
+  an interrupt on the current core to the selected
+  interrupt source.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="disconnect.Meta"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">metaonly </span><span class="xdoc-id">IntXbar.</span><span class="xdoc-id">disconnectMeta</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/sysbios/hal/vayu/IntXbar.html" title="module IntXbar"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/sysbios/hal/vayu/IntXbar.html#disconnect.Meta">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Disconnect the XBAR instance associated with an interrupt</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IntXbar.<span class="xdoc-id">disconnectMeta</span>(<i><span class="xdoc-kw2">UInt</span></i> <span class="xdoc-id">xbarInstance</span>) <i>returns</i> <i><span class="xdoc-kw2">Void</span></i>
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">xbarInstance</span>
+<span class="xdocChildSum">&#151;&nbsp;XBAR instance number
+                          (1-8)   For EVE Cores
+                          (1-64)  For DSP Cores
+                          (1-57)  For M4 Cores
+                          (1-152) For A15 Cores</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Dynamically disconnects the XBAR instance associated with 
+  an interrupt on the current core by clearing the
+  interrupt source index.</div>
+</div>
+<div id="xdocDate">generated on Thu, 08 Nov 2012 01:31:22 GMT</div>
+</div></div></body>
+</html>

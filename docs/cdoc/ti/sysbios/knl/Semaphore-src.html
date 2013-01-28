@@ -1,0 +1,471 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sysbios.knl.Semaphore</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* 
+</span>     2    <span class="comment"> * Copyright (c) 2012, Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> * */</span>
+    32    <span class="comment">/*
+</span>    33    <span class="comment"> *  ======== Semaphore.xdc ========
+</span>    34    <span class="comment"> *
+</span>    35    <span class="comment"> */</span>
+    36    
+    37    <span class=key>package</span> ti.sysbios.knl;
+    38    
+    39    import xdc.rov.ViewInfo;
+    40    
+    41    import xdc.runtime.Diags;
+    42    import xdc.runtime.Log;
+    43    import xdc.runtime.Assert;
+    44    
+    45    import ti.sysbios.knl.Queue;
+    46    import ti.sysbios.knl.Task;
+    47    import ti.sysbios.knl.Clock;
+    48    
+    49    <span class="xdoc">/*!
+</span>    50    <span class="xdoc"> *  ======== Semaphore ========
+</span>    51    <span class="xdoc"> *  Semaphore Manager
+</span>    52    <span class="xdoc"> *
+</span>    53    <span class="xdoc"> *  The Semaphore manager makes available a set of functions that manipulate 
+</span>    54    <span class="xdoc"> *  semaphore objects. Semaphores can be used for task synchronization and 
+</span>    55    <span class="xdoc"> *  mutual exclusion.
+</span>    56    <span class="xdoc"> *
+</span>    57    <span class="xdoc"> *  Semaphores can be counting semaphores or binary semaphores. Counting 
+</span>    58    <span class="xdoc"> *  semaphores keep track of the number of times the semaphore has been posted 
+</span>    59    <span class="xdoc"> *  with post(). This is useful, for example, if you have a group of resources 
+</span>    60    <span class="xdoc"> *  that are shared between tasks. Such tasks might call pend() to see if a 
+</span>    61    <span class="xdoc"> *  resource is available before using one. 
+</span>    62    <span class="xdoc"> *
+</span>    63    <span class="xdoc"> *  Binary semaphores can have only two states: available (count = 1) and 
+</span>    64    <span class="xdoc"> *  unavailable (count = 0). They can be used to share a single resource 
+</span>    65    <span class="xdoc"> *  between 
+</span>    66    <span class="xdoc"> *  tasks. They can also be used for a basic signaling mechanism, where the 
+</span>    67    <span class="xdoc"> *  semaphore can be posted multiple times. Binary semaphores do not keep track 
+</span>    68    <span class="xdoc"> *  of the count; they simply track whether the semaphore has been posted 
+</span>    69    <span class="xdoc"> *  or not.
+</span>    70    <span class="xdoc"> *
+</span>    71    <span class="xdoc"> *  The Mailbox module uses a counting semaphore internally to manage the
+</span>    72    <span class="xdoc"> *  count of free (or full) mailbox elements. Another example of a counting
+</span>    73    <span class="xdoc"> *  semaphore is an ISR that might fill multiple buffers of data for
+</span>    74    <span class="xdoc"> *  consumption by a task. After filling each buffer, the ISR puts the buffer on
+</span>    75    <span class="xdoc"> *  a queue and calls post(). The task waiting for the data calls pend(), which
+</span>    76    <span class="xdoc"> *  simply decrements the semaphore count and returns or blocks if the count is
+</span>    77    <span class="xdoc"> *  0. The semaphore count thus tracks the number of full buffers available for
+</span>    78    <span class="xdoc"> *  the task. 
+</span>    79    <span class="xdoc"> *
+</span>    80    <span class="xdoc"> *  pend() is used to wait for a semaphore. The timeout parameter allows the 
+</span>    81    <span class="xdoc"> *  task to wait until a timeout, wait indefinitely, or not wait at all. The 
+</span>    82    <span class="xdoc"> *  return value is used to indicate if the semaphore was signaled successfully.
+</span>    83    <span class="xdoc"> *
+</span>    84    <span class="xdoc"> *  post() is used to signal a semaphore. If a task is waiting for the 
+</span>    85    <span class="xdoc"> *  semaphore, post() removes the task from the semaphore queue and puts it on 
+</span>    86    <span class="xdoc"> *  the ready queue. If no tasks are waiting, post() simply increments the 
+</span>    87    <span class="xdoc"> *  semaphore count and returns.  For a binary semaphore the count is always
+</span>    88    <span class="xdoc"> *  set to one.
+</span>    89    <span class="xdoc"> *
+</span>    90    <span class="xdoc"> *  <b>@p(html)</b>
+</span>    91    <span class="xdoc"> *  &lt;h3&gt; Calling Context &lt;/h3&gt;
+</span>    92    <span class="xdoc"> *  &lt;table border="1" cellpadding="3"&gt;
+</span>    93    <span class="xdoc"> *    &lt;colgroup span="1"&gt;&lt;/colgroup&gt; &lt;colgroup span="5" align="center"&gt;
+</span>    94    <span class="xdoc"> *    &lt;/colgroup&gt;
+</span>    95    <span class="xdoc"> *    
+</span>    96    <span class="xdoc"> *    &lt;tr&gt;&lt;th&gt; Function               &lt;/th&gt;&lt;th&gt;  Hwi   &lt;/th&gt;&lt;th&gt;  Swi   &lt;/th&gt;
+</span>    97    <span class="xdoc"> *    &lt;th&gt;  Task  &lt;/th&gt;&lt;th&gt;  Main  &lt;/th&gt;&lt;th&gt;  Startup  &lt;/th&gt;&lt;/tr&gt;
+</span>    98    <span class="xdoc"> *    &lt;!--                                                                  --&gt;
+</span>    99    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #Params_init}   &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   100    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   101    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #construct}     &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;
+</span>   102    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   103    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #create}        &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;
+</span>   104    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   105    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #delete}        &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;
+</span>   106    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   107    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #destruct}      &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;
+</span>   108    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   109    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #getCount}      &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   110    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   111    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #pend}          &lt;/td&gt;&lt;td&gt;   N*   &lt;/td&gt;&lt;td&gt;   N*   &lt;/td&gt;
+</span>   112    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N*   &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   113    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #post}          &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   114    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   115    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #registerEvent} &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;
+</span>   116    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   117    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #reset}         &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;
+</span>   118    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   119    <span class="xdoc"> *    &lt;tr&gt;&lt;td colspan="6"&gt; Definitions: (N* means OK to call iff the timeout
+</span>   120    <span class="xdoc"> *           parameter is set to '0'.)&lt;br /&gt;
+</span>   121    <span class="xdoc"> *       &lt;ul&gt;
+</span>   122    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Hwi&lt;/b&gt;: API is callable from a Hwi thread. &lt;/li&gt;
+</span>   123    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Swi&lt;/b&gt;: API is callable from a Swi thread. &lt;/li&gt;
+</span>   124    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Task&lt;/b&gt;: API is callable from a Task thread. &lt;/li&gt;
+</span>   125    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Main&lt;/b&gt;: API is callable during any of these phases: &lt;/li&gt;
+</span>   126    <span class="xdoc"> *           &lt;ul&gt;
+</span>   127    <span class="xdoc"> *             &lt;li&gt; In your module startup after this module is started 
+</span>   128    <span class="xdoc"> *    (e.g. Semaphore_Module_startupDone() returns TRUE). &lt;/li&gt;
+</span>   129    <span class="xdoc"> *             &lt;li&gt; During xdc.runtime.Startup.lastFxns. &lt;/li&gt;
+</span>   130    <span class="xdoc"> *             &lt;li&gt; During main().&lt;/li&gt;
+</span>   131    <span class="xdoc"> *             &lt;li&gt; During BIOS.startupFxns.&lt;/li&gt;
+</span>   132    <span class="xdoc"> *           &lt;/ul&gt;
+</span>   133    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Startup&lt;/b&gt;: API is callable during any of these phases:&lt;/li&gt;
+</span>   134    <span class="xdoc"> *           &lt;ul&gt;
+</span>   135    <span class="xdoc"> *             &lt;li&gt; During xdc.runtime.Startup.firstFxns.&lt;/li&gt;
+</span>   136    <span class="xdoc"> *             &lt;li&gt; In your module startup before this module is started 
+</span>   137    <span class="xdoc"> *    (e.g. Semaphore_Module_startupDone() returns FALSE).&lt;/li&gt;
+</span>   138    <span class="xdoc"> *           &lt;/ul&gt;
+</span>   139    <span class="xdoc"> *       &lt;/ul&gt;
+</span>   140    <span class="xdoc"> *    &lt;/td&gt;&lt;/tr&gt;
+</span>   141    <span class="xdoc"> *  
+</span>   142    <span class="xdoc"> *  &lt;/table&gt;
+</span>   143    <span class="xdoc"> *  <b>@p</b>
+</span>   144    <span class="xdoc"> */</span>
+   145    
+   146    @InstanceFinalize       <span class="comment">/* to destruct queue */</span>
+   147    
+   148    <span class=key>module</span> Semaphore
+   149    {
+   150        <span class="xdoc">/*! 
+</span>   151    <span class="xdoc">     *  Semaphore types. 
+</span>   152    <span class="xdoc">     *
+</span>   153    <span class="xdoc">     *  These enumerations specify the type of semaphore.
+</span>   154    <span class="xdoc">     *
+</span>   155    <span class="xdoc">     *  Tasks wait for the semaphore in FIFO order unless the PRIORITY
+</span>   156    <span class="xdoc">     *  option is chosen.  
+</span>   157    <span class="xdoc">     *
+</span>   158    <span class="xdoc">     *  For PRIORITY semaphores, the pending task will be
+</span>   159    <span class="xdoc">     *  inserted in the waiting list before the first task that has
+</span>   160    <span class="xdoc">     *  lower priority.  This ensures that tasks of equal priority will
+</span>   161    <span class="xdoc">     *  pend in FIFO order.
+</span>   162    <span class="xdoc">     *  
+</span>   163    <span class="xdoc">     *  <b>@a(WARNING)</b>
+</span>   164    <span class="xdoc">     *  PRIORITY semaphores have a potential to increase the interrupt
+</span>   165    <span class="xdoc">     *  latency in the system since interrupts are disabled while the list of
+</span>   166    <span class="xdoc">     *  tasks waiting on the  semaphore is scanned for the proper insertion
+</span>   167    <span class="xdoc">     *  point.  This is typically about a dozen instructions per waiting task.
+</span>   168    <span class="xdoc">     *  For example, if you have 10 tasks of higher priority waiting, then all
+</span>   169    <span class="xdoc">     *  10 will be checked with interrupts disabled before the new task is
+</span>   170    <span class="xdoc">     *  entered onto the list.
+</span>   171    <span class="xdoc">     */</span>
+   172        <span class=key>enum</span> Mode {
+   173            Mode_COUNTING = 0x0,           <span class="xdoc">/*! Counting (FIFO) */</span>
+   174            Mode_BINARY = 0x1,             <span class="xdoc">/*! Binary (FIFO) */</span>
+   175            Mode_COUNTING_PRIORITY = 0x2,  <span class="xdoc">/*! Counting (priority-based) */</span>
+   176            Mode_BINARY_PRIORITY = 0x3     <span class="xdoc">/*! Binary (priority-based) */</span>
+   177        };
+   178     
+   179        <span class="xdoc">/*!
+</span>   180    <span class="xdoc">     *  ======== BasicView ========
+</span>   181    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   182    <span class="xdoc">     */</span>
+   183        <span class=key>metaonly</span> <span class=key>struct</span> BasicView {
+   184            String          label;
+   185            String          event;
+   186            String          eventId;
+   187            String          mode;
+   188            Int             count;
+   189            String          pendedTasks[];
+   190        };
+   191        
+   192        <span class="xdoc">/*!
+</span>   193    <span class="xdoc">     *  ======== rovViewInfo ========
+</span>   194    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   195    <span class="xdoc">     */</span>
+   196        @Facet
+   197        <span class=key>metaonly</span> <span class=key>config</span> ViewInfo.Instance rovViewInfo = 
+   198            ViewInfo.create({
+   199                viewMap: [
+   200                    [<span class="string">'Basic'</span>, {type: ViewInfo.INSTANCE, viewInitFxn: <span class="string">'viewInitBasic'</span>, structName: <span class="string">'BasicView'</span>}]
+   201                ]
+   202            });
+   203        
+   204        <span class=comment>// -------- Module Parameters --------</span>
+   205    
+   206        <span class="xdoc">/*!
+</span>   207    <span class="xdoc">     *  ======== LM_post ========
+</span>   208    <span class="xdoc">     *  Logged on calls to Semaphore_post()
+</span>   209    <span class="xdoc">     */</span>
+   210        <span class=key>config</span> Log.Event LM_post = {
+   211            mask: Diags.USER1 | Diags.USER2,
+   212            msg: <span class="string">"LM_post: sem: 0x%x, count: %d"</span>
+   213        };
+   214    
+   215        <span class="xdoc">/*!
+</span>   216    <span class="xdoc">     *  ======== LM_pend ========
+</span>   217    <span class="xdoc">     *  Logged on calls to Semaphore_pend()
+</span>   218    <span class="xdoc">     */</span>
+   219        <span class=key>config</span> Log.Event LM_pend = {
+   220            mask: Diags.USER1 | Diags.USER2,
+   221            msg: <span class="string">"LM_pend: sem: 0x%x, count: %d, timeout: %d"</span>
+   222        };
+   223    
+   224        <span class="xdoc">/*!
+</span>   225    <span class="xdoc">     *  ======== A_noEvents ========
+</span>   226    <span class="xdoc">     *  Assert raised if application uses Event but it's not supported
+</span>   227    <span class="xdoc">     *
+</span>   228    <span class="xdoc">     *  This assertion is triggered by {<b>@link</b> #create} if
+</span>   229    <span class="xdoc">     *  {<b>@link</b> #supportsEvents} is false and an {<b>@link</b> ti.sysbios.knl.Event}
+</span>   230    <span class="xdoc">     *  object is passed to {<b>@link</b> #create}.
+</span>   231    <span class="xdoc">     */</span>
+   232        <span class=key>config</span> Assert.Id A_noEvents = {
+   233            msg: <span class="string">"A_noEvents: The Event.supportsEvents flag is disabled."</span>
+   234        };
+   235    
+   236        <span class="xdoc">/*!
+</span>   237    <span class="xdoc">     *  ======== A_invTimeout ========
+</span>   238    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   239    <span class="xdoc">     *  This assertion is no longer used
+</span>   240    <span class="xdoc">     */</span>
+   241        <span class=key>config</span> Assert.Id A_invTimeout = {
+   242            msg: <span class="string">"A_invTimeout: Can't use BIOS_EVENT_ACQUIRED with this Semaphore."</span>
+   243        };
+   244    
+   245        <span class="xdoc">/*!
+</span>   246    <span class="xdoc">     *  ======== A_badContext ========
+</span>   247    <span class="xdoc">     *  Assert raised if an operation is invalid in the current calling context
+</span>   248    <span class="xdoc">     *  
+</span>   249    <span class="xdoc">     *  Asserted when {<b>@link</b> #pend} is called with non-zero timeout from 
+</span>   250    <span class="xdoc">     *  other than a Task context.
+</span>   251    <span class="xdoc">     */</span>
+   252        <span class=key>config</span> Assert.Id A_badContext = {
+   253            msg: <span class="string">"A_badContext: bad calling context. Must be called from a Task."</span>
+   254        };
+   255    
+   256        <span class="xdoc">/*!
+</span>   257    <span class="xdoc">     *  ======== A_overflow ========
+</span>   258    <span class="xdoc">     *  Assert raised if the semaphore count is incremented past 65535
+</span>   259    <span class="xdoc">     *  
+</span>   260    <span class="xdoc">     *  Asserted when Semaphore_post() has been called when the 16 bit 
+</span>   261    <span class="xdoc">     *  semaphore count is at its maxmium value of 65535.
+</span>   262    <span class="xdoc">     */</span>
+   263        <span class=key>config</span> Assert.Id A_overflow = {
+   264            msg: <span class="string">"A_overflow: Count has exceeded 65535 and rolled over."</span>
+   265        };
+   266    
+   267    
+   268        <span class="xdoc">/*!
+</span>   269    <span class="xdoc">     *  ======== supportsEvents ========
+</span>   270    <span class="xdoc">     *  Support Semaphores with Events?
+</span>   271    <span class="xdoc">     *
+</span>   272    <span class="xdoc">     *  The default for this parameter is false.
+</span>   273    <span class="xdoc">     */</span>
+   274        <span class=key>config</span> Bool supportsEvents = <span class=key>false</span>;
+   275    
+   276    <span class=key>instance</span>:
+   277    
+   278        <span class="xdoc">/*!
+</span>   279    <span class="xdoc">     *  ======== create ========
+</span>   280    <span class="xdoc">     *  Create a Semaphore object
+</span>   281    <span class="xdoc">     *
+</span>   282    <span class="xdoc">     *  This function creates a new Semaphore object which is initialized to
+</span>   283    <span class="xdoc">     *  count.
+</span>   284    <span class="xdoc">     *
+</span>   285    <span class="xdoc">     *  <b>@param(count)</b>   initial semaphore count
+</span>   286    <span class="xdoc">     */</span>
+   287        @DirectCall
+   288        create(Int count);
+   289    
+   290        <span class="xdoc">/*!
+</span>   291    <span class="xdoc">     *  ======== event ========
+</span>   292    <span class="xdoc">     *  Event instance to use if non-NULL
+</span>   293    <span class="xdoc">     *
+</span>   294    <span class="xdoc">     *  The default value of this parameter is null.  If event is non-null:
+</span>   295    <span class="xdoc">     *  <b>@p(blist)</b>
+</span>   296    <span class="xdoc">     *      - Event_post(sem-&gt;event, sem-&gt;eventId) will be invoked when 
+</span>   297    <span class="xdoc">     *        Semaphore_post() is called.
+</span>   298    <span class="xdoc">     *
+</span>   299    <span class="xdoc">     *      - Event_pend(sem-&gt;event, 0, sem-&gt;eventId, timeout) will be 
+</span>   300    <span class="xdoc">     *        invoked when Semaphore_pend() is called.
+</span>   301    <span class="xdoc">     *  <b>@p</b>
+</span>   302    <span class="xdoc">     */</span>
+   303        <span class=key>config</span> Event.Handle event = <span class=key>null</span>;
+   304    
+   305        <span class="xdoc">/*!
+</span>   306    <span class="xdoc">     *  ======== eventId ========
+</span>   307    <span class="xdoc">     *  eventId if using Events
+</span>   308    <span class="xdoc">     *
+</span>   309    <span class="xdoc">     *  The default for this parameters is 1.
+</span>   310    <span class="xdoc">     */</span>
+   311        <span class=key>config</span> UInt eventId = 1;
+   312    
+   313        <span class="xdoc">/*! 
+</span>   314    <span class="xdoc">     *  ======== mode ========
+</span>   315    <span class="xdoc">     *  Semaphore mode
+</span>   316    <span class="xdoc">     *
+</span>   317    <span class="xdoc">     *  When mode is BINARY, the semaphore has only two states, available
+</span>   318    <span class="xdoc">     *  and unavailable. When mode is COUNTING, the semaphore keeps track of
+</span>   319    <span class="xdoc">     *  number of times a semaphore is posted.
+</span>   320    <span class="xdoc">     *
+</span>   321    <span class="xdoc">     *  The default for this parameter is COUNTING.
+</span>   322    <span class="xdoc">     */</span>
+   323        <span class=key>config</span> Mode mode = Mode_COUNTING;
+   324    
+   325        <span class="xdoc">/*!
+</span>   326    <span class="xdoc">     *  ======== getCount ========
+</span>   327    <span class="xdoc">     *  Get current semaphore count
+</span>   328    <span class="xdoc">     *
+</span>   329    <span class="xdoc">     *  This function returns the current value of the semaphore specified by
+</span>   330    <span class="xdoc">     *  the handle.
+</span>   331    <span class="xdoc">     *
+</span>   332    <span class="xdoc">     *  <b>@b(returns)</b>             current semaphore count
+</span>   333    <span class="xdoc">     */</span>
+   334        @DirectCall
+   335        Int getCount();
+   336    
+   337        <span class="xdoc">/*!
+</span>   338    <span class="xdoc">     *  ======== pend ========
+</span>   339    <span class="xdoc">     *  Wait for a semaphore
+</span>   340    <span class="xdoc">     *
+</span>   341    <span class="xdoc">     *  If the semaphore count is greater than zero (available), this function
+</span>   342    <span class="xdoc">     *  decrements the count and returns TRUE. If the semaphore count is zero
+</span>   343    <span class="xdoc">     *  (unavailable), this function suspends execution of the current task 
+</span>   344    <span class="xdoc">     *  until post() is called or the timeout expires.
+</span>   345    <span class="xdoc">     *
+</span>   346    <span class="xdoc">     *  A timeout value of 
+</span>   347    <span class="xdoc">     *  {<b>@link</b> ti.sysbios.BIOS#WAIT_FOREVER BIOS_WAIT_FOREVER} causes 
+</span>   348    <span class="xdoc">     *  the task to wait indefinitely for its semaphore to be posted. 
+</span>   349    <span class="xdoc">     *
+</span>   350    <span class="xdoc">     *  A timeout value of {<b>@link</b> ti.sysbios.BIOS#NO_WAIT BIOS_NO_WAIT} 
+</span>   351    <span class="xdoc">     *  causes Semaphore_pend to return immediately. 
+</span>   352    <span class="xdoc">     *
+</span>   353    <span class="xdoc">     *  <b>@param(timeout)</b>     return after this many system time units
+</span>   354    <span class="xdoc">     *
+</span>   355    <span class="xdoc">     *  <b>@b(returns)</b>         TRUE if successful, FALSE if timeout
+</span>   356    <span class="xdoc">     */</span>
+   357        @DirectCall
+   358        Bool pend(UInt timeout);
+   359    
+   360        <span class="xdoc">/*!
+</span>   361    <span class="xdoc">     *  ======== post ========
+</span>   362    <span class="xdoc">     *  Signal a semaphore.
+</span>   363    <span class="xdoc">     *
+</span>   364    <span class="xdoc">     *  Readies the first task waiting for the semaphore. If no task is
+</span>   365    <span class="xdoc">     *  waiting, this function simply increments the semaphore count and
+</span>   366    <span class="xdoc">     *  returns.  In the case of a binary semaphore, the count has a
+</span>   367    <span class="xdoc">     *  maximum value of one.
+</span>   368    <span class="xdoc">     */</span>
+   369        @DirectCall
+   370        Void post();
+   371    
+   372        <span class="xdoc">/*!
+</span>   373    <span class="xdoc">     *  ======== registerEvent ========
+</span>   374    <span class="xdoc">     *  Register an Event Object with a semaphore
+</span>   375    <span class="xdoc">     *
+</span>   376    <span class="xdoc">     *  Ordinarily, an Event object and eventId are configured at 
+</span>   377    <span class="xdoc">     *  Semaphore create time.
+</span>   378    <span class="xdoc">     *
+</span>   379    <span class="xdoc">     *  This API is provided so that Semaphore-using middleware
+</span>   380    <span class="xdoc">     *  can support implicit Event posting without having to be
+</span>   381    <span class="xdoc">     *  retrofitted.
+</span>   382    <span class="xdoc">     *
+</span>   383    <span class="xdoc">     *  After the Event object and eventId are registered with the
+</span>   384    <span class="xdoc">     *  Semaphore:
+</span>   385    <span class="xdoc">
+</span>   386    <span class="xdoc">     *  Event_post(event, eventId) will be invoked when 
+</span>   387    <span class="xdoc">     *  Semaphore_post(sem) is called.
+</span>   388    <span class="xdoc">     *
+</span>   389    <span class="xdoc">     *  Event_pend(event, eventId, 0, timeout) will be invoked when 
+</span>   390    <span class="xdoc">     *  Semaphore_pend(sem, timeout) is called.
+</span>   391    <span class="xdoc">     *
+</span>   392    <span class="xdoc">     *  <b>@param(event)</b>                     Ptr to Event Object
+</span>   393    <span class="xdoc">     *  <b>@param(eventId)</b>                   Event ID
+</span>   394    <span class="xdoc">     *
+</span>   395    <span class="xdoc">     */</span>
+   396        @DirectCall
+   397        Void registerEvent(Event.Handle event, UInt eventId);
+   398    
+   399        <span class="xdoc">/*!
+</span>   400    <span class="xdoc">     *  ======== reset ========
+</span>   401    <span class="xdoc">     *  Reset semaphore count
+</span>   402    <span class="xdoc">     *
+</span>   403    <span class="xdoc">     *  Resets the semaphore count to count.
+</span>   404    <span class="xdoc">     *  No task switch occurs when calling SEM_reset.
+</span>   405    <span class="xdoc">     *
+</span>   406    <span class="xdoc">     *  <b>@a(constraints)</b>
+</span>   407    <span class="xdoc">     *  count must be greater than or equal to 0.
+</span>   408    <span class="xdoc">     *
+</span>   409    <span class="xdoc">     *  No tasks should be waiting on the semaphore when 
+</span>   410    <span class="xdoc">     *  Semaphore_reset is called.
+</span>   411    <span class="xdoc">     *
+</span>   412    <span class="xdoc">     *  Semaphore_reset cannot be called by a Hwi or a Swi.
+</span>   413    <span class="xdoc">     *
+</span>   414    <span class="xdoc">     *  <b>@param(count)</b>                   semaphore count
+</span>   415    <span class="xdoc">     *
+</span>   416    <span class="xdoc">     */</span>
+   417        @DirectCall
+   418        Void reset(Int count);
+   419    
+   420    <span class=key>internal</span>:
+   421    
+   422        <span class="comment">/* 
+</span>   423    <span class="comment">     * Event module function pointers. Used to decouple
+</span>   424    <span class="comment">     * Semaphore from Event when supportsEvents is false
+</span>   425    <span class="comment">     */</span>
+   426        <span class=key>config</span> Void (*eventPost)(Event.Handle, UInt);
+   427    
+   428        <span class=key>config</span> Void (*eventSync)(Event.Handle, UInt, UInt);
+   429    
+   430        <span class="xdoc">/*!
+</span>   431    <span class="xdoc">     *  ======== pendTimeout ========
+</span>   432    <span class="xdoc">     *  This function is the clock event handler for pend
+</span>   433    <span class="xdoc">     */</span>
+   434        Void pendTimeout(UArg arg);
+   435    
+   436        <span class="comment">/* pendQ Element PendStates */</span>
+   437        <span class=key>enum</span> PendState {
+   438            PendState_TIMEOUT = 0,          <span class="comment">/* Clock timeout */</span>
+   439            PendState_POSTED = 1,           <span class="comment">/* posted by post */</span>
+   440            PendState_CLOCK_WAIT = 2,       <span class="comment">/* in Clock queue */</span>
+   441            PendState_WAIT_FOREVER = 3      <span class="comment">/* not in Clock queue */</span>
+   442        };
+   443        
+   444        <span class="comment">/* Semaphore pendQ Element */</span>
+   445        <span class=key>struct</span> PendElem {
+   446            Task.PendElem           tpElem;
+   447            PendState               pendState;
+   448        };
+   449    
+   450        <span class=key>struct</span> Instance_State {
+   451            Event.Handle            event;
+   452            UInt                    eventId;
+   453            Mode                    mode;   <span class="comment">/* binary or counting */</span>
+   454            volatile UInt16         count;  <span class="comment">/* curr semaphore count */</span>
+   455            Queue.Object            pendQ;  <span class="comment">/* queue of PendElems */</span>
+   456        };
+   457    }
+   458    <span class="comment">/*
+</span>   459    <span class="comment"> *  @(#) ti.sysbios.knl; 2, 0, 0, 0,580; 11-7-2012 12:42:25; /db/vtree/library/trees/avala/avala-r22x/src/ xlibrary
+</span>   460    <span class="comment">
+</span>   461    <span class="comment"> */</span>
+   462    
+</pre>
+</body></html>

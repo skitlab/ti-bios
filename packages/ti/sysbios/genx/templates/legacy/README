@@ -1,0 +1,27 @@
+Purpose: 
+
+
+    The legacy example shows how to build legacy (DSP/BIOS 5.00) source
+    using the legacy support in DSP/BIOS 6.00. DSP/BIOS 6.00 supports all 
+    the 'C' APIs of DSP/BIOS 5.00.
+
+    This example is the legacy version of the mutex example which use BIOS 6.00
+    APIs.
+    
+    This example has its own BIOS configuration script. This configuration
+    script shows how to configure the legacy portion of DSP/BIOS 6.00.
+
+    An important thing to note is that the path to the legacy header files
+    <sysbios_install_dir>/packages/ti/bios/include is required. This include
+    path gets added to the compiler.opt file when --bios5 option is
+    passed to configuro.
+    
+    The BIOS configuration package must be built before building the legacy 
+    example.  Use the makefile in ./<platform_dir> to build the legacy 
+    example. If using CCS build depend.pjt first before building legacy.pjt
+    in the ./<platform_dir> subdirectory.
+
+Expected output:
+	
+    See legacy.k file.
+

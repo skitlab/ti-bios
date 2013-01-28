@@ -1,0 +1,384 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sysbios.rta.Agent</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* 
+</span>     2    <span class="comment"> * Copyright (c) 2012, Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> * */</span>
+    32    <span class="comment">/*
+</span>    33    <span class="comment"> *  ======== Agent.xdc ========
+</span>    34    <span class="comment"> *
+</span>    35    <span class="comment"> */</span>
+    36    
+    37    <span class=key>package</span> ti.sysbios.rta;
+    38    
+    39    import xdc.rov.ViewInfo;
+    40    import xdc.runtime.LoggerBuf;
+    41    import xdc.runtime.Log;
+    42    import xdc.runtime.Assert;
+    43    import xdc.runtime.Error;
+    44    import xdc.runtime.Diags;
+    45    import ti.sysbios.knl.Clock;
+    46    import ti.sysbios.knl.Event;
+    47    
+    48    <span class="xdoc">/*! 
+</span>    49    <span class="xdoc"> *  ======== Agent ========
+</span>    50    <span class="xdoc"> *  The Agent module provides target support for the CCS RTA tools.
+</span>    51    <span class="xdoc"> *
+</span>    52    <span class="xdoc"> *  The Agent module includes configuration parameters to help set up the
+</span>    53    <span class="xdoc"> *  SYS/BIOS logging on the target.
+</span>    54    <span class="xdoc"> *  
+</span>    55    <span class="xdoc"> *  Earlier versions of the Agent provided support for transfer of data
+</span>    56    <span class="xdoc"> *  during runtime.   Runtime support has been removed and
+</span>    57    <span class="xdoc"> *  the Agent now only supports "stop mode" updates.   Log data is stored
+</span>    58    <span class="xdoc"> *  in buffers in RAM and only updated on the host with the target is halted.
+</span>    59    <span class="xdoc"> *
+</span>    60    <span class="xdoc"> *  Runtime support is now handled via the System Analyzer and UIA products.
+</span>    61    <span class="xdoc"> */</span>
+    62    <span class=key>metaonly</span> <span class=key>module</span> Agent
+    63    {
+    64        <span class="xdoc">/*!
+</span>    65    <span class="xdoc">     *  ======== loadLogging ========
+</span>    66    <span class="xdoc">     *  Enable the Load module event logging.
+</span>    67    <span class="xdoc">     *
+</span>    68    <span class="xdoc">     *  If this is false, the events will be disabled and cannot be enabled
+</span>    69    <span class="xdoc">     *  at runtime (ALWAYS_OFF).
+</span>    70    <span class="xdoc">     *  If this is true, the events will be enabled and can also be modified
+</span>    71    <span class="xdoc">     *  at runtime (RUNTIME_ON).
+</span>    72    <span class="xdoc">     */</span>
+    73        <span class=key>metaonly</span> <span class=key>config</span> Bool loadLogging = <span class=key>true</span>;
+    74        
+    75        <span class="xdoc">/*!
+</span>    76    <span class="xdoc">     *  ======== loadLoggingRuntimeControl ========
+</span>    77    <span class="xdoc">     *  Specify whether load logging can be enabled / disabled at runtime.
+</span>    78    <span class="xdoc">     *
+</span>    79    <span class="xdoc">     *  This determines what diags settings are applied to the module's diags
+</span>    80    <span class="xdoc">     *  mask. If 'false', the diags bits will be configured as ALWAYS_OFF or 
+</span>    81    <span class="xdoc">     *  ALWAYS_ON, meaning they can't be changed at runtime. If 'true', the 
+</span>    82    <span class="xdoc">     *  bits will be configured as 'RUNTIME_OFF' or 'RUNTIME_ON'.
+</span>    83    <span class="xdoc">     */</span>
+    84        <span class=key>metaonly</span> <span class=key>config</span> Bool loadLoggingRuntimeControl = <span class=key>true</span>;
+    85        
+    86        <span class="xdoc">/*!
+</span>    87    <span class="xdoc">     *  ======== loadLoggerSize ========
+</span>    88    <span class="xdoc">     *  Size (in MAUs) of logger used for the Load module Log events.
+</span>    89    <span class="xdoc">     *
+</span>    90    <span class="xdoc">     *  To specify the size in number of records, instead of MAUs, use the
+</span>    91    <span class="xdoc">     *  following code:
+</span>    92    <span class="xdoc">     *  
+</span>    93    <span class="xdoc">     *  <b>@p(code)</b>
+</span>    94    <span class="xdoc">     *  var Agent = xdc.useModule('ti.sysbios.rta.Agent');
+</span>    95    <span class="xdoc">     *  var LoggerBuf = xdc.useModule('xdc.runtime.LoggerBuf');
+</span>    96    <span class="xdoc">     *  
+</span>    97    <span class="xdoc">     *  // Set the load logger size to 50 records.
+</span>    98    <span class="xdoc">     *  Agent.loadLoggerSize = 50 * LoggerBuf.Entry.$sizeof();
+</span>    99    <span class="xdoc">     *
+</span>   100    <span class="xdoc">     *  // Print the final size to see how much memory is used.
+</span>   101    <span class="xdoc">     *  print("Load Logger Size (MAUs): " + Agent.loadLoggerSize);
+</span>   102    <span class="xdoc">     *  <b>@p</b>
+</span>   103    <span class="xdoc">     */</span>
+   104        <span class=key>metaonly</span> <span class=key>config</span> SizeT loadLoggerSize = 512;
+   105    
+   106        <span class="xdoc">/*!
+</span>   107    <span class="xdoc">     *  ======== loadLoggerBufferSection ========
+</span>   108    <span class="xdoc">     *  Section to place the Load LoggerBuf's buffer.
+</span>   109    <span class="xdoc">     */</span>
+   110        <span class=key>metaonly</span> <span class=key>config</span> String loadLoggerBufferSection = <span class="string">"[Default]"</span>;
+   111            
+   112        <span class="xdoc">/*!
+</span>   113    <span class="xdoc">     *  ======== mainLogging ========
+</span>   114    <span class="xdoc">     *  Enable main and non-XDC modules event logging.
+</span>   115    <span class="xdoc">     */</span>
+   116        <span class=key>metaonly</span> <span class=key>config</span> Bool mainLogging = <span class=key>true</span>;
+   117       
+   118        <span class="xdoc">/*!
+</span>   119    <span class="xdoc">     *  ======== mainLoggingRuntimeControl ========
+</span>   120    <span class="xdoc">     *  Specify whether main logging can be enabled / disabled at runtime.
+</span>   121    <span class="xdoc">     *
+</span>   122    <span class="xdoc">     *  This determines what diags settings are applied to the module's diags
+</span>   123    <span class="xdoc">     *  mask. If 'false', the diags bits will be configured as ALWAYS_OFF or 
+</span>   124    <span class="xdoc">     *  ALWAYS_ON, meaning they can't be changed at runtime. If 'true', the 
+</span>   125    <span class="xdoc">     *  bits will be configured as 'RUNTIME_OFF' or 'RUNTIME_ON'.
+</span>   126    <span class="xdoc">     */</span>
+   127        <span class=key>metaonly</span> <span class=key>config</span> Bool mainLoggingRuntimeControl = <span class=key>true</span>;
+   128        
+   129        <span class="xdoc">/*!
+</span>   130    <span class="xdoc">     *  ======== mainLoggerSize ========
+</span>   131    <span class="xdoc">     *  Size (in MAUs) of logger used for main and non-XDC modules Log events.
+</span>   132    <span class="xdoc">     *
+</span>   133    <span class="xdoc">     *  To specify the size in number of records, instead of MAUs, use the
+</span>   134    <span class="xdoc">     *  following code:
+</span>   135    <span class="xdoc">     *  
+</span>   136    <span class="xdoc">     *  <b>@p(code)</b>
+</span>   137    <span class="xdoc">     *  var Agent = xdc.useModule('ti.sysbios.rta.Agent');
+</span>   138    <span class="xdoc">     *  var LoggerBuf = xdc.useModule('xdc.runtime.LoggerBuf');
+</span>   139    <span class="xdoc">     *  
+</span>   140    <span class="xdoc">     *  // Set the main logger size to 50 records.
+</span>   141    <span class="xdoc">     *  Agent.mainLoggerSize = 50 * LoggerBuf.Entry.$sizeof();
+</span>   142    <span class="xdoc">     *
+</span>   143    <span class="xdoc">     *  // Print the final size to see how much memory is used.
+</span>   144    <span class="xdoc">     *  print("Application Logger Size (MAUs): " + Agent.mainLoggerSize);
+</span>   145    <span class="xdoc">     *  <b>@p</b>
+</span>   146    <span class="xdoc">     */</span>
+   147        <span class=key>metaonly</span> <span class=key>config</span> SizeT mainLoggerSize = 1024;
+   148        
+   149        <span class="xdoc">/*!
+</span>   150    <span class="xdoc">     *  ======== mainLoggerBufferSection ========
+</span>   151    <span class="xdoc">     *  Section to place the Main LoggerBuf's buffer.
+</span>   152    <span class="xdoc">     */</span>
+   153        <span class=key>metaonly</span> <span class=key>config</span> String mainLoggerBufferSection = <span class="string">"[Default]"</span>;
+   154        
+   155        <span class="xdoc">/*!
+</span>   156    <span class="xdoc">     *  ======== sysbiosHwiLogging ========
+</span>   157    <span class="xdoc">     *  Enable SYSBIOS Hwi module's event logging.
+</span>   158    <span class="xdoc">     */</span>
+   159        <span class=key>metaonly</span> <span class=key>config</span> Bool sysbiosHwiLogging = <span class=key>false</span>;
+   160        
+   161        <span class="xdoc">/*!
+</span>   162    <span class="xdoc">     *  ======== sysbiosHwiLoggingRuntimeControl ========
+</span>   163    <span class="xdoc">     *  Specify whether Hwi logging can be enabled / disabled at runtime.
+</span>   164    <span class="xdoc">     *
+</span>   165    <span class="xdoc">     *  This determines what diags settings are applied to the module's diags
+</span>   166    <span class="xdoc">     *  mask. If 'false', the diags bits will be configured as ALWAYS_OFF or 
+</span>   167    <span class="xdoc">     *  ALWAYS_ON, meaning they can't be changed at runtime. If 'true', the 
+</span>   168    <span class="xdoc">     *  bits will be configured as 'RUNTIME_OFF' or 'RUNTIME_ON'.
+</span>   169    <span class="xdoc">     */</span>
+   170        <span class=key>metaonly</span> <span class=key>config</span> Bool sysbiosHwiLoggingRuntimeControl = <span class=key>false</span>;
+   171        
+   172        <span class="xdoc">/*!
+</span>   173    <span class="xdoc">     *  ======== sysbiosSwiLogging ========
+</span>   174    <span class="xdoc">     *  Enable SYSBIOS Swi module's event logging.
+</span>   175    <span class="xdoc">     */</span>
+   176        <span class=key>metaonly</span> <span class=key>config</span> Bool sysbiosSwiLogging = <span class=key>false</span>;
+   177    
+   178        <span class="xdoc">/*!
+</span>   179    <span class="xdoc">     *  ======== sysbiosSwiLoggingRuntimeControl ========
+</span>   180    <span class="xdoc">     *  Specify whether Swi logging can be enabled / disabled at runtime.
+</span>   181    <span class="xdoc">     *
+</span>   182    <span class="xdoc">     *  This determines what diags settings are applied to the module's diags
+</span>   183    <span class="xdoc">     *  mask. If 'false', the diags bits will be configured as ALWAYS_OFF or 
+</span>   184    <span class="xdoc">     *  ALWAYS_ON, meaning they can't be changed at runtime. If 'true', the 
+</span>   185    <span class="xdoc">     *  bits will be configured as 'RUNTIME_OFF' or 'RUNTIME_ON'.
+</span>   186    <span class="xdoc">     */</span>
+   187        <span class=key>metaonly</span> <span class=key>config</span> Bool sysbiosSwiLoggingRuntimeControl = <span class=key>false</span>;
+   188        
+   189        <span class="xdoc">/*!
+</span>   190    <span class="xdoc">     *  ======== sysbiosTaskLogging ========
+</span>   191    <span class="xdoc">     *  Enable SYSBIOS Task module's event logging.
+</span>   192    <span class="xdoc">     */</span>
+   193        <span class=key>metaonly</span> <span class=key>config</span> Bool sysbiosTaskLogging = <span class=key>true</span>;
+   194    
+   195        <span class="xdoc">/*!
+</span>   196    <span class="xdoc">     *  ======== sysbiosTaskLoggingRuntimeControl ========
+</span>   197    <span class="xdoc">     *  Specify whether Task logging can be enabled / disabled at runtime.
+</span>   198    <span class="xdoc">     *
+</span>   199    <span class="xdoc">     *  This determines what diags settings are applied to the module's diags
+</span>   200    <span class="xdoc">     *  mask. If 'false', the diags bits will be configured as ALWAYS_OFF or 
+</span>   201    <span class="xdoc">     *  ALWAYS_ON, meaning they can't be changed at runtime. If 'true', the 
+</span>   202    <span class="xdoc">     *  bits will be configured as 'RUNTIME_OFF' or 'RUNTIME_ON'.
+</span>   203    <span class="xdoc">     */</span>
+   204        <span class=key>metaonly</span> <span class=key>config</span> Bool sysbiosTaskLoggingRuntimeControl = <span class=key>true</span>;
+   205        
+   206        <span class="xdoc">/*!
+</span>   207    <span class="xdoc">     *  ======== sysbiosLoggerSize ========
+</span>   208    <span class="xdoc">     *  Size (in MAUs) of the logger used for the SYS/BIOS modules' Log events.
+</span>   209    <span class="xdoc">     *
+</span>   210    <span class="xdoc">     *  To specify the size in number of records, instead of MAUs, use the
+</span>   211    <span class="xdoc">     *  following code:
+</span>   212    <span class="xdoc">     *  
+</span>   213    <span class="xdoc">     *  <b>@p(code)</b>
+</span>   214    <span class="xdoc">     *  var Agent = xdc.useModule('ti.sysbios.rta.Agent');
+</span>   215    <span class="xdoc">     *  var LoggerBuf = xdc.useModule('xdc.runtime.LoggerBuf');
+</span>   216    <span class="xdoc">     *  
+</span>   217    <span class="xdoc">     *  // Set the SYS/BIOS logger size to 50 records.
+</span>   218    <span class="xdoc">     *  Agent.sysbiosLoggerSize = 50 * LoggerBuf.Entry.$sizeof();
+</span>   219    <span class="xdoc">     *
+</span>   220    <span class="xdoc">     *  // Print the final size to see how much memory is used.
+</span>   221    <span class="xdoc">     *  print("SYS/BIOS Logger Size (MAUs): " + Agent.sysbiosLoggerSize);
+</span>   222    <span class="xdoc">     *  <b>@p</b>
+</span>   223    <span class="xdoc">     */</span>
+   224        <span class=key>metaonly</span> <span class=key>config</span> SizeT sysbiosLoggerSize = 4096;
+   225        
+   226        <span class="xdoc">/*!
+</span>   227    <span class="xdoc">     *  ======== sysbiosLoggerBufferSection ========
+</span>   228    <span class="xdoc">     *  Section to place the SYS/BIOS LoggerBuf's buffer.
+</span>   229    <span class="xdoc">     */</span>
+   230        <span class=key>metaonly</span> <span class=key>config</span> String sysbiosLoggerBufferSection = <span class="string">"[Default]"</span>;
+   231        
+   232        <span class="xdoc">/*!
+</span>   233    <span class="xdoc">     *  ======== configureSystemLog ========
+</span>   234    <span class="xdoc">     *  Deprecated.
+</span>   235    <span class="xdoc">     */</span>
+   236        <span class=key>metaonly</span> <span class=key>config</span> Bool configureSystemLog = <span class=key>true</span>;
+   237        
+   238        <span class="xdoc">/*!
+</span>   239    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   240    <span class="xdoc">     *  ======== numSystemRecords ========
+</span>   241    <span class="xdoc">     *  Deprecated.
+</span>   242    <span class="xdoc">     */</span>
+   243        <span class=key>metaonly</span> <span class=key>config</span> Int numSystemRecords = 64;
+   244        
+   245        <span class="xdoc">/*!
+</span>   246    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   247    <span class="xdoc">     *  ======== configureLoadLog ========
+</span>   248    <span class="xdoc">     *  Deprecated.
+</span>   249    <span class="xdoc">     */</span>
+   250        <span class=key>metaonly</span> <span class=key>config</span> Bool configureLoadLog = <span class=key>true</span>;
+   251        
+   252        <span class="xdoc">/*!
+</span>   253    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   254    <span class="xdoc">     *  ======== numLoadRecords ========
+</span>   255    <span class="xdoc">     *  Deprecated.
+</span>   256    <span class="xdoc">     */</span>
+   257        <span class=key>metaonly</span> <span class=key>config</span> Int numLoadRecords = 64;
+   258        
+   259        <span class="xdoc">/*!
+</span>   260    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   261    <span class="xdoc">     *  ======== periodInMs ========
+</span>   262    <span class="xdoc">     *  This configuration parameter is no longer supported since the I/O part
+</span>   263    <span class="xdoc">     *  of the Agent is no longer supported.
+</span>   264    <span class="xdoc">     */</span>
+   265        <span class=key>metaonly</span> <span class=key>config</span> Int periodInMs = 100;
+   266        
+   267        <span class="xdoc">/*!
+</span>   268    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   269    <span class="xdoc">     *  ======== priority ========
+</span>   270    <span class="xdoc">     *  This configuration parameter is no longer supported since the I/O part
+</span>   271    <span class="xdoc">     *  of the Agent is no longer supported.
+</span>   272    <span class="xdoc">     */</span>
+   273        <span class=key>metaonly</span> <span class=key>config</span> Int priority = 1;
+   274        
+   275        <span class="xdoc">/*!
+</span>   276    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   277    <span class="xdoc">     *  ======== agentStackSize ========
+</span>   278    <span class="xdoc">     *  This configuration parameter is no longer supported since the I/O part
+</span>   279    <span class="xdoc">     *  of the Agent is no longer supported.
+</span>   280    <span class="xdoc">     */</span>
+   281        <span class=key>metaonly</span> <span class=key>config</span> SizeT agentStackSize = 1024;
+   282        
+   283        <span class="xdoc">/*!
+</span>   284    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   285    <span class="xdoc">     *  ======== agentStackSection ========
+</span>   286    <span class="xdoc">     *  This configuration parameter is no longer supported since the I/O part
+</span>   287    <span class="xdoc">     *  of the Agent is no longer supported.
+</span>   288    <span class="xdoc">     */</span>
+   289        <span class=key>metaonly</span> <span class=key>config</span> String agentStackSection = <span class="string">"[Default]"</span>;
+   290        
+   291        <span class="xdoc">/*!
+</span>   292    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   293    <span class="xdoc">     *  ======== transferBufferSize ========
+</span>   294    <span class="xdoc">     *  This configuration parameter is no longer supported since the I/O part
+</span>   295    <span class="xdoc">     *  of the Agent is no longer supported.
+</span>   296    <span class="xdoc">     */</span>
+   297        <span class=key>config</span> Int transferBufferSize = 85;
+   298        
+   299        <span class="xdoc">/*!
+</span>   300    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   301    <span class="xdoc">     *  ======== transferBufferSection ========
+</span>   302    <span class="xdoc">     *  This configuration parameter is no longer supported since the I/O part
+</span>   303    <span class="xdoc">     *  of the Agent is no longer supported.
+</span>   304    <span class="xdoc">     */</span>
+   305        <span class=key>metaonly</span> <span class=key>config</span> String transferBufferSection;
+   306        
+   307        <span class="xdoc">/*! 
+</span>   308    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   309    <span class="xdoc">     *  ======== addSupportLogger ========
+</span>   310    <span class="xdoc">     *  Whether to include the SupportLogger module.
+</span>   311    <span class="xdoc">     *
+</span>   312    <span class="xdoc">     *  The SupportLogger module logs timestamp information for use by the
+</span>   313    <span class="xdoc">     *  RTA tools on the host side.
+</span>   314    <span class="xdoc">     *
+</span>   315    <span class="xdoc">     *  Default is true.
+</span>   316    <span class="xdoc">     */</span>
+   317        <span class=key>metaonly</span> <span class=key>config</span> Bool addSupportLogger = <span class=key>true</span>;
+   318        
+   319        <span class="xdoc">/*!
+</span>   320    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   321    <span class="xdoc">     *  ======== supportControl ========
+</span>   322    <span class="xdoc">     *  This configuration parameter is no longer supported since the I/O part
+</span>   323    <span class="xdoc">     *  of the Agent is no longer supported.
+</span>   324    <span class="xdoc">     */</span>
+   325        <span class=key>metaonly</span> <span class=key>config</span> Bool supportControl = <span class=key>true</span>;
+   326        
+   327        <span class="xdoc">/*!
+</span>   328    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   329    <span class="xdoc">     *  ======== Transport ========
+</span>   330    <span class="xdoc">     *  The Transport enum lists the transports which the Agent is able
+</span>   331    <span class="xdoc">     *  to automatically configure. See the {<b>@link</b> #transport} config parameter.
+</span>   332    <span class="xdoc">     */</span>
+   333        <span class=key>metaonly</span> <span class=key>enum</span> Transport {
+   334            Transport_RTDX,  <span class=xdoc>//! RTDX (no longer supported).</span>
+   335            Transport_STOP_MODE_ONLY, <span class=xdoc>//! Stop Mode Only</span>
+   336            Transport_USER  <span class=xdoc>//! (not supported)</span>
+   337        };
+   338    
+   339        <span class="xdoc">/*!
+</span>   340    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   341    <span class="xdoc">     *  ======== transport ========
+</span>   342    <span class="xdoc">     *  This configuration parameter is no longer supported since the I/O part
+</span>   343    <span class="xdoc">     *  of the Agent is no longer supported.
+</span>   344    <span class="xdoc">     */</span>
+   345        <span class=key>metaonly</span> <span class=key>config</span> Transport transport = Transport_STOP_MODE_ONLY;
+   346        
+   347        <span class="xdoc">/*!
+</span>   348    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   349    <span class="xdoc">     *  ======== dataStream ========
+</span>   350    <span class="xdoc">     *  This configuration parameter is no longer supported since the I/O part
+</span>   351    <span class="xdoc">     *  of the Agent is no longer supported.
+</span>   352    <span class="xdoc">     */</span>
+   353        <span class=key>metaonly</span> <span class=key>config</span> String dataStream = <span class="string">"/rtdx0"</span>;
+   354        
+   355        <span class="xdoc">/*!
+</span>   356    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   357    <span class="xdoc">     *  ======== commandStream ========
+</span>   358    <span class="xdoc">     *  This configuration parameter is no longer supported since the I/O part
+</span>   359    <span class="xdoc">     *  of the Agent is no longer supported.
+</span>   360    <span class="xdoc">     */</span>
+   361        <span class=key>metaonly</span> <span class=key>config</span> String commandStream = <span class="string">"/rtdx1"</span>;
+   362    
+   363        <span class="xdoc">/*!
+</span>   364    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   365    <span class="xdoc">     *  ======== responseStream ========
+</span>   366    <span class="xdoc">     *  This configuration parameter is no longer supported since the I/O part
+</span>   367    <span class="xdoc">     *  of the Agent is no longer supported.
+</span>   368    <span class="xdoc">     */</span>
+   369        <span class=key>config</span> String responseStream = <span class="string">"/rtdx1"</span>;
+   370    }
+   371    <span class="comment">/*
+</span>   372    <span class="comment"> *  @(#) ti.sysbios.rta; 2, 0, 0, 0,383; 11-7-2012 12:42:34; /db/vtree/library/trees/avala/avala-r22x/src/ xlibrary
+</span>   373    <span class="comment">
+</span>   374    <span class="comment"> */</span>
+   375    
+</pre>
+</body></html>

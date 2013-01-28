@@ -1,0 +1,10 @@
+Purpose:
+
+    This module shows how to enable logs in various modules. It also shows 
+    the various methods of enabling logs - whether the client wants the logs
+    to be enabled always or wants to enable them at runtime.
+
+Expected output:
+	
+    See log.k file.  This file has format strings (%d and %x) is places where
+    output could vary based on platform.

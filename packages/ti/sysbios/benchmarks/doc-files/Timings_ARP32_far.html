@@ -1,0 +1,133 @@
+<!--
+/*
+ *  Copyright 2012 by Texas Instruments Incorporated .
+ *  
+ */
+-->
+
+<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>ARP32_far</title>
+    <style type="text/css" media="screen">table { border-collapse: collapse; font-family: "Ariel", sans-serif } 
+                  td    { background: white; border: ridge black } 
+                  tr.hdr { font-weight: bolder }</style>
+  </head>
+  <body>
+    <h2>ARP32_far Timing Benchmarks</h2>
+    <h3>ti.platforms.simArctic</h3>
+  </body>
+  <body xmlns="">
+    <table>
+      <tr class="hdr">
+        <td>Benchmark</td>
+        <td>Cycles</td>
+        <td style="border-top-style:none;border-right-style:none;border-bottom-style:none">
+          <cite>(1)</cite>
+        </td>
+      </tr>
+      <tr>
+        <td>Interrupt latency</td>
+        <td>187</td>
+      </tr>
+      <tr>
+        <td>Hwi_enable</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>Hwi_disable</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>Hwi dispatcher prolog</td>
+        <td>180</td>
+      </tr>
+      <tr>
+        <td>Hwi dispatcher epilog</td>
+        <td>416</td>
+      </tr>
+      <tr>
+        <td>Hwi dispatcher</td>
+        <td>592</td>
+      </tr>
+      <tr>
+        <td>Hardware Interrupt to Blocked Task</td>
+        <td>421</td>
+      </tr>
+      <tr>
+        <td>Hardware Interrupt to Software Interrupt</td>
+        <td>313</td>
+      </tr>
+      <tr>
+        <td>Swi_enable</td>
+        <td>48</td>
+      </tr>
+      <tr>
+        <td>Swi_disable</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Post Software Interrupt Again</td>
+        <td>21</td>
+      </tr>
+      <tr>
+        <td>Post Software Interrupt without Context Switch</td>
+        <td>73</td>
+      </tr>
+      <tr>
+        <td>Post Software Interrupt with Context Switch</td>
+        <td>154</td>
+      </tr>
+      <tr>
+        <td>Create a New Task without Context Switch</td>
+        <td>1508</td>
+      </tr>
+      <tr>
+        <td>Set a Task Priority without a Context Switch</td>
+        <td>165</td>
+      </tr>
+      <tr>
+        <td>Task_yield</td>
+        <td>137</td>
+      </tr>
+      <tr>
+        <td>Post Semaphore, No Waiting Task</td>
+        <td>37</td>
+      </tr>
+      <tr>
+        <td>Post Semaphore No Task Switch</td>
+        <td>128</td>
+      </tr>
+      <tr>
+        <td>Post Semaphore with Task Switch</td>
+        <td>174</td>
+      </tr>
+      <tr>
+        <td>Pend on Semaphore, No Context Switchi</td>
+        <td>41</td>
+      </tr>
+      <tr>
+        <td>Pend on Semaphore with Task Switch</td>
+        <td>207</td>
+      </tr>
+      <tr>
+        <td>Clock_getTicks</td>
+        <td>9</td>
+      </tr>
+    </table>
+    <div>
+      <p style="margin: 0px;width: 400px">
+        <cite>(1) The benchmark application was built using BIOS.LibType_Custom with the following BIOS.customCCOpts settings: "--mem_model:data=far --silicon_version=v210 -q --gen_func_subsections --program_level_compile -o3".</cite>
+      </p>
+      <p style="margin: 0px;width: 400px">
+        <cite>Timings were obtained using the flat memory model EVE Subsystem simulator (which accurately runs EVE code).</cite>
+      </p>
+    </div>
+  </body>
+</html>
+<!--
+/*
+ * @(#) ti.sysbios.benchmarks; 1, 1, 0, 0,11; 9-18-2012 20:56:18; /db/vtree/library/trees/avalabench/avalabench-b16x/src/ xlibrary
+
+ */
+-->
+

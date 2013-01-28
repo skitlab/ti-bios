@@ -1,0 +1,17 @@
+Purpose: 
+
+    The static example focuses on DSP/BIOS configuration. It shows how to
+    - Use and configure various modules.
+    - Create static Instances.
+    - Modify Program level configuration parameters.
+
+    This example has its own BIOS configuration script.
+    The BIOS configuration package must be built before building the static 
+    example.  Use the makefile in ./<platform_dir> to build the static 
+    example. If using CCS build depend.pjt first before building static.pjt 
+    in the ./<platform_dir> subdirectory.
+
+Expected output:
+	
+    See static.k file.
+

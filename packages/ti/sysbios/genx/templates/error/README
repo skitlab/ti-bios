@@ -1,0 +1,13 @@
+Purpose:
+
+    This example shows the use of xdc.runtime.Error module to catch errors.
+    An Error_Block passed to Task_create() checked to see if the create 
+    failed. In no Error_Block is passed, then the application will terminate
+    when an error occurs. This is shown in the Timer_create(0 call when the 
+    Error_Block passed in is NULL. The error.cfg file also shows how to plug
+    and error hook function that will get called as soon as an error occurs.
+    
+Expected output:
+	
+    See error.k file. This file has format strings (%d) is places where
+    output could vary based on platform.

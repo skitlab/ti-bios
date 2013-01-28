@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>package ti.sysbios.rta</title>
+<meta name="description" content="Contains modules that provide support for RTA tools in CCS">
+<link rel="stylesheet" type="text/css" href="../../../xdoc.css" />
+</head>
+<body><div id="xdocWrapper"><div id="xdocContent">
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">package</span> <span class="xdoc-id">ti.sysbios.rta</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_right.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/package.html">index URL</a></div>
+<p class="xdocHdrSummary">Contains modules that provide support for RTA tools in CCS</p>
+<ul class="xdocToc">
+</ul>
+<div class="xdocBrief">
+In order to use the Real-Time Analysis (RTA) tools in
+  Code Composer Studio, your application must be configured to include 
+  support for RTA. SYS/BIOS 6 includes an RTA "Agent" module, 
+  <a class="xdoc-link" href="../../../ti/sysbios/rta/Agent.html" title="ti.sysbios.rta.Agent">ti.sysbios.rta.Agent</a>, which retrieves Log data from the target 
+  and sends it to the host.
+</div>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../ti/sysbios/rta/package-src.html"><span class="xdocLabelFile">ti/sysbios/rta/package.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynX">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">package</span> <go><span class="xdoc-id">ti.sysbios.rta</span></go> [2, 0, 0, 0] {
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../ti/sysbios/rta/Agent.html' title='ti.sysbios.rta.Agent'><span class="xdoc-id">Agent</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;The Agent module provides target support for the CCS RTA tools</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../ti/sysbios/rta/SupportLogger.html' title='ti.sysbios.rta.SupportLogger'><span class="xdoc-id">SupportLogger</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;The SupportLogger is used to log the Timestamp frequency so that
+  the RTA tool can convert the log event timestamps into seconds. This log
+  occurs during module startup</div>
+<div class="xdocSynCode">
+<tt></tt>}
+</div>
+</div>
+<div id="xdocDate">generated on Thu, 08 Nov 2012 01:33:55 GMT</div>
+</div></div></body>
+</html>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sysbios.family.arm.arm9" version="2, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="Cache"/>
+        <module name="Mmu"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sysbios.family.arm.arm9.c"/>
+        <srcFile name="Cache.c"/>
+        <srcFile name="Cache_asm.asm"/>
+        <srcFile name="Mmu.c"/>
+        <srcFile name="Mmu_asm.asm"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.arm9.ae9.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/package/package_ti.sysbios.family.arm.arm9.oe9.dep" src="package/package_ti.sysbios.family.arm.arm9.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/Cache.oe9.dep" src="Cache.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/Cache_asm.oe9.dep" src="Cache_asm.asm"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/Mmu.oe9.dep" src="Mmu.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/Mmu_asm.oe9.dep" src="Mmu_asm.asm"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.arm9.aer4te.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/package/package_ti.sysbios.family.arm.arm9.oer4te.dep" src="package/package_ti.sysbios.family.arm.arm9.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/Cache.oer4te.dep" src="Cache.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/Cache_asm.oer4te.dep" src="Cache_asm.asm"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/Mmu.oer4te.dep" src="Mmu.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/Mmu_asm.oer4te.dep" src="Mmu_asm.asm"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.arm9.aer4fte.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/package/package_ti.sysbios.family.arm.arm9.oer4fte.dep" src="package/package_ti.sysbios.family.arm.arm9.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/Cache.oer4fte.dep" src="Cache.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/Cache_asm.oer4fte.dep" src="Cache_asm.asm"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/Mmu.oer4fte.dep" src="Mmu.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm.arm9/Mmu_asm.oer4fte.dep" src="Mmu_asm.asm"/>
+        <srcFile name="package/rel/ti_sysbios_family_arm_arm9.tar.gz.dep" src="package/rel/ti_sysbios_family_arm_arm9.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.arm.elf.Arm9"
+            version="ti.targets.arm.elf.Arm9{1,0,5.0,1"
+            platform="ti.platforms.expOMAPL138"
+            isa="v5T"
+            suffix="e9"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.R4t_big_endian"
+            version="ti.targets.arm.elf.R4t_big_endian{1,0,5.0,1"
+            platform="ti.platforms.evmTMS570LS20216:testInst"
+            isa="v7R"
+            suffix="er4te"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="big"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.R4Ft_big_endian"
+            version="ti.targets.arm.elf.R4Ft_big_endian{1,0,5.0,1"
+            platform="ti.platforms.evmTMS570LS20216:testInst"
+            isa="v7R"
+            suffix="er4fte"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="big"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm.arm9"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.arm9.ae9"
+        profile="debug"
+        target="ti.targets.arm.elf.Arm9"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm.arm9"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.arm9.aer4te"
+        profile="debug"
+        target="ti.targets.arm.elf.R4t_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm.arm9"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.arm9.aer4fte"
+        profile="debug"
+        target="ti.targets.arm.elf.R4Ft_big_endian"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sysbios_family_arm_arm9"
+        pname="../../../../..//../exports/ti_sysbios_family_arm_arm9.tar.gz"
+        label="default"
+        relScript="scripts/copyright_xml.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="Mmu.xdt"/>
+        <file name="disableCaches.gel"/>
+        <file name="Cache.xml"/>
+        <file name="Mmu.xml"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.arm9.ae9"/>
+        <file name="package/package_ti.sysbios.family.arm.arm9.c"/>
+        <file name="Cache.c"/>
+        <file name="Cache_asm.asm"/>
+        <file name="Mmu.c"/>
+        <file name="Mmu_asm.asm"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.arm9.aer4te"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.arm9.aer4fte"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

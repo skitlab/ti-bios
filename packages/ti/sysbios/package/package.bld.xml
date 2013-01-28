@@ -1,0 +1,1948 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sysbios" version="2, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="BIOS"/>
+        <module name="Build"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sysbios.c"/>
+        <srcFile name="BIOS.c"/>
+        <srcFile name="package/cfg/instrumented_p28L.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p28L.c"/>
+        <srcFile name="package/cfg/instrumented_p28FP.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p28FP.c"/>
+        <srcFile name="package/cfg/instrumented_p64.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p64.c"/>
+        <srcFile name="package/cfg/instrumented_p64P.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p64P.c"/>
+        <srcFile name="package/cfg/instrumented_p64Pe.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p64Pe.c"/>
+        <srcFile name="package/cfg/instrumented_p674.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p674.c"/>
+        <srcFile name="package/cfg/instrumented_p430.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p430.c"/>
+        <srcFile name="package/cfg/instrumented_p430X.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p430X.c"/>
+        <srcFile name="package/cfg/instrumented_p430XS.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p430XS.c"/>
+        <srcFile name="package/cfg/instrumented_pe430X.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe430X.c"/>
+        <srcFile name="package/cfg/instrumented_pe430XS.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe430XS.c"/>
+        <srcFile name="package/cfg/instrumented_pr430XS.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pr430XS.c"/>
+        <srcFile name="package/cfg/instrumented_pe64P.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64P.c"/>
+        <srcFile name="package/cfg/instrumented_pe64Pe.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64Pe.c"/>
+        <srcFile name="package/cfg/instrumented_pe674.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe674.c"/>
+        <srcFile name="package/cfg/instrumented_pe64T.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64T.c"/>
+        <srcFile name="package/cfg/instrumented_pe66.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66.c"/>
+        <srcFile name="package/cfg/instrumented_pe66e.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66e.c"/>
+        <srcFile name="package/cfg/instrumented_pearp32.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32.c"/>
+        <srcFile name="package/cfg/instrumented_pearp32F.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32F.c"/>
+        <srcFile name="package/cfg/instrumented_pe9.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe9.c"/>
+        <srcFile name="package/cfg/instrumented_pea8f.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8f.c"/>
+        <srcFile name="package/cfg/instrumented_pea8fnv.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8fnv.c"/>
+        <srcFile name="package/cfg/instrumented_pem3.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pem3.c"/>
+        <srcFile name="package/cfg/instrumented_pem4.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4.c"/>
+        <srcFile name="package/cfg/instrumented_pem4f.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4f.c"/>
+        <srcFile name="package/cfg/instrumented_per4te.c"/>
+        <srcFile name="package/cfg/nonInstrumented_per4te.c"/>
+        <srcFile name="package/cfg/instrumented_per4fte.c"/>
+        <srcFile name="package/cfg/nonInstrumented_per4fte.c"/>
+        <srcFile name="package/cfg/instrumented_pm3g.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pm3g.c"/>
+        <srcFile name="package/cfg/instrumented_pm4g.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pm4g.c"/>
+        <srcFile name="package/cfg/instrumented_pm4fg.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pm4fg.c"/>
+        <srcFile name="package/cfg/instrumented_pa15g.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pa15g.c"/>
+        <srcFile name="package/cfg/smpInstrumented_pem3.c"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem3.c"/>
+        <srcFile name="package/cfg/smpInstrumented_pem4.c"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem4.c"/>
+    </sources>
+    <configscripts>
+        <srcFile name="instrumented.cfg"/>
+        <srcFile name="nonInstrumented.cfg"/>
+        <srcFile name="smpInstrumented.cfg"/>
+        <srcFile name="smpNonInstrumented.cfg"/>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.a28L.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.o28L.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.o28L.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.a28FP.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.o28FP.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.o28FP.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.a64.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.o64.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.o64.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.o64P.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.o64P.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.a64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.o64Pe.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.o64Pe.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.o674.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.o674.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.a430.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.o430.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.o430.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.a430X.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.o430X.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.o430X.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.a430XS.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.o430XS.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.o430XS.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.ae430X.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oe430X.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oe430X.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.ae430XS.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oe430XS.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oe430XS.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.ar430XS.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.or430XS.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.or430XS.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oe64P.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oe64P.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.ae64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oe64Pe.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oe64Pe.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oe674.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oe674.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oe64T.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oe64T.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oe66.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oe66.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oe66e.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oe66e.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.aearp32.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oearp32.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oearp32.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.aearp32F.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oearp32F.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oearp32F.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.ae9.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oe9.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oe9.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.aea8f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oea8f.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oea8f.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.aea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oea8fnv.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oea8fnv.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oem3.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oem3.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oem4.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oem4.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oem4f.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oem4f.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.aer4te.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oer4te.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oer4te.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.aer4fte.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oer4fte.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oer4fte.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.am3g.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.om3g.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.om3g.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.am4g.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.om4g.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.om4g.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.om4fg.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.om4fg.dep" src="BIOS.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.aa15g.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/package/package_ti.sysbios.oa15g.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios/BIOS.oa15g.dep" src="BIOS.c"/>
+        <srcFile name="lib/smpbios/debug/ti.sysbios.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpbios/debug/ti.sysbios/package/package_ti.sysbios.oem3.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/smpbios/debug/ti.sysbios/BIOS.oem3.dep" src="BIOS.c"/>
+        <srcFile name="lib/smpbios/debug/ti.sysbios.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpbios/debug/ti.sysbios/package/package_ti.sysbios.oem4.dep" src="package/package_ti.sysbios.c"/>
+        <srcFile name="package/lib/lib/smpbios/debug/ti.sysbios/BIOS.oem4.dep" src="BIOS.c"/>
+        <srcFile name="package/cfg/instrumented_p28L.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p28L.o28L.dep" src="package/cfg/instrumented_p28L.c"/>
+        <srcFile name="package/cfg/instrumented_p28L.dep" src="package/cfg/instrumented_p28L.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p28L.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p28L.o28L.dep" src="package/cfg/nonInstrumented_p28L.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p28L.dep" src="package/cfg/nonInstrumented_p28L.cfg"/>
+        <srcFile name="package/cfg/instrumented_p28FP.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p28FP.o28FP.dep" src="package/cfg/instrumented_p28FP.c"/>
+        <srcFile name="package/cfg/instrumented_p28FP.dep" src="package/cfg/instrumented_p28FP.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p28FP.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p28FP.o28FP.dep" src="package/cfg/nonInstrumented_p28FP.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p28FP.dep" src="package/cfg/nonInstrumented_p28FP.cfg"/>
+        <srcFile name="package/cfg/instrumented_p64.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p64.o64.dep" src="package/cfg/instrumented_p64.c"/>
+        <srcFile name="package/cfg/instrumented_p64.dep" src="package/cfg/instrumented_p64.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p64.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p64.o64.dep" src="package/cfg/nonInstrumented_p64.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p64.dep" src="package/cfg/nonInstrumented_p64.cfg"/>
+        <srcFile name="package/cfg/instrumented_p64P.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p64P.o64P.dep" src="package/cfg/instrumented_p64P.c"/>
+        <srcFile name="package/cfg/instrumented_p64P.dep" src="package/cfg/instrumented_p64P.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p64P.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p64P.o64P.dep" src="package/cfg/nonInstrumented_p64P.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p64P.dep" src="package/cfg/nonInstrumented_p64P.cfg"/>
+        <srcFile name="package/cfg/instrumented_p64Pe.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p64Pe.o64Pe.dep" src="package/cfg/instrumented_p64Pe.c"/>
+        <srcFile name="package/cfg/instrumented_p64Pe.dep" src="package/cfg/instrumented_p64Pe.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p64Pe.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p64Pe.o64Pe.dep" src="package/cfg/nonInstrumented_p64Pe.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p64Pe.dep" src="package/cfg/nonInstrumented_p64Pe.cfg"/>
+        <srcFile name="package/cfg/instrumented_p674.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p674.o674.dep" src="package/cfg/instrumented_p674.c"/>
+        <srcFile name="package/cfg/instrumented_p674.dep" src="package/cfg/instrumented_p674.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p674.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p674.o674.dep" src="package/cfg/nonInstrumented_p674.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p674.dep" src="package/cfg/nonInstrumented_p674.cfg"/>
+        <srcFile name="package/cfg/instrumented_p430.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p430.o430.dep" src="package/cfg/instrumented_p430.c"/>
+        <srcFile name="package/cfg/instrumented_p430.dep" src="package/cfg/instrumented_p430.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p430.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p430.o430.dep" src="package/cfg/nonInstrumented_p430.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p430.dep" src="package/cfg/nonInstrumented_p430.cfg"/>
+        <srcFile name="package/cfg/instrumented_p430X.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p430X.o430X.dep" src="package/cfg/instrumented_p430X.c"/>
+        <srcFile name="package/cfg/instrumented_p430X.dep" src="package/cfg/instrumented_p430X.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p430X.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p430X.o430X.dep" src="package/cfg/nonInstrumented_p430X.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p430X.dep" src="package/cfg/nonInstrumented_p430X.cfg"/>
+        <srcFile name="package/cfg/instrumented_p430XS.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p430XS.o430XS.dep" src="package/cfg/instrumented_p430XS.c"/>
+        <srcFile name="package/cfg/instrumented_p430XS.dep" src="package/cfg/instrumented_p430XS.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p430XS.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p430XS.o430XS.dep" src="package/cfg/nonInstrumented_p430XS.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p430XS.dep" src="package/cfg/nonInstrumented_p430XS.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe430X.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe430X.oe430X.dep" src="package/cfg/instrumented_pe430X.c"/>
+        <srcFile name="package/cfg/instrumented_pe430X.dep" src="package/cfg/instrumented_pe430X.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe430X.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe430X.oe430X.dep" src="package/cfg/nonInstrumented_pe430X.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe430X.dep" src="package/cfg/nonInstrumented_pe430X.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe430XS.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe430XS.oe430XS.dep" src="package/cfg/instrumented_pe430XS.c"/>
+        <srcFile name="package/cfg/instrumented_pe430XS.dep" src="package/cfg/instrumented_pe430XS.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe430XS.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe430XS.oe430XS.dep" src="package/cfg/nonInstrumented_pe430XS.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe430XS.dep" src="package/cfg/nonInstrumented_pe430XS.cfg"/>
+        <srcFile name="package/cfg/instrumented_pr430XS.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pr430XS.or430XS.dep" src="package/cfg/instrumented_pr430XS.c"/>
+        <srcFile name="package/cfg/instrumented_pr430XS.dep" src="package/cfg/instrumented_pr430XS.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pr430XS.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pr430XS.or430XS.dep" src="package/cfg/nonInstrumented_pr430XS.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pr430XS.dep" src="package/cfg/nonInstrumented_pr430XS.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe64P.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe64P.oe64P.dep" src="package/cfg/instrumented_pe64P.c"/>
+        <srcFile name="package/cfg/instrumented_pe64P.dep" src="package/cfg/instrumented_pe64P.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64P.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64P.oe64P.dep" src="package/cfg/nonInstrumented_pe64P.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64P.dep" src="package/cfg/nonInstrumented_pe64P.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe64Pe.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe64Pe.oe64Pe.dep" src="package/cfg/instrumented_pe64Pe.c"/>
+        <srcFile name="package/cfg/instrumented_pe64Pe.dep" src="package/cfg/instrumented_pe64Pe.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64Pe.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64Pe.oe64Pe.dep" src="package/cfg/nonInstrumented_pe64Pe.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64Pe.dep" src="package/cfg/nonInstrumented_pe64Pe.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe674.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe674.oe674.dep" src="package/cfg/instrumented_pe674.c"/>
+        <srcFile name="package/cfg/instrumented_pe674.dep" src="package/cfg/instrumented_pe674.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe674.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe674.oe674.dep" src="package/cfg/nonInstrumented_pe674.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe674.dep" src="package/cfg/nonInstrumented_pe674.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe64T.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe64T.oe64T.dep" src="package/cfg/instrumented_pe64T.c"/>
+        <srcFile name="package/cfg/instrumented_pe64T.dep" src="package/cfg/instrumented_pe64T.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64T.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64T.oe64T.dep" src="package/cfg/nonInstrumented_pe64T.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64T.dep" src="package/cfg/nonInstrumented_pe64T.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe66.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe66.oe66.dep" src="package/cfg/instrumented_pe66.c"/>
+        <srcFile name="package/cfg/instrumented_pe66.dep" src="package/cfg/instrumented_pe66.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66.oe66.dep" src="package/cfg/nonInstrumented_pe66.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66.dep" src="package/cfg/nonInstrumented_pe66.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe66e.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe66e.oe66e.dep" src="package/cfg/instrumented_pe66e.c"/>
+        <srcFile name="package/cfg/instrumented_pe66e.dep" src="package/cfg/instrumented_pe66e.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66e.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66e.oe66e.dep" src="package/cfg/nonInstrumented_pe66e.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66e.dep" src="package/cfg/nonInstrumented_pe66e.cfg"/>
+        <srcFile name="package/cfg/instrumented_pearp32.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pearp32.oearp32.dep" src="package/cfg/instrumented_pearp32.c"/>
+        <srcFile name="package/cfg/instrumented_pearp32.dep" src="package/cfg/instrumented_pearp32.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32.oearp32.dep" src="package/cfg/nonInstrumented_pearp32.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32.dep" src="package/cfg/nonInstrumented_pearp32.cfg"/>
+        <srcFile name="package/cfg/instrumented_pearp32F.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pearp32F.oearp32F.dep" src="package/cfg/instrumented_pearp32F.c"/>
+        <srcFile name="package/cfg/instrumented_pearp32F.dep" src="package/cfg/instrumented_pearp32F.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32F.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32F.oearp32F.dep" src="package/cfg/nonInstrumented_pearp32F.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32F.dep" src="package/cfg/nonInstrumented_pearp32F.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe9.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe9.oe9.dep" src="package/cfg/instrumented_pe9.c"/>
+        <srcFile name="package/cfg/instrumented_pe9.dep" src="package/cfg/instrumented_pe9.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe9.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe9.oe9.dep" src="package/cfg/nonInstrumented_pe9.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe9.dep" src="package/cfg/nonInstrumented_pe9.cfg"/>
+        <srcFile name="package/cfg/instrumented_pea8f.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pea8f.oea8f.dep" src="package/cfg/instrumented_pea8f.c"/>
+        <srcFile name="package/cfg/instrumented_pea8f.dep" src="package/cfg/instrumented_pea8f.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8f.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8f.oea8f.dep" src="package/cfg/nonInstrumented_pea8f.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8f.dep" src="package/cfg/nonInstrumented_pea8f.cfg"/>
+        <srcFile name="package/cfg/instrumented_pea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pea8fnv.oea8fnv.dep" src="package/cfg/instrumented_pea8fnv.c"/>
+        <srcFile name="package/cfg/instrumented_pea8fnv.dep" src="package/cfg/instrumented_pea8fnv.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8fnv.oea8fnv.dep" src="package/cfg/nonInstrumented_pea8fnv.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8fnv.dep" src="package/cfg/nonInstrumented_pea8fnv.cfg"/>
+        <srcFile name="package/cfg/instrumented_pem3.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pem3.oem3.dep" src="package/cfg/instrumented_pem3.c"/>
+        <srcFile name="package/cfg/instrumented_pem3.dep" src="package/cfg/instrumented_pem3.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pem3.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pem3.oem3.dep" src="package/cfg/nonInstrumented_pem3.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pem3.dep" src="package/cfg/nonInstrumented_pem3.cfg"/>
+        <srcFile name="package/cfg/instrumented_pem4.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pem4.oem4.dep" src="package/cfg/instrumented_pem4.c"/>
+        <srcFile name="package/cfg/instrumented_pem4.dep" src="package/cfg/instrumented_pem4.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4.oem4.dep" src="package/cfg/nonInstrumented_pem4.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4.dep" src="package/cfg/nonInstrumented_pem4.cfg"/>
+        <srcFile name="package/cfg/instrumented_pem4f.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pem4f.oem4f.dep" src="package/cfg/instrumented_pem4f.c"/>
+        <srcFile name="package/cfg/instrumented_pem4f.dep" src="package/cfg/instrumented_pem4f.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4f.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4f.oem4f.dep" src="package/cfg/nonInstrumented_pem4f.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4f.dep" src="package/cfg/nonInstrumented_pem4f.cfg"/>
+        <srcFile name="package/cfg/instrumented_per4te.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_per4te.oer4te.dep" src="package/cfg/instrumented_per4te.c"/>
+        <srcFile name="package/cfg/instrumented_per4te.dep" src="package/cfg/instrumented_per4te.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_per4te.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_per4te.oer4te.dep" src="package/cfg/nonInstrumented_per4te.c"/>
+        <srcFile name="package/cfg/nonInstrumented_per4te.dep" src="package/cfg/nonInstrumented_per4te.cfg"/>
+        <srcFile name="package/cfg/instrumented_per4fte.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_per4fte.oer4fte.dep" src="package/cfg/instrumented_per4fte.c"/>
+        <srcFile name="package/cfg/instrumented_per4fte.dep" src="package/cfg/instrumented_per4fte.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_per4fte.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_per4fte.oer4fte.dep" src="package/cfg/nonInstrumented_per4fte.c"/>
+        <srcFile name="package/cfg/nonInstrumented_per4fte.dep" src="package/cfg/nonInstrumented_per4fte.cfg"/>
+        <srcFile name="package/cfg/instrumented_pm3g.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pm3g.om3g.dep" src="package/cfg/instrumented_pm3g.c"/>
+        <srcFile name="package/cfg/instrumented_pm3g.dep" src="package/cfg/instrumented_pm3g.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pm3g.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pm3g.om3g.dep" src="package/cfg/nonInstrumented_pm3g.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pm3g.dep" src="package/cfg/nonInstrumented_pm3g.cfg"/>
+        <srcFile name="package/cfg/instrumented_pm4g.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pm4g.om4g.dep" src="package/cfg/instrumented_pm4g.c"/>
+        <srcFile name="package/cfg/instrumented_pm4g.dep" src="package/cfg/instrumented_pm4g.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pm4g.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pm4g.om4g.dep" src="package/cfg/nonInstrumented_pm4g.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pm4g.dep" src="package/cfg/nonInstrumented_pm4g.cfg"/>
+        <srcFile name="package/cfg/instrumented_pm4fg.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pm4fg.om4fg.dep" src="package/cfg/instrumented_pm4fg.c"/>
+        <srcFile name="package/cfg/instrumented_pm4fg.dep" src="package/cfg/instrumented_pm4fg.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pm4fg.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pm4fg.om4fg.dep" src="package/cfg/nonInstrumented_pm4fg.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pm4fg.dep" src="package/cfg/nonInstrumented_pm4fg.cfg"/>
+        <srcFile name="package/cfg/instrumented_pa15g.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pa15g.oa15g.dep" src="package/cfg/instrumented_pa15g.c"/>
+        <srcFile name="package/cfg/instrumented_pa15g.dep" src="package/cfg/instrumented_pa15g.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pa15g.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pa15g.oa15g.dep" src="package/cfg/nonInstrumented_pa15g.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pa15g.dep" src="package/cfg/nonInstrumented_pa15g.cfg"/>
+        <srcFile name="package/cfg/smpInstrumented_pem3.mak" src="package.bld"/>
+        <srcFile name="package/cfg/smpInstrumented_pem3.oem3.dep" src="package/cfg/smpInstrumented_pem3.c"/>
+        <srcFile name="package/cfg/smpInstrumented_pem3.dep" src="package/cfg/smpInstrumented_pem3.cfg"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem3.mak" src="package.bld"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem3.oem3.dep" src="package/cfg/smpNonInstrumented_pem3.c"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem3.dep" src="package/cfg/smpNonInstrumented_pem3.cfg"/>
+        <srcFile name="package/cfg/smpInstrumented_pem4.mak" src="package.bld"/>
+        <srcFile name="package/cfg/smpInstrumented_pem4.oem4.dep" src="package/cfg/smpInstrumented_pem4.c"/>
+        <srcFile name="package/cfg/smpInstrumented_pem4.dep" src="package/cfg/smpInstrumented_pem4.cfg"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem4.mak" src="package.bld"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem4.oem4.dep" src="package/cfg/smpNonInstrumented_pem4.c"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem4.dep" src="package/cfg/smpNonInstrumented_pem4.cfg"/>
+        <srcFile name="package/rel/ti_sysbios.tar.gz.dep" src="package/rel/ti_sysbios.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C28_large"
+            version="ti.targets.C28_large{1,0,5.2,3"
+            platform="ti.platforms.ezdsp28235"
+            isa="28"
+            suffix="28L"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C28_float"
+            version="ti.targets.C28_float{1,0,5.2,3"
+            platform="ti.platforms.ezdsp28335"
+            isa="28FP"
+            suffix="28FP"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C64"
+            version="ti.targets.C64{1,0,7.2,0"
+            platform="ti.platforms.dsk6416"
+            isa="64"
+            suffix="64"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,0"
+            platform="ti.platforms.evmDM6446"
+            isa="64P"
+            suffix="64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P_big_endian"
+            version="ti.targets.C64P_big_endian{1,0,7.2,0"
+            platform="ti.platforms.evmDM6437"
+            isa="64P"
+            suffix="64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C674"
+            version="ti.targets.C674{1,0,7.2,0"
+            platform="ti.platforms.evm6748"
+            isa="674"
+            suffix="674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.msp430.MSP430"
+            version="ti.targets.msp430.MSP430{1,0,4.1,0"
+            platform="ti.platforms.msp430:MSP430F5438A:1"
+            isa="430"
+            suffix="430"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/MSP430/4.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.msp430.rts430">
+            <model endian="little"
+                codeModel="small"
+                dataModel="small"/>
+        </target>
+        <target name="ti.targets.msp430.MSP430X"
+            version="ti.targets.msp430.MSP430X{1,0,4.1,0"
+            platform="ti.platforms.msp430:MSP430F5438A:1"
+            isa="430X"
+            suffix="430X"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/MSP430/4.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.msp430.rts430">
+            <model endian="little"
+                codeModel="large"
+                dataModel="restricted"/>
+        </target>
+        <target name="ti.targets.msp430.MSP430X_small"
+            version="ti.targets.msp430.MSP430X_small{1,0,4.1,0"
+            platform="ti.platforms.msp430:MSP430F5438A:1"
+            isa="430X"
+            suffix="430XS"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/MSP430/4.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.msp430.rts430">
+            <model endian="little"
+                codeModel="small"
+                dataModel="small"/>
+        </target>
+        <target name="ti.targets.msp430.elf.MSP430X"
+            version="ti.targets.msp430.elf.MSP430X{1,0,4.1,0"
+            platform="ti.platforms.msp430:MSP430F5438A:1"
+            isa="430X"
+            suffix="e430X"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/MSP430/4.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.msp430.rts430">
+            <model endian="little"
+                codeModel="large"
+                dataModel="restricted"/>
+        </target>
+        <target name="ti.targets.msp430.elf.MSP430X_small"
+            version="ti.targets.msp430.elf.MSP430X_small{1,0,4.1,0"
+            platform="ti.platforms.msp430:MSP430F5438A:1"
+            isa="430X"
+            suffix="e430XS"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/MSP430/4.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.msp430.rts430">
+            <model endian="little"
+                codeModel="small"
+                dataModel="small"/>
+        </target>
+        <target name="iar.targets.msp430.MSP430X_small"
+            version="iar.targets.msp430.MSP430X_small{1,0,5.40,2"
+            platform="ti.platforms.msp430:MSP430F5438A:1"
+            isa="430X"
+            suffix="r430XS"
+            rootDir="/db/toolsrc/library/tools/vendors/iar/msp430/Linux"
+            os="undefined"
+            rts="iar.targets.msp430.rts">
+            <model endian="little"
+                codeModel="large"
+                dataModel="small"/>
+        </target>
+        <target name="ti.targets.elf.C64P"
+            version="ti.targets.elf.C64P{1,0,7.2,0"
+            platform="ti.platforms.evm6472"
+            isa="64P"
+            suffix="e64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P_big_endian"
+            version="ti.targets.elf.C64P_big_endian{1,0,7.2,0"
+            platform="ti.platforms.evmDM6437"
+            isa="64P"
+            suffix="e64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C674"
+            version="ti.targets.elf.C674{1,0,7.2,0"
+            platform="ti.platforms.evm6748"
+            isa="674"
+            suffix="e674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64T"
+            version="ti.targets.elf.C64T{1,0,7.2,0"
+            platform="ti.platforms.sdp4430"
+            isa="64T"
+            suffix="e64T"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66"
+            version="ti.targets.elf.C66{1,0,7.2,0"
+            platform="ti.platforms.evm6678"
+            isa="66"
+            suffix="e66"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66_big_endian"
+            version="ti.targets.elf.C66_big_endian{1,0,7.2,0"
+            platform="ti.platforms.evm6670"
+            isa="66"
+            suffix="e66e"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32"
+            version="ti.targets.arp32.elf.ARP32{1,0,1.0,0,5"
+            platform="ti.platforms.evmC6A8149"
+            isa="arp32"
+            suffix="earp32"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32_far"
+            version="ti.targets.arp32.elf.ARP32_far{1,0,1.0,0,5"
+            platform="ti.platforms.evmC6A8149"
+            isa="arp32"
+            suffix="earp32F"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.Arm9"
+            version="ti.targets.arm.elf.Arm9{1,0,5.0,1"
+            platform="ti.platforms.expOMAPL138"
+            isa="v5T"
+            suffix="e9"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8F"
+            version="ti.targets.arm.elf.A8F{1,0,5.0,1"
+            platform="ti.platforms.evmTI814X"
+            isa="v7A"
+            suffix="ea8f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8Fnv"
+            version="ti.targets.arm.elf.A8Fnv{1,0,5.0,1"
+            platform="ti.platforms.evmAM3359"
+            isa="v7A"
+            suffix="ea8fnv"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M3"
+            version="ti.targets.arm.elf.M3{1,0,5.0,1"
+            platform="ti.platforms.evmLM3S8962:testInst"
+            isa="v7M"
+            suffix="em3"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4"
+            version="ti.targets.arm.elf.M4{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4F"
+            version="ti.targets.arm.elf.M4F{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.R4t_big_endian"
+            version="ti.targets.arm.elf.R4t_big_endian{1,0,5.0,1"
+            platform="ti.platforms.evmTMS570LS20216:testInst"
+            isa="v7R"
+            suffix="er4te"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="big"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.R4Ft_big_endian"
+            version="ti.targets.arm.elf.R4Ft_big_endian{1,0,5.0,1"
+            platform="ti.platforms.evmTMS570LS20216:testInst"
+            isa="v7R"
+            suffix="er4fte"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="big"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.M3"
+            version="gnu.targets.arm.M3{1,0,4.5,2"
+            platform="ti.platforms.stellaris:LM4F232H5QD:1"
+            isa="v7M"
+            suffix="m3g"
+            rootDir="/db/toolsrc/library/tools/vendors/cs/armBM/arm-2011q3"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7M">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.M4"
+            version="gnu.targets.arm.M4{1,0,4.5,2"
+            platform="ti.platforms.stellaris:LM4F232H5QD"
+            isa="v7M4"
+            suffix="m4g"
+            rootDir="/db/toolsrc/library/tools/vendors/cs/armBM/arm-2011q3"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7M">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.M4F"
+            version="gnu.targets.arm.M4F{1,0,4.5,2"
+            platform="ti.platforms.stellaris:LM4F232H5QD"
+            isa="v7M4"
+            suffix="m4fg"
+            rootDir="/db/toolsrc/library/tools/vendors/cs/armBM/arm-2011q3"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7M">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.A15"
+            version="gnu.targets.arm.A15{1,0,4.6,3"
+            platform="ti.platforms.simVayu"
+            isa="v7A15"
+            suffix="a15g"
+            rootDir="/db/toolsrc/library/tools/vendors/cs/armBM/arm-2012_03"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7A">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.a28L"
+        profile="debug"
+        target="ti.targets.C28_large"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.a28FP"
+        profile="debug"
+        target="ti.targets.C28_float"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.a64"
+        profile="debug"
+        target="ti.targets.C64"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.a64P"
+        profile="debug"
+        target="ti.targets.C64P"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.a64Pe"
+        profile="debug"
+        target="ti.targets.C64P_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.a674"
+        profile="debug"
+        target="ti.targets.C674"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.a430"
+        profile="debug"
+        target="ti.targets.msp430.MSP430"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.a430X"
+        profile="debug"
+        target="ti.targets.msp430.MSP430X"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.a430XS"
+        profile="debug"
+        target="ti.targets.msp430.MSP430X_small"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.ae430X"
+        profile="debug"
+        target="ti.targets.msp430.elf.MSP430X"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.ae430XS"
+        profile="debug"
+        target="ti.targets.msp430.elf.MSP430X_small"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.ar430XS"
+        profile="debug"
+        target="iar.targets.msp430.MSP430X_small"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.ae64P"
+        profile="debug"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.ae64Pe"
+        profile="debug"
+        target="ti.targets.elf.C64P_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.ae674"
+        profile="debug"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.ae64T"
+        profile="debug"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.ae66"
+        profile="debug"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.ae66e"
+        profile="debug"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.aearp32"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.aearp32F"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32_far"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.ae9"
+        profile="debug"
+        target="ti.targets.arm.elf.Arm9"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.aea8f"
+        profile="debug"
+        target="ti.targets.arm.elf.A8F"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.aea8fnv"
+        profile="debug"
+        target="ti.targets.arm.elf.A8Fnv"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.aem3"
+        profile="debug"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.aem4"
+        profile="debug"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.aem4f"
+        profile="debug"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.aer4te"
+        profile="debug"
+        target="ti.targets.arm.elf.R4t_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.aer4fte"
+        profile="debug"
+        target="ti.targets.arm.elf.R4Ft_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.am3g"
+        profile="debug"
+        target="gnu.targets.arm.M3"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.am4g"
+        profile="debug"
+        target="gnu.targets.arm.M4"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.am4fg"
+        profile="debug"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/sysbios/debug/ti.sysbios"
+        pname="lib/sysbios/debug/ti.sysbios.aa15g"
+        profile="debug"
+        target="gnu.targets.arm.A15"/>
+    <library name="lib/smpbios/debug/ti.sysbios"
+        pname="lib/smpbios/debug/ti.sysbios.aem3"
+        profile="smp"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/smpbios/debug/ti.sysbios"
+        pname="lib/smpbios/debug/ti.sysbios.aem4"
+        profile="smp"
+        target="ti.targets.arm.elf.M4"/>
+    </libraries>
+    <configurations>
+    <configuration name="instrumented"
+        pname="instrumented.p28L"
+        target="ti.targets.C28_large"
+        platform="ti.platforms.ezdsp28235"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p28L.cfg"
+        xCfgPrefix="package/cfg/instrumented_p28L"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p28L"
+        target="ti.targets.C28_large"
+        platform="ti.platforms.ezdsp28235"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p28L.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p28L"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.p28FP"
+        target="ti.targets.C28_float"
+        platform="ti.platforms.ezdsp28335"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p28FP.cfg"
+        xCfgPrefix="package/cfg/instrumented_p28FP"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p28FP"
+        target="ti.targets.C28_float"
+        platform="ti.platforms.ezdsp28335"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p28FP.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p28FP"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.p64"
+        target="ti.targets.C64"
+        platform="ti.platforms.dsk6416"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p64.cfg"
+        xCfgPrefix="package/cfg/instrumented_p64"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p64"
+        target="ti.targets.C64"
+        platform="ti.platforms.dsk6416"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p64.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p64"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.p64P"
+        target="ti.targets.C64P"
+        platform="ti.platforms.evmDM6446"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p64P.cfg"
+        xCfgPrefix="package/cfg/instrumented_p64P"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p64P"
+        target="ti.targets.C64P"
+        platform="ti.platforms.evmDM6446"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p64P.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p64P"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.p64Pe"
+        target="ti.targets.C64P_big_endian"
+        platform="ti.platforms.evmDM6437"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p64Pe.cfg"
+        xCfgPrefix="package/cfg/instrumented_p64Pe"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p64Pe"
+        target="ti.targets.C64P_big_endian"
+        platform="ti.platforms.evmDM6437"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p64Pe.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p64Pe"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.p674"
+        target="ti.targets.C674"
+        platform="ti.platforms.evm6748"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p674.cfg"
+        xCfgPrefix="package/cfg/instrumented_p674"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p674"
+        target="ti.targets.C674"
+        platform="ti.platforms.evm6748"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p674.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p674"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.p430"
+        target="ti.targets.msp430.MSP430"
+        platform="ti.platforms.msp430:MSP430F5438A:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p430.cfg"
+        xCfgPrefix="package/cfg/instrumented_p430"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p430"
+        target="ti.targets.msp430.MSP430"
+        platform="ti.platforms.msp430:MSP430F5438A:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p430.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p430"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.p430X"
+        target="ti.targets.msp430.MSP430X"
+        platform="ti.platforms.msp430:MSP430F5438A:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p430X.cfg"
+        xCfgPrefix="package/cfg/instrumented_p430X"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p430X"
+        target="ti.targets.msp430.MSP430X"
+        platform="ti.platforms.msp430:MSP430F5438A:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p430X.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p430X"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.p430XS"
+        target="ti.targets.msp430.MSP430X_small"
+        platform="ti.platforms.msp430:MSP430F5438A:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p430XS.cfg"
+        xCfgPrefix="package/cfg/instrumented_p430XS"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p430XS"
+        target="ti.targets.msp430.MSP430X_small"
+        platform="ti.platforms.msp430:MSP430F5438A:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p430XS.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p430XS"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe430X"
+        target="ti.targets.msp430.elf.MSP430X"
+        platform="ti.platforms.msp430:MSP430F5438A:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe430X.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe430X"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe430X"
+        target="ti.targets.msp430.elf.MSP430X"
+        platform="ti.platforms.msp430:MSP430F5438A:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe430X.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe430X"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe430XS"
+        target="ti.targets.msp430.elf.MSP430X_small"
+        platform="ti.platforms.msp430:MSP430F5438A:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe430XS.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe430XS"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe430XS"
+        target="ti.targets.msp430.elf.MSP430X_small"
+        platform="ti.platforms.msp430:MSP430F5438A:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe430XS.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe430XS"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pr430XS"
+        target="iar.targets.msp430.MSP430X_small"
+        platform="ti.platforms.msp430:MSP430F5438A:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pr430XS.cfg"
+        xCfgPrefix="package/cfg/instrumented_pr430XS"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pr430XS"
+        target="iar.targets.msp430.MSP430X_small"
+        platform="ti.platforms.msp430:MSP430F5438A:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pr430XS.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pr430XS"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe64P"
+        target="ti.targets.elf.C64P"
+        platform="ti.platforms.evm6472"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe64P.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe64P"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe64P"
+        target="ti.targets.elf.C64P"
+        platform="ti.platforms.evm6472"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe64P.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe64P"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe64Pe"
+        target="ti.targets.elf.C64P_big_endian"
+        platform="ti.platforms.evmDM6437"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe64Pe.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe64Pe"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe64Pe"
+        target="ti.targets.elf.C64P_big_endian"
+        platform="ti.platforms.evmDM6437"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe64Pe.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe64Pe"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe674"
+        target="ti.targets.elf.C674"
+        platform="ti.platforms.evm6748"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe674.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe674"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe674"
+        target="ti.targets.elf.C674"
+        platform="ti.platforms.evm6748"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe674.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe674"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe64T"
+        target="ti.targets.elf.C64T"
+        platform="ti.platforms.sdp4430"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe64T.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe64T"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe64T"
+        target="ti.targets.elf.C64T"
+        platform="ti.platforms.sdp4430"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe64T.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe64T"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe66"
+        target="ti.targets.elf.C66"
+        platform="ti.platforms.evm6678"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe66.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe66"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe66"
+        target="ti.targets.elf.C66"
+        platform="ti.platforms.evm6678"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe66.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe66"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe66e"
+        target="ti.targets.elf.C66_big_endian"
+        platform="ti.platforms.evm6670"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe66e.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe66e"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe66e"
+        target="ti.targets.elf.C66_big_endian"
+        platform="ti.platforms.evm6670"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe66e.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe66e"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pearp32"
+        target="ti.targets.arp32.elf.ARP32"
+        platform="ti.platforms.evmC6A8149"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pearp32.cfg"
+        xCfgPrefix="package/cfg/instrumented_pearp32"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pearp32"
+        target="ti.targets.arp32.elf.ARP32"
+        platform="ti.platforms.evmC6A8149"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pearp32.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pearp32"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pearp32F"
+        target="ti.targets.arp32.elf.ARP32_far"
+        platform="ti.platforms.evmC6A8149"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pearp32F.cfg"
+        xCfgPrefix="package/cfg/instrumented_pearp32F"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pearp32F"
+        target="ti.targets.arp32.elf.ARP32_far"
+        platform="ti.platforms.evmC6A8149"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pearp32F.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pearp32F"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe9"
+        target="ti.targets.arm.elf.Arm9"
+        platform="ti.platforms.expOMAPL138"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe9.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe9"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe9"
+        target="ti.targets.arm.elf.Arm9"
+        platform="ti.platforms.expOMAPL138"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe9.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe9"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pea8f"
+        target="ti.targets.arm.elf.A8F"
+        platform="ti.platforms.evmTI814X"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pea8f.cfg"
+        xCfgPrefix="package/cfg/instrumented_pea8f"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pea8f"
+        target="ti.targets.arm.elf.A8F"
+        platform="ti.platforms.evmTI814X"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pea8f.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pea8f"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pea8fnv"
+        target="ti.targets.arm.elf.A8Fnv"
+        platform="ti.platforms.evmAM3359"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pea8fnv.cfg"
+        xCfgPrefix="package/cfg/instrumented_pea8fnv"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pea8fnv"
+        target="ti.targets.arm.elf.A8Fnv"
+        platform="ti.platforms.evmAM3359"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pea8fnv.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pea8fnv"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pem3"
+        target="ti.targets.arm.elf.M3"
+        platform="ti.platforms.evmLM3S8962:testInst"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pem3.cfg"
+        xCfgPrefix="package/cfg/instrumented_pem3"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pem3"
+        target="ti.targets.arm.elf.M3"
+        platform="ti.platforms.evmLM3S8962:testInst"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pem3.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pem3"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pem4"
+        target="ti.targets.arm.elf.M4"
+        platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pem4.cfg"
+        xCfgPrefix="package/cfg/instrumented_pem4"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pem4"
+        target="ti.targets.arm.elf.M4"
+        platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pem4.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pem4"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pem4f"
+        target="ti.targets.arm.elf.M4F"
+        platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pem4f.cfg"
+        xCfgPrefix="package/cfg/instrumented_pem4f"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pem4f"
+        target="ti.targets.arm.elf.M4F"
+        platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pem4f.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pem4f"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.per4te"
+        target="ti.targets.arm.elf.R4t_big_endian"
+        platform="ti.platforms.evmTMS570LS20216:testInst"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_per4te.cfg"
+        xCfgPrefix="package/cfg/instrumented_per4te"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.per4te"
+        target="ti.targets.arm.elf.R4t_big_endian"
+        platform="ti.platforms.evmTMS570LS20216:testInst"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_per4te.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_per4te"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.per4fte"
+        target="ti.targets.arm.elf.R4Ft_big_endian"
+        platform="ti.platforms.evmTMS570LS20216:testInst"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_per4fte.cfg"
+        xCfgPrefix="package/cfg/instrumented_per4fte"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.per4fte"
+        target="ti.targets.arm.elf.R4Ft_big_endian"
+        platform="ti.platforms.evmTMS570LS20216:testInst"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_per4fte.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_per4fte"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pm3g"
+        target="gnu.targets.arm.M3"
+        platform="ti.platforms.stellaris:LM4F232H5QD:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pm3g.cfg"
+        xCfgPrefix="package/cfg/instrumented_pm3g"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pm3g"
+        target="gnu.targets.arm.M3"
+        platform="ti.platforms.stellaris:LM4F232H5QD:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pm3g.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pm3g"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pm4g"
+        target="gnu.targets.arm.M4"
+        platform="ti.platforms.stellaris:LM4F232H5QD"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pm4g.cfg"
+        xCfgPrefix="package/cfg/instrumented_pm4g"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pm4g"
+        target="gnu.targets.arm.M4"
+        platform="ti.platforms.stellaris:LM4F232H5QD"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pm4g.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pm4g"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pm4fg"
+        target="gnu.targets.arm.M4F"
+        platform="ti.platforms.stellaris:LM4F232H5QD"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pm4fg.cfg"
+        xCfgPrefix="package/cfg/instrumented_pm4fg"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pm4fg"
+        target="gnu.targets.arm.M4F"
+        platform="ti.platforms.stellaris:LM4F232H5QD"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pm4fg.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pm4fg"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pa15g"
+        target="gnu.targets.arm.A15"
+        platform="ti.platforms.simVayu"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pa15g.cfg"
+        xCfgPrefix="package/cfg/instrumented_pa15g"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pa15g"
+        target="gnu.targets.arm.A15"
+        platform="ti.platforms.simVayu"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pa15g.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pa15g"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="smpInstrumented"
+        pname="smpInstrumented.pem3"
+        target="ti.targets.arm.elf.M3"
+        platform="ti.platforms.evmLM3S8962:testInst"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/smpInstrumented_pem3.cfg"
+        xCfgPrefix="package/cfg/smpInstrumented_pem3"
+        cfgScript="smpInstrumented.cfg"
+        />
+    <configuration name="smpNonInstrumented"
+        pname="smpNonInstrumented.pem3"
+        target="ti.targets.arm.elf.M3"
+        platform="ti.platforms.evmLM3S8962:testInst"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/smpNonInstrumented_pem3.cfg"
+        xCfgPrefix="package/cfg/smpNonInstrumented_pem3"
+        cfgScript="smpNonInstrumented.cfg"
+        />
+    <configuration name="smpInstrumented"
+        pname="smpInstrumented.pem4"
+        target="ti.targets.arm.elf.M4"
+        platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/smpInstrumented_pem4.cfg"
+        xCfgPrefix="package/cfg/smpInstrumented_pem4"
+        cfgScript="smpInstrumented.cfg"
+        />
+    <configuration name="smpNonInstrumented"
+        pname="smpNonInstrumented.pem4"
+        target="ti.targets.arm.elf.M4"
+        platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/smpNonInstrumented_pem4.cfg"
+        xCfgPrefix="package/cfg/smpNonInstrumented_pem4"
+        cfgScript="smpNonInstrumented.cfg"
+        />
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sysbios"
+        pname="../..//../exports/ti_sysbios.tar.gz"
+        label="default"
+        relScript="scripts/copyright_xml.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="makefile.xdt"/>
+        <file name="debugMakefile.xdt"/>
+        <file name="makefile_IAR.xdt"/>
+        <file name="makefile_gccArmLto.xdt"/>
+        <file name="BIOS.gel"/>
+        <file name="BIOS__prologue.h"/>
+        <file name="BIOS__epilogue.h"/>
+        <file name="instrumented.cfg.xs"/>
+        <file name="nonInstrumented.cfg.xs"/>
+        <file name="instrumented.cfg"/>
+        <file name="nonInstrumented.cfg"/>
+        <file name="smpInstrumented.cfg"/>
+        <file name="smpNonInstrumented.cfg"/>
+        <file name="BIOS.xml"/>
+        <file name="Diagnostics.xml"/>
+        <file name="Welcome.html"/>
+        <file name="Overview.xml"/>
+        <file name="Overview.svg"/>
+        <file name="lib/sysbios/instrumented/sysbios.a28L"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.a28L"/>
+        <file name="lib/sysbios/instrumented/sysbios.a28FP"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.a28FP"/>
+        <file name="lib/sysbios/instrumented/sysbios.a64"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.a64"/>
+        <file name="lib/sysbios/instrumented/sysbios.a64P"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.a64P"/>
+        <file name="lib/sysbios/instrumented/sysbios.a64Pe"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.a64Pe"/>
+        <file name="lib/sysbios/instrumented/sysbios.a674"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.a674"/>
+        <file name="lib/sysbios/instrumented/sysbios.a430"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.a430"/>
+        <file name="lib/sysbios/instrumented/sysbios.a430X"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.a430X"/>
+        <file name="lib/sysbios/instrumented/sysbios.a430XS"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.a430XS"/>
+        <file name="lib/sysbios/instrumented/sysbios.ae430X"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.ae430X"/>
+        <file name="lib/sysbios/instrumented/sysbios.ae430XS"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.ae430XS"/>
+        <file name="lib/sysbios/instrumented/sysbios.ar430XS"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.ar430XS"/>
+        <file name="lib/sysbios/instrumented/sysbios.ae64P"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.ae64P"/>
+        <file name="lib/sysbios/instrumented/sysbios.ae64Pe"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.ae64Pe"/>
+        <file name="lib/sysbios/instrumented/sysbios.ae674"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.ae674"/>
+        <file name="lib/sysbios/instrumented/sysbios.ae64T"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.ae64T"/>
+        <file name="lib/sysbios/instrumented/sysbios.ae66"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.ae66"/>
+        <file name="lib/sysbios/instrumented/sysbios.ae66e"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.ae66e"/>
+        <file name="lib/sysbios/instrumented/sysbios.aearp32"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.aearp32"/>
+        <file name="lib/sysbios/instrumented/sysbios.aearp32F"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.aearp32F"/>
+        <file name="lib/sysbios/instrumented/sysbios.ae9"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.ae9"/>
+        <file name="lib/sysbios/instrumented/sysbios.aea8f"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.aea8f"/>
+        <file name="lib/sysbios/instrumented/sysbios.aea8fnv"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.aea8fnv"/>
+        <file name="lib/sysbios/instrumented/sysbios.aem3"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.aem3"/>
+        <file name="lib/sysbios/instrumented/sysbios.aem4"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.aem4"/>
+        <file name="lib/sysbios/instrumented/sysbios.aem4f"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.aem4f"/>
+        <file name="lib/sysbios/instrumented/sysbios.aer4te"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.aer4te"/>
+        <file name="lib/sysbios/instrumented/sysbios.aer4fte"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.aer4fte"/>
+        <file name="lib/sysbios/instrumented/sysbios.am3g"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.am3g"/>
+        <file name="lib/sysbios/instrumented/sysbios.am4g"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.am4g"/>
+        <file name="lib/sysbios/instrumented/sysbios.am4fg"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.am4fg"/>
+        <file name="lib/sysbios/instrumented/sysbios.aa15g"/>
+        <file name="lib/sysbios/nonInstrumented/sysbios.aa15g"/>
+        <file name="lib/smpbios/instrumented/sysbios.aem3"/>
+        <file name="lib/smpbios/nonInstrumented/sysbios.aem3"/>
+        <file name="lib/smpbios/instrumented/sysbios.aem4"/>
+        <file name="lib/smpbios/nonInstrumented/sysbios.aem4"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/sysbios/debug/ti.sysbios.a28L"/>
+        <file name="package/package_ti.sysbios.c"/>
+        <file name="BIOS.c"/>
+        <file name="lib/sysbios/debug/ti.sysbios.a28FP"/>
+        <file name="lib/sysbios/debug/ti.sysbios.a64"/>
+        <file name="lib/sysbios/debug/ti.sysbios.a64P"/>
+        <file name="lib/sysbios/debug/ti.sysbios.a64Pe"/>
+        <file name="lib/sysbios/debug/ti.sysbios.a674"/>
+        <file name="lib/sysbios/debug/ti.sysbios.a430"/>
+        <file name="lib/sysbios/debug/ti.sysbios.a430X"/>
+        <file name="lib/sysbios/debug/ti.sysbios.a430XS"/>
+        <file name="lib/sysbios/debug/ti.sysbios.ae430X"/>
+        <file name="lib/sysbios/debug/ti.sysbios.ae430XS"/>
+        <file name="lib/sysbios/debug/ti.sysbios.ar430XS"/>
+        <file name="lib/sysbios/debug/ti.sysbios.ae64P"/>
+        <file name="lib/sysbios/debug/ti.sysbios.ae64Pe"/>
+        <file name="lib/sysbios/debug/ti.sysbios.ae674"/>
+        <file name="lib/sysbios/debug/ti.sysbios.ae64T"/>
+        <file name="lib/sysbios/debug/ti.sysbios.ae66"/>
+        <file name="lib/sysbios/debug/ti.sysbios.ae66e"/>
+        <file name="lib/sysbios/debug/ti.sysbios.aearp32"/>
+        <file name="lib/sysbios/debug/ti.sysbios.aearp32F"/>
+        <file name="lib/sysbios/debug/ti.sysbios.ae9"/>
+        <file name="lib/sysbios/debug/ti.sysbios.aea8f"/>
+        <file name="lib/sysbios/debug/ti.sysbios.aea8fnv"/>
+        <file name="lib/sysbios/debug/ti.sysbios.aem3"/>
+        <file name="lib/sysbios/debug/ti.sysbios.aem4"/>
+        <file name="lib/sysbios/debug/ti.sysbios.aem4f"/>
+        <file name="lib/sysbios/debug/ti.sysbios.aer4te"/>
+        <file name="lib/sysbios/debug/ti.sysbios.aer4fte"/>
+        <file name="lib/sysbios/debug/ti.sysbios.am3g"/>
+        <file name="lib/sysbios/debug/ti.sysbios.am4g"/>
+        <file name="lib/sysbios/debug/ti.sysbios.am4fg"/>
+        <file name="lib/sysbios/debug/ti.sysbios.aa15g"/>
+        <file name="lib/smpbios/debug/ti.sysbios.aem3"/>
+        <file name="lib/smpbios/debug/ti.sysbios.aem4"/>
+        <file name="package/cfg/instrumented_p28L.xdc.inc"/>
+        <file name="package/cfg/instrumented_p28L.cfg"/>
+        <file name="package/cfg/instrumented_p28L.c"/>
+        <file name="package/cfg/nonInstrumented_p28L.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_p28L.cfg"/>
+        <file name="package/cfg/nonInstrumented_p28L.c"/>
+        <file name="package/cfg/instrumented_p28FP.xdc.inc"/>
+        <file name="package/cfg/instrumented_p28FP.cfg"/>
+        <file name="package/cfg/instrumented_p28FP.c"/>
+        <file name="package/cfg/nonInstrumented_p28FP.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_p28FP.cfg"/>
+        <file name="package/cfg/nonInstrumented_p28FP.c"/>
+        <file name="package/cfg/instrumented_p64.xdc.inc"/>
+        <file name="package/cfg/instrumented_p64.cfg"/>
+        <file name="package/cfg/instrumented_p64.c"/>
+        <file name="package/cfg/nonInstrumented_p64.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_p64.cfg"/>
+        <file name="package/cfg/nonInstrumented_p64.c"/>
+        <file name="package/cfg/instrumented_p64P.xdc.inc"/>
+        <file name="package/cfg/instrumented_p64P.cfg"/>
+        <file name="package/cfg/instrumented_p64P.c"/>
+        <file name="package/cfg/nonInstrumented_p64P.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_p64P.cfg"/>
+        <file name="package/cfg/nonInstrumented_p64P.c"/>
+        <file name="package/cfg/instrumented_p64Pe.xdc.inc"/>
+        <file name="package/cfg/instrumented_p64Pe.cfg"/>
+        <file name="package/cfg/instrumented_p64Pe.c"/>
+        <file name="package/cfg/nonInstrumented_p64Pe.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_p64Pe.cfg"/>
+        <file name="package/cfg/nonInstrumented_p64Pe.c"/>
+        <file name="package/cfg/instrumented_p674.xdc.inc"/>
+        <file name="package/cfg/instrumented_p674.cfg"/>
+        <file name="package/cfg/instrumented_p674.c"/>
+        <file name="package/cfg/nonInstrumented_p674.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_p674.cfg"/>
+        <file name="package/cfg/nonInstrumented_p674.c"/>
+        <file name="package/cfg/instrumented_p430.xdc.inc"/>
+        <file name="package/cfg/instrumented_p430.cfg"/>
+        <file name="package/cfg/instrumented_p430.c"/>
+        <file name="package/cfg/nonInstrumented_p430.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_p430.cfg"/>
+        <file name="package/cfg/nonInstrumented_p430.c"/>
+        <file name="package/cfg/instrumented_p430X.xdc.inc"/>
+        <file name="package/cfg/instrumented_p430X.cfg"/>
+        <file name="package/cfg/instrumented_p430X.c"/>
+        <file name="package/cfg/nonInstrumented_p430X.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_p430X.cfg"/>
+        <file name="package/cfg/nonInstrumented_p430X.c"/>
+        <file name="package/cfg/instrumented_p430XS.xdc.inc"/>
+        <file name="package/cfg/instrumented_p430XS.cfg"/>
+        <file name="package/cfg/instrumented_p430XS.c"/>
+        <file name="package/cfg/nonInstrumented_p430XS.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_p430XS.cfg"/>
+        <file name="package/cfg/nonInstrumented_p430XS.c"/>
+        <file name="package/cfg/instrumented_pe430X.xdc.inc"/>
+        <file name="package/cfg/instrumented_pe430X.cfg"/>
+        <file name="package/cfg/instrumented_pe430X.c"/>
+        <file name="package/cfg/nonInstrumented_pe430X.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pe430X.cfg"/>
+        <file name="package/cfg/nonInstrumented_pe430X.c"/>
+        <file name="package/cfg/instrumented_pe430XS.xdc.inc"/>
+        <file name="package/cfg/instrumented_pe430XS.cfg"/>
+        <file name="package/cfg/instrumented_pe430XS.c"/>
+        <file name="package/cfg/nonInstrumented_pe430XS.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pe430XS.cfg"/>
+        <file name="package/cfg/nonInstrumented_pe430XS.c"/>
+        <file name="package/cfg/instrumented_pr430XS.xdc.inc"/>
+        <file name="package/cfg/instrumented_pr430XS.cfg"/>
+        <file name="package/cfg/instrumented_pr430XS.c"/>
+        <file name="package/cfg/nonInstrumented_pr430XS.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pr430XS.cfg"/>
+        <file name="package/cfg/nonInstrumented_pr430XS.c"/>
+        <file name="package/cfg/instrumented_pe64P.xdc.inc"/>
+        <file name="package/cfg/instrumented_pe64P.cfg"/>
+        <file name="package/cfg/instrumented_pe64P.c"/>
+        <file name="package/cfg/nonInstrumented_pe64P.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pe64P.cfg"/>
+        <file name="package/cfg/nonInstrumented_pe64P.c"/>
+        <file name="package/cfg/instrumented_pe64Pe.xdc.inc"/>
+        <file name="package/cfg/instrumented_pe64Pe.cfg"/>
+        <file name="package/cfg/instrumented_pe64Pe.c"/>
+        <file name="package/cfg/nonInstrumented_pe64Pe.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pe64Pe.cfg"/>
+        <file name="package/cfg/nonInstrumented_pe64Pe.c"/>
+        <file name="package/cfg/instrumented_pe674.xdc.inc"/>
+        <file name="package/cfg/instrumented_pe674.cfg"/>
+        <file name="package/cfg/instrumented_pe674.c"/>
+        <file name="package/cfg/nonInstrumented_pe674.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pe674.cfg"/>
+        <file name="package/cfg/nonInstrumented_pe674.c"/>
+        <file name="package/cfg/instrumented_pe64T.xdc.inc"/>
+        <file name="package/cfg/instrumented_pe64T.cfg"/>
+        <file name="package/cfg/instrumented_pe64T.c"/>
+        <file name="package/cfg/nonInstrumented_pe64T.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pe64T.cfg"/>
+        <file name="package/cfg/nonInstrumented_pe64T.c"/>
+        <file name="package/cfg/instrumented_pe66.xdc.inc"/>
+        <file name="package/cfg/instrumented_pe66.cfg"/>
+        <file name="package/cfg/instrumented_pe66.c"/>
+        <file name="package/cfg/nonInstrumented_pe66.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pe66.cfg"/>
+        <file name="package/cfg/nonInstrumented_pe66.c"/>
+        <file name="package/cfg/instrumented_pe66e.xdc.inc"/>
+        <file name="package/cfg/instrumented_pe66e.cfg"/>
+        <file name="package/cfg/instrumented_pe66e.c"/>
+        <file name="package/cfg/nonInstrumented_pe66e.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pe66e.cfg"/>
+        <file name="package/cfg/nonInstrumented_pe66e.c"/>
+        <file name="package/cfg/instrumented_pearp32.xdc.inc"/>
+        <file name="package/cfg/instrumented_pearp32.cfg"/>
+        <file name="package/cfg/instrumented_pearp32.c"/>
+        <file name="package/cfg/nonInstrumented_pearp32.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pearp32.cfg"/>
+        <file name="package/cfg/nonInstrumented_pearp32.c"/>
+        <file name="package/cfg/instrumented_pearp32F.xdc.inc"/>
+        <file name="package/cfg/instrumented_pearp32F.cfg"/>
+        <file name="package/cfg/instrumented_pearp32F.c"/>
+        <file name="package/cfg/nonInstrumented_pearp32F.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pearp32F.cfg"/>
+        <file name="package/cfg/nonInstrumented_pearp32F.c"/>
+        <file name="package/cfg/instrumented_pe9.xdc.inc"/>
+        <file name="package/cfg/instrumented_pe9.cfg"/>
+        <file name="package/cfg/instrumented_pe9.c"/>
+        <file name="package/cfg/nonInstrumented_pe9.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pe9.cfg"/>
+        <file name="package/cfg/nonInstrumented_pe9.c"/>
+        <file name="package/cfg/instrumented_pea8f.xdc.inc"/>
+        <file name="package/cfg/instrumented_pea8f.cfg"/>
+        <file name="package/cfg/instrumented_pea8f.c"/>
+        <file name="package/cfg/nonInstrumented_pea8f.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pea8f.cfg"/>
+        <file name="package/cfg/nonInstrumented_pea8f.c"/>
+        <file name="package/cfg/instrumented_pea8fnv.xdc.inc"/>
+        <file name="package/cfg/instrumented_pea8fnv.cfg"/>
+        <file name="package/cfg/instrumented_pea8fnv.c"/>
+        <file name="package/cfg/nonInstrumented_pea8fnv.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pea8fnv.cfg"/>
+        <file name="package/cfg/nonInstrumented_pea8fnv.c"/>
+        <file name="package/cfg/instrumented_pem3.xdc.inc"/>
+        <file name="package/cfg/instrumented_pem3.cfg"/>
+        <file name="package/cfg/instrumented_pem3.c"/>
+        <file name="package/cfg/nonInstrumented_pem3.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pem3.cfg"/>
+        <file name="package/cfg/nonInstrumented_pem3.c"/>
+        <file name="package/cfg/instrumented_pem4.xdc.inc"/>
+        <file name="package/cfg/instrumented_pem4.cfg"/>
+        <file name="package/cfg/instrumented_pem4.c"/>
+        <file name="package/cfg/nonInstrumented_pem4.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pem4.cfg"/>
+        <file name="package/cfg/nonInstrumented_pem4.c"/>
+        <file name="package/cfg/instrumented_pem4f.xdc.inc"/>
+        <file name="package/cfg/instrumented_pem4f.cfg"/>
+        <file name="package/cfg/instrumented_pem4f.c"/>
+        <file name="package/cfg/nonInstrumented_pem4f.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pem4f.cfg"/>
+        <file name="package/cfg/nonInstrumented_pem4f.c"/>
+        <file name="package/cfg/instrumented_per4te.xdc.inc"/>
+        <file name="package/cfg/instrumented_per4te.cfg"/>
+        <file name="package/cfg/instrumented_per4te.c"/>
+        <file name="package/cfg/nonInstrumented_per4te.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_per4te.cfg"/>
+        <file name="package/cfg/nonInstrumented_per4te.c"/>
+        <file name="package/cfg/instrumented_per4fte.xdc.inc"/>
+        <file name="package/cfg/instrumented_per4fte.cfg"/>
+        <file name="package/cfg/instrumented_per4fte.c"/>
+        <file name="package/cfg/nonInstrumented_per4fte.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_per4fte.cfg"/>
+        <file name="package/cfg/nonInstrumented_per4fte.c"/>
+        <file name="package/cfg/instrumented_pm3g.xdc.inc"/>
+        <file name="package/cfg/instrumented_pm3g.cfg"/>
+        <file name="package/cfg/instrumented_pm3g.c"/>
+        <file name="package/cfg/nonInstrumented_pm3g.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pm3g.cfg"/>
+        <file name="package/cfg/nonInstrumented_pm3g.c"/>
+        <file name="package/cfg/instrumented_pm4g.xdc.inc"/>
+        <file name="package/cfg/instrumented_pm4g.cfg"/>
+        <file name="package/cfg/instrumented_pm4g.c"/>
+        <file name="package/cfg/nonInstrumented_pm4g.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pm4g.cfg"/>
+        <file name="package/cfg/nonInstrumented_pm4g.c"/>
+        <file name="package/cfg/instrumented_pm4fg.xdc.inc"/>
+        <file name="package/cfg/instrumented_pm4fg.cfg"/>
+        <file name="package/cfg/instrumented_pm4fg.c"/>
+        <file name="package/cfg/nonInstrumented_pm4fg.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pm4fg.cfg"/>
+        <file name="package/cfg/nonInstrumented_pm4fg.c"/>
+        <file name="package/cfg/instrumented_pa15g.xdc.inc"/>
+        <file name="package/cfg/instrumented_pa15g.cfg"/>
+        <file name="package/cfg/instrumented_pa15g.c"/>
+        <file name="package/cfg/nonInstrumented_pa15g.xdc.inc"/>
+        <file name="package/cfg/nonInstrumented_pa15g.cfg"/>
+        <file name="package/cfg/nonInstrumented_pa15g.c"/>
+        <file name="package/cfg/smpInstrumented_pem3.xdc.inc"/>
+        <file name="package/cfg/smpInstrumented_pem3.cfg"/>
+        <file name="package/cfg/smpInstrumented_pem3.c"/>
+        <file name="package/cfg/smpNonInstrumented_pem3.xdc.inc"/>
+        <file name="package/cfg/smpNonInstrumented_pem3.cfg"/>
+        <file name="package/cfg/smpNonInstrumented_pem3.c"/>
+        <file name="package/cfg/smpInstrumented_pem4.xdc.inc"/>
+        <file name="package/cfg/smpInstrumented_pem4.cfg"/>
+        <file name="package/cfg/smpInstrumented_pem4.c"/>
+        <file name="package/cfg/smpNonInstrumented_pem4.xdc.inc"/>
+        <file name="package/cfg/smpNonInstrumented_pem4.cfg"/>
+        <file name="package/cfg/smpNonInstrumented_pem4.c"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

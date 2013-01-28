@@ -1,0 +1,183 @@
+;
+;! Revision History
+;! ================
+;! 14-Dec-2009 agd	tag Module state struct
+;! 16-May-2007 agd	SDSCM00016104 (init bss), removed dispatchC 
+;!			from module state
+;! 19-Mar-2007 cmcc     Moved dispatchC into Hwi module state, updated dispatch
+;! 12-Sep-2006 cmcc     Added .sect and .clink to all functions
+;
+;        .global $bss
+
+        .cdecls C,NOLIST,"package/internal/Hwi.xdc.h"
+;
+; We should probably define a C struct for the stack frame below ...
+;
+
+;
+; The following are double word offsets (offset must be < 32 for A-reg access)
+;
+Hwi_SFB1B0      .set    5
+Hwi_SFB3B2      .set    6
+Hwi_SFB5B4      .set    7
+Hwi_SFB7B6      .set    8
+Hwi_SFB9B8      .set    9
+Hwi_SFB17B16    .set    10
+Hwi_SFB19B18    .set    11
+Hwi_SFB21B20    .set    12
+Hwi_SFB23B22    .set    13
+Hwi_SFB25B24    .set    14
+Hwi_SFB27B26    .set    15
+Hwi_SFB29B28    .set    16
+Hwi_SFB31B30    .set    17
+Hwi_SFA1A0      .set    18
+Hwi_SFA3A2      .set    19
+Hwi_SFA5A4      .set    20
+Hwi_SFA7A6      .set    21
+Hwi_SFA9A8      .set    22
+Hwi_SFA17A16    .set    23
+Hwi_SFA19A18    .set    24
+Hwi_SFA21A20    .set    25
+Hwi_SFA23A22    .set    26
+Hwi_SFA25A24    .set    27
+Hwi_SFA27A26    .set    28
+Hwi_SFA29A28    .set    29
+Hwi_SFA31A30    .set    30
+
+;
+; The following are single word offsets, keep them in the low part of the frame
+; (offset must be < 32 for A-reg access)
+;
+Hwi_SFoldCSR    .set    2
+Hwi_SFoldAMR    .set    3
+Hwi_SFoldIRP    .set    4
+Hwi_SFoldIER    .set    5
+Hwi_SFB14       .set    6
+
+Hwi_STACKFRAMESIZE      .set    31      ; DW (8 byte) size
+
+
+SP              .set    b15
+a1_intNum       .set    a1
+
+        .global _ti_sysbios_family_c64_Hwi_dispatchC__I
+
+_ti_sysbios_family_c64_Hwi_Module__state__V .tag ti_sysbios_family_c64_Hwi_Module_State
+
+;
+; This dispatcher always aligns stack
+;
+        .global _ti_sysbios_family_c64_Hwi_dispatchAlways
+	.sect ".text:_ti_sysbios_family_c64_Hwi_dispatchAlways"
+    .clink
+_ti_sysbios_family_c64_Hwi_dispatchAlways:
+        .asmfunc
+
+        stw     b10, *SP--[2]
+        ldw     *SP[1], a1_intNum               ; get intr #
+||      mv      SP, b10                         ; save pre-aligned SP
+||      and     SP, ~0x7, SP                    ; align SP
+        addk    -(Hwi_STACKFRAMESIZE*8), SP     ; alloc stack frame
+        stdw    a1:a0, *SP[Hwi_SFA1A0]
+||      mv      SP, a0
+        stdw    b1:b0, *SP[Hwi_SFB1B0]
+||      mvc     CSR, b1
+        stdw    a9:a8, *a0[Hwi_SFA9A8]
+||      stdw    b9:b8, *SP[Hwi_SFB9B8]
+||      mvkl    _ti_sysbios_family_c64_Hwi_Module__state__V.bss, a9
+        stdw    a3:a2, *a0[Hwi_SFA3A2]
+||      stdw    b3:b2, *SP[Hwi_SFB3B2]
+||      mv      b1, a3
+||      mvc     AMR, b1
+||      mvkh    _ti_sysbios_family_c64_Hwi_Module__state__V.bss, a9
+        stw     a3, *a0[Hwi_SFoldCSR]
+||      stw     b1, *SP[Hwi_SFoldAMR]
+||      mvc     IRP, b1
+||      mvk     0, b0
+        stdw    a5:a4, *a0[Hwi_SFA5A4]
+||      stdw    b5:b4, *SP[Hwi_SFB5B4]
+||      mv      b1, a3
+||      mvc     b0, AMR
+        ldw     *a9, b14                     	; init $bss b14
+        stw     a3, *a0[Hwi_SFoldIRP]
+||      stw     b14, *SP[Hwi_SFB14]
+||      mvkl    _ti_sysbios_family_c64_Hwi_dispatchC__I, a3
+        stdw    a7:a6, *a0[Hwi_SFA7A6]
+||      stdw    b7:b6, *SP[Hwi_SFB7B6]
+||      mvkh    _ti_sysbios_family_c64_Hwi_dispatchC__I, a3
+        stdw    a17:a16, *a0[Hwi_SFA17A16]
+||      stdw    b17:b16, *SP[Hwi_SFB17B16]
+        stdw    a19:a18, *a0[Hwi_SFA19A18]
+||      stdw    b19:b18, *SP[Hwi_SFB19B18]
+ 
+        b       a3
+||      stdw    a21:a20, *a0[Hwi_SFA21A20]
+||      stdw    b21:b20, *SP[Hwi_SFB21B20]
+||      mv      a1_intNum, a4
+        stdw    a23:a22, *a0[Hwi_SFA23A22]
+||      stdw    b23:b22, *SP[Hwi_SFB23B22]
+||      mvkl    dispatchCRet1, b3
+        stdw    a25:a24, *a0[Hwi_SFA25A24]
+||      stdw    b25:b24, *SP[Hwi_SFB25B24]
+||      mvkh    dispatchCRet1, b3
+        stdw    a27:a26, *a0[Hwi_SFA27A26]
+||      stdw    b27:b26, *SP[Hwi_SFB27B26]
+        stdw    a29:a28, *a0[Hwi_SFA29A28]
+||      stdw    b29:b28, *SP[Hwi_SFB29B28]
+        stdw    a31:a30, *a0[Hwi_SFA31A30]
+||      stdw    b31:b30, *SP[Hwi_SFB31B30]
+
+dispatchCRet1:
+        
+        ;
+        ; interrupts must be disabled upon return from above call
+        ;
+
+        mv      SP, a0
+
+        ldw     *SP[Hwi_SFoldAMR], b1
+||      ldw     *a0[Hwi_SFoldCSR], a1
+        ldw     *SP[Hwi_SFB14], b14
+||      ldw     *a0[Hwi_SFoldIRP], a2
+        lddw    *a0[Hwi_SFA5A4], a5:a4
+||      lddw    *SP[Hwi_SFB5B4], b5:b4
+        lddw    *a0[Hwi_SFA7A6], a7:a6
+||      lddw    *SP[Hwi_SFB7B6], b7:b6
+        lddw    *a0[Hwi_SFA9A8], a9:a8
+||      lddw    *SP[Hwi_SFB9B8], b9:b8
+        lddw    *a0[Hwi_SFA17A16], a17:a16
+||      lddw    *SP[Hwi_SFB17B16], b17:b16
+||      mvc     b1, AMR
+||      mv      a1, b1
+        lddw    *a0[Hwi_SFA19A18], a19:a18
+||      lddw    *SP[Hwi_SFB19B18], b19:b18
+||      mvc     b1, CSR
+||      and     b1, 0x4, b0
+        lddw    *a0[Hwi_SFA21A20], a21:a20
+||      lddw    *SP[Hwi_SFB21B20], b21:b20
+||      mvk     0x4, b3
+||      mv      a2, b1
+        lddw    *a0[Hwi_SFA23A22], a23:a22
+||      lddw    *SP[Hwi_SFB23B22], b23:b22
+||[ b0] sat     b3:b2, b2
+||      mvc     b1, IRP
+
+        lddw    *a0[Hwi_SFA25A24], a25:a24
+||      lddw    *SP[Hwi_SFB25B24], b25:b24
+        lddw    *a0[Hwi_SFA27A26], a27:a26
+||      lddw    *SP[Hwi_SFB27B26], b27:b26
+        lddw    *a0[Hwi_SFA29A28], a29:a28
+||      lddw    *SP[Hwi_SFB29B28], b29:b28
+        lddw    *a0[Hwi_SFA31A30], a31:a30
+||      lddw    *SP[Hwi_SFB31B30], b31:b30
+        lddw    *a0[Hwi_SFA3A2], a3:a2
+||      lddw    *SP[Hwi_SFB3B2], b3:b2
+
+        b       IRP
+||      lddw    *a0[Hwi_SFA1A0], a1:a0
+||      lddw    *SP[Hwi_SFB1B0], b1:b0
+||      mv      b10, SP
+        ldw     *++SP[2], b10
+        nop     4
+
+        .endasmfunc

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectSpec>
+           <applicability>
+               <when>
+                    <context
+                       deviceFamily="ARM"
+                       deviceId=".*F28M3.*"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+
+     <project
+         title="Typical (with separate config project)"
+                 linkerCommandFile="ti/platforms/concertoM3/include/$DeviceId$.cmd"
+                 description="Same as the 'Typical' example except that the configuration project is a separate project from the app project.  The benefit of having a separate config project is that several applications can use the same configuration.  This helps save on build times and allows a team to share a common configuratin set up by a system integrator.">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.SYSBIOS"/>
+                 <property name="platform" value="ti.platforms.concertoM3:$DeviceId$"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="false"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sysbios.examples.root"/>
+                 <file path="ti/sysbios/examples/generic/typical/main.c" openOnCreation="true" excludeFromBuild="false">
+                 </file>
+                 <file path="ti/sysbios/examples/generic/typical/app.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="ti/sysbios/examples/makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+     </project>
+
+
+
+</projectSpec>
+

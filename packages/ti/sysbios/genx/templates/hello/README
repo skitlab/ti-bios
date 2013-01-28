@@ -1,0 +1,17 @@
+Purpose: 
+
+    The hello example serves as a basic sanity check program for DSP/BIOS. It
+    demonstrates how to print the string "hello world" to stdout. The DSP/BIOS 
+    configuration script for this example is located in the ../common directory. 
+    It is therefore necessary to build the ../common/<platform_dir> 
+    subdirectory before building the hello example. 
+    
+    The ../common/<platform_dir> subdirectory can be built using the makefile 
+    or the depend.pjt present at ../common/<platform_dir>. 
+    The hello example can be built using the makefile or hello.pjt file located 
+    in the ./<platform_dir> subdirectory.
+
+Expected output:
+	
+    See hello.k file.
+

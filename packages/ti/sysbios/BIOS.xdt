@@ -1,0 +1,317 @@
+%%{ 
+/*
+ * Copyright (c) 2012, Texas Instruments Incorporated
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
+*/
+%%}
+%/*
+% *  ======== BIOS.xdt ========
+% *
+% *! Revision History
+% *! ================
+% *! 06-Aug-2012 sg     Enable malloc, etc. override for IAR
+% *! 28-Mar-2012 sg     Added support for IAR
+% *! 25-Apr-2011 toddm  Fixed memalign align 4 issue (SDOCM00080663)
+% *! 16-Nov-2010 agd    Stop hijacking atexit/exit/abort.
+% *!                    Only generate malloc() if HeapMem is used for
+% *!                    Memory.defaultHeapInstance.
+% *! 12-Mar-2010 agd    SDOCM00062743 move Timer_startup before Swi_startup.
+% *! 27-May-2009 agd    SDOCM00058277 Add Hwi_startup to IHwi.xdc and
+% *!                    invoke it from BIOS_start()
+% *! 08-Apr-2009 agd    SDOCM00046248 re-engage GateMutex_enter Assert
+% *! 20-Aug-2007 cmcc   Made startFunc internal
+% *! 29-May-2007 agd    Moved startup funcs up. SDSCM00017785
+% */
+%var BIOS = xdc.module("ti.sysbios.BIOS");
+%
+Void ti_sysbios_BIOS_exitFunc__I(Int);
+
+%var len = BIOS.startupFxns.length;
+%for (var i = 0; i < len; i++) {
+%    var cname = BIOS.startupFxns[i].$name;
+%    cname = cname.replace(/\./g,'_');
+extern Void `cname`();
+%}
+%if (len != 0) {
+
+%}
+Void ti_sysbios_BIOS_startFunc__I()
+{
+    xdc_runtime_System_atexit(
+        (xdc_runtime_System_AtexitHandler)ti_sysbios_BIOS_exitFunc__I);
+%for (var i = 0; i < len; i++) {
+%    var cname = BIOS.startupFxns[i].$name;
+%    cname = cname.replace(/\./g,'_');
+    `cname`();
+%}
+%if (xdc.om['ti.sysbios.hal'].Hwi.$used > 0) {
+    ti_sysbios_hal_Hwi_startup();
+%}
+%if (xdc.om['ti.sysbios.hal'].Timer.$used > 0) {
+    ti_sysbios_hal_Timer_startup();
+%}
+%if ((BIOS.swiEnabled == true) && (xdc.om['ti.sysbios.knl'].Swi.$used > 0)) {
+    ti_sysbios_knl_Swi_startup();
+%}
+%if ((BIOS.taskEnabled == true) && (xdc.om['ti.sysbios.knl'].Task.$used >0)) {
+    ti_sysbios_knl_Task_startup();
+%}
+%else {
+    ti_sysbios_knl_Idle_loop(0,0);
+%}
+}
+
+#if defined(__ti__)
+#include <_lock.h>
+#endif
+
+%var mobj = '(&ti_sysbios_BIOS_Module__state__V)';
+Void ti_sysbios_BIOS_exitFunc__I(Int notused)
+{
+%if ((BIOS.swiEnabled == true) && (xdc.om['ti.sysbios.knl'].Swi.$used > 0)) {
+    ti_sysbios_knl_Swi_disable();
+%}
+%if ((BIOS.taskEnabled == true) && (xdc.om['ti.sysbios.knl'].Task.$used >0)) {
+    ti_sysbios_knl_Task_disable();
+%}
+    ti_sysbios_BIOS_setThreadType(ti_sysbios_BIOS_ThreadType_Main);
+
+#if defined(__ti__)
+%if (Program.$capsule._romAsm) {
+    if (`mobj`->rtsGate != NULL) {
+        _lock= _nop;
+        _unlock = _nop;
+    }
+%}
+%else {
+    if (`mobj`->rtsGate != NULL) {
+        _register_lock(_nop);
+        _register_unlock(_nop);
+    }
+%}
+#endif
+}
+
+%if (xdc.om['xdc.runtime'].HeapStd.$used == 0) {
+
+%/*
+% * This code is only generated if HeapStd is not used.  If HeapStd is used
+% * we'll get recursion malloc->HeapStd->malloc->HeapStd->overflow.
+% *
+% * This code should be in a separate .c file, but there are some link
+% * order issues we need to work out.  printf() internally calls malloc() so
+% * this can cause the rts malloc() to be linked instead of the BIOS one.
+% * In BIOS 5.x, we used --priority to force the reference to malloc(), etc.
+% * to come from BIOS library instead of the rts library.  This will work for
+% * TI compiler, but not sure what to do for GCC and IAR.
+% */
+
+#if defined(__ti__)
+
+#pragma FUNC_EXT_CALLED(malloc);
+#pragma FUNC_EXT_CALLED(memalign);
+#pragma FUNC_EXT_CALLED(free);
+#pragma FUNC_EXT_CALLED(calloc);
+#pragma FUNC_EXT_CALLED(realloc);
+
+#define ATTRIBUTE
+
+#elif defined(__ICC430__)
+
+#define ATTRIBUTE
+
+#else
+
+#define ATTRIBUTE __attribute__ ((used))
+
+#endif
+
+
+#include <xdc/std.h>
+
+#include <xdc/runtime/Memory.h>
+#include <xdc/runtime/Error.h>
+
+#if !defined(__ICC430__)
+#include <stdlib.h>
+#endif
+
+#include <string.h>
+
+/* malloc header */
+typedef struct Header {
+    Ptr   actualBuf;
+    UArg  size;
+} Header;
+
+/*
+ *  ======== malloc ========
+ */
+Void ATTRIBUTE *malloc(SizeT size)
+{
+    Header *packet;
+    xdc_runtime_Error_Block eb;
+
+    xdc_runtime_Error_init(&eb);
+
+    if (size == 0) {
+        return (NULL);
+    }
+
+    packet = (Header *)xdc_runtime_Memory_alloc(NULL,
+        (SizeT)(size + sizeof(Header)), 0, &eb);
+
+    if (packet == NULL) {
+        return (NULL);
+    }
+
+    packet->actualBuf = (Ptr)packet;
+    packet->size = size + sizeof(Header);
+
+    return (packet + 1);
+}
+
+/*
+ *  ======== memalign ========
+ *  mirrors the memalign() function from the TI run-time library
+ */
+Void ATTRIBUTE *memalign(SizeT alignment, SizeT size)
+{
+    Header                      *packet;
+    Void                        *tmp;
+    xdc_runtime_Error_Block     eb;
+
+    xdc_runtime_Error_init(&eb);
+
+    if (size == 0) {
+        return (NULL);
+    }
+
+    /*
+     * If alignment is not a power of two or is less than the minimum
+     * alignment of malloc(), then simply return what malloc() returns.
+     * (same as behaviour as RTS library's memalign())
+     * Note: HeapMem's header is the same as this header after it is raised
+     * to a power of 2.
+     */
+    if (alignment <= sizeof(Header) || (alignment & (alignment-1))) {
+        return malloc(size);
+    }
+
+    /*
+     * Allocate 'align + size' so that we have room for the 'packet'
+     * and can return an aligned buffer.
+     */
+    tmp = xdc_runtime_Memory_alloc(NULL, alignment + size,
+        (SizeT)alignment, &eb);
+
+    if (tmp == NULL) {
+        return (NULL);
+    }
+
+    packet = (Header *)((char *)tmp + alignment - sizeof(Header));
+
+    packet->actualBuf = tmp;
+    packet->size = size + sizeof(Header);
+
+    return (packet + 1);
+}
+
+/*
+ *  ======== calloc ========
+ */
+Void ATTRIBUTE *calloc(SizeT nmemb, SizeT size)
+{
+    SizeT       nbytes;
+    Ptr         retval;
+
+    nbytes = nmemb * size;
+
+    retval = malloc(nbytes);
+    if (retval != NULL) {
+        (Void)memset(retval, (Int)'\0', nbytes);
+    }
+
+    return (retval);
+}
+
+/*
+ *  ======== free ========
+ */
+Void ATTRIBUTE free(Void *ptr)
+{
+    Header      *packet;
+
+    if (ptr != NULL) {
+        packet = ((Header *)ptr) - 1;
+
+        xdc_runtime_Memory_free(NULL, (Ptr)packet->actualBuf,
+            (packet->size + ((char*)packet - (char*)packet->actualBuf)));
+    }
+}
+
+/*
+ *  ======== realloc ========
+ */
+Void ATTRIBUTE *realloc(Void *ptr, SizeT size)
+{
+    Ptr         retval;
+    Header      *packet;
+    SizeT       oldSize;
+
+    if (ptr == NULL) {
+        retval = malloc(size);
+    }
+    else if (size == 0) {
+        free(ptr);
+        retval = NULL;
+    }
+    else {
+        packet = (Header *)ptr - 1;
+        retval = malloc(size);
+        if (retval != NULL) {
+            oldSize = packet->size - sizeof(Header);
+            (Void)memcpy(retval, ptr, (size < oldSize) ? size : oldSize);
+            free(ptr);
+        }
+    }
+
+    return (retval);
+}
+
+%} // if (xdc.om['xdc.runtime'].HeapStd.$used == 0)
+%%{
+/*
+ * @(#) ti.sysbios; 2, 0, 0, 0,597; 11-7-2012 12:40:18; /db/vtree/library/trees/avala/avala-r22x/src/ xlibrary
+
+ */
+
+%%}

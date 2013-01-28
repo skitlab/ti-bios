@@ -1,0 +1,32 @@
+Purpose:
+    
+    The RTA stairstep example runs continusously and periodically 
+    generates log events. 
+    
+    The execution time is divided into a repeating block of 4 phases 
+    lasting 25 seconds each.
+
+    Each phase is further divided into 5 subphases lasting 5 seconds each.
+
+    In each subphase, a single thread type (Hwi, Swi, Task) or 
+    combination of thread types runs for a pre-set length of time in 
+    order to present a CPU load of a its thread type to the
+    system. The thread loads can be tracked individually or collectively
+    using the various RTA GUI tools provided in CCS.
+
+    RTA support is added by including RTDX and the ti.sysbios.rta.Agent module.
+    See the stairstep.cfg file for more configuration details.
+    
+    IMPORTANT: This example uses RTDX and has some special requirements for it
+    to work properly.
+      1. Ensure that the RTDX protocol (simulator, jtag, or high speed) is 
+         configured correctly for your platform.
+      2. The ti.rtdx and ti.sdo.io packages must be on your package path in
+         order to build the example.
+
+Expected output:
+
+    The example will run for about 2 minutes. No console output is
+    generated. Use the CCS XDCLog, BIOS Execution, CPU Load, and Task Load
+    RTA GUI tools to monitor the RTA traffic.
+
